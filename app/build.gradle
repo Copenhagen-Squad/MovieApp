@@ -13,6 +13,7 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
+    namespace "com.karrar.movieapp"
     compileSdk 32
 
     defaultConfig {

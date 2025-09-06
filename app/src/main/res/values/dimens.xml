@@ -19,6 +19,19 @@
     <dimen name="text_small">12sp</dimen>
 
     <!-- radius -->
+    <dimen name="radius_2xs">2dp</dimen>
+    <dimen name="radius_xs">4dp</dimen>
+    <dimen name="radius_s">8dp</dimen>
+    <dimen name="radius_md">10dp</dimen>
+    <dimen name="radius_lg">12dp</dimen>
+    <dimen name="radius_xl">16dp</dimen>
+    <dimen name="radius_2xl">20dp</dimen>
+    <dimen name="radius_3xl">24dp</dimen>
+    <dimen name="radius_4xl">28dp</dimen>
+    <dimen name="radius_5xl">32dp</dimen>
+    <dimen name="radius_full">100dp</dimen>
+
+    <!-- old radius -->
     <dimen name="radius_large">24dp</dimen>
     <dimen name="radius_medium">16dp</dimen>
     <dimen name="radius_small">8dp</dimen>
