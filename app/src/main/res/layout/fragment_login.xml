@@ -81,6 +81,7 @@
             app:startIconDrawable="@drawable/user">
 
             <com.google.android.material.textfield.TextInputEditText
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:afterTextChanged="@{(text) -> viewModel.onUserNameInputChange(text)}"
@@ -99,7 +100,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/password"
             android:textColor="@color/shade_secondary_color"
             app:layout_constraintBottom_toTopOf="@id/password"
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_small"
             app:boxBackgroundMode="none"
             app:endIconDrawable="@drawable/eye_opened"
             app:helperText="@{viewModel.loginUIState.passwordHelperText}"
@@ -124,7 +124,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:afterTextChanged="@{(text) -> viewModel.onPasswordInputChange(text)}"
                 android:background="@drawable/text_input_bg"
                 android:gravity="center_vertical"
@@ -135,23 +135,56 @@
                 android:textColorHint="@color/shade_tertiary" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/tv_forget_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_password"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/Regular.Medium.Secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/containedButton"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_extra_large"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg_selector"
             android:enabled="@{viewModel.loginUIState.validForm}"
             android:onClick="@{()->viewModel.onClickLogin()}"
+            android:paddingVertical="14dp"
             android:text="@string/login"
-            android:textAppearance="@style/SemiBold.Medium"
-            android:textColor="@color/white_primary"
-            app:backgroundTint="@color/color_states_material_button"
+            android:textAppearance="@style/Typography.body_md_medium"
+            android:textColor="@color/button_onDisabled"
+            app:backgroundTint="@null"
             app:cornerRadius="@dimen/radius_small"
             app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_guest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg_selector"
+            android:enabled="@{viewModel.loginUIState.validForm}"
+            android:onClick="@{()->viewModel.onClickLogin()}"
+            android:paddingVertical="14dp"
+            android:text="@string/join_as_a_guest"
+            android:textAppearance="@style/Typography.body_md_medium"
+            android:textColor="@color/button_onDisabled"
+            app:backgroundTint="@null"
+            app:cornerRadius="@dimen/radius_small"
+            app:hideIfTrue="@{viewModel.loginUIState.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containedButton" />
 
 
         <com.google.android.material.progressindicator.CircularProgressIndicator

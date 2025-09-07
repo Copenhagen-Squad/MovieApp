@@ -104,4 +104,6 @@
     <string name="season_number">(%1$s Seasons)</string>
     <string name="enter_your_email_or_username">Enter your email or username</string>
     <string name="welcome_back_to_cinaverse">Welcome back to CinaVerse!</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="join_as_a_guest">Join as a Guest</string>
 </resources>
