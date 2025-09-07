@@ -49,19 +49,24 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:hint="@string/enter_your_email_or_username"
+            app:boxBackgroundMode="none"
             app:helperText="@{viewModel.loginUIState.userNameHelperText}"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:startIconDrawable="@drawable/ic_profile">
+            app:startIconDrawable="@drawable/user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|start"
                 android:afterTextChanged="@{(text) -> viewModel.onUserNameInputChange(text)}"
+                android:background="@drawable/text_input_bg"
+                android:hint="@string/enter_your_email_or_username"
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textColor="@color/shade_secondary_color"
-
+                android:textColorHint="@color/shade_tertiary"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
