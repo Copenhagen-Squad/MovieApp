@@ -79,6 +79,7 @@
                 />
 
             <ImageView
+                android:contentDescription="@string/rated_movies"
                 android:src="@drawable/ic_star_duetone"
                 app:tint="@color/additional_primary_yellow"
                 android:layout_width="16dp"
