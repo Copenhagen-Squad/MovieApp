@@ -11,7 +11,6 @@
     android:paddingBottom="8dp"
     android:elevation="8dp">
 
-    <!-- Home Tab -->
     <LinearLayout
         android:id="@+id/nav_home"
         android:layout_width="0dp"
@@ -43,7 +42,6 @@
 
     </LinearLayout>
 
-    <!-- Explore Tab -->
     <LinearLayout
         android:id="@+id/nav_explore"
         android:layout_width="0dp"
@@ -75,7 +73,6 @@
 
     </LinearLayout>
 
-    <!-- Match Tab -->
     <LinearLayout
         android:id="@+id/nav_match"
         android:layout_width="0dp"
@@ -107,7 +104,6 @@
 
     </LinearLayout>
 
-    <!-- Me Tab -->
     <LinearLayout
         android:id="@+id/nav_me"
         android:layout_width="0dp"
