@@ -68,4 +68,8 @@
 
     <color name="profile_background">#9903050A</color>
 
+
+    <!--new colors-->
+    <color name="new_brand_color">#536DFE</color>
+
 </resources>
