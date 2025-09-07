@@ -103,4 +103,5 @@
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
     <string name="enter_your_email_or_username">Enter your email or username</string>
+    <string name="welcome_back_to_cinaverse">Welcome back to CinaVerse!</string>
 </resources>
