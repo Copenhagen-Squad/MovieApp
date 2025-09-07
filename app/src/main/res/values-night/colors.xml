@@ -59,9 +59,4 @@
     <color name="gray">#80737373</color>
 
     <color name="profile_background">#99FFFFFF</color>
-
-
-    <!--new colors-->
-    <color name="new_brand_color">#8C9EFF</color>
-
 </resources>

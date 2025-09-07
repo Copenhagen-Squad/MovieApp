@@ -41,7 +41,7 @@
             android:layout_margin="16dp"
             style="@style/CustomFabStyle"
             android:onClick="@{()->viewModel.onCreateList()}"
-            app:backgroundTint="@color/new_brand_color"
+            app:backgroundTint="@color/brand_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/add_icon"
