@@ -13,21 +13,6 @@
         app:tabPaddingStart="16dp"
         app:tabPaddingEnd="16dp"
         style="@style/tabsLayout">
-        
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"/>
 
     </com.google.android.material.tabs.TabLayout>
 

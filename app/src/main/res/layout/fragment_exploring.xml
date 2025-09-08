@@ -103,6 +103,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_explore" />
 
+        <include
+            android:id="@+id/include_tabs"
+            layout="@layout/tabs"
+            app:layout_constraintTop_toBottomOf="@id/input_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_movies"
             style="@style/CardCorners.Small"
