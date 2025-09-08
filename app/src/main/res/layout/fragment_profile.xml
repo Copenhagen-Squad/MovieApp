@@ -146,7 +146,7 @@
 
                 <ImageView
                     android:id="@+id/icon_my_collections"
-                    android:contentDescription="@string/history"
+                    android:contentDescription="@string/my_collections"
                     app:tint="@color/brand_primary"
                     android:src="@drawable/ic_video_library_duetone"
                     android:layout_width="16dp"
@@ -183,7 +183,7 @@
 
                 <ImageView
                     android:id="@+id/icon_my_ratings"
-                    android:contentDescription="@string/history"
+                    android:contentDescription="@string/my_ratings"
                     app:tint="@color/brand_primary"
                     android:src="@drawable/ic_star_duetone"
                     android:layout_width="16dp"
