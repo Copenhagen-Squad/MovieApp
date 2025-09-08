@@ -251,7 +251,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:contentDescription="@string/dark_mode_icon"
+                        android:contentDescription="@string/dark_mode"
                         android:id="@+id/icon_dark_mode"
                         android:src="@drawable/ic_moon_duetone"
                         app:tint="@color/brand_primary"
@@ -294,7 +294,7 @@
                     >
 
                     <ImageView
-                        android:contentDescription="@string/dark_mode_icon"
+                        android:contentDescription="@string/language"
                         android:id="@+id/icon_language"
                         android:src="@drawable/ic_language_duetone"
                         app:tint="@color/brand_primary"
@@ -350,7 +350,7 @@
                     >
 
                     <ImageView
-                        android:contentDescription="@string/dark_mode_icon"
+                        android:contentDescription="@string/content_preferences"
                         android:id="@+id/icon_content_preferences"
                         android:src="@drawable/ic_color_swatch_duetone"
                         app:tint="@color/brand_primary"
@@ -379,7 +379,7 @@
                     <ImageView
                         android:src="@drawable/ic_arrow_right"
                         app:tint="@color/shade_tertiary"
-                        android:contentDescription="@string/language"
+                        android:contentDescription="@string/content_preferences"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         app:layout_constraintTop_toTopOf="parent"
@@ -406,7 +406,7 @@
                     >
 
                     <ImageView
-                        android:contentDescription="@string/dark_mode_icon"
+                        android:contentDescription="@string/logout"
                         android:id="@+id/icon_logout"
                         android:src="@drawable/ic_logout_duetone"
                         app:tint="@color/additional_primary_red"
@@ -435,7 +435,7 @@
                     <ImageView
                         android:src="@drawable/ic_arrow_right"
                         app:tint="@color/additional_primary_red"
-                        android:contentDescription="@string/language"
+                        android:contentDescription="@string/logout"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         app:layout_constraintTop_toTopOf="parent"
