@@ -34,12 +34,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:posterImage="@{item.imageUrl}"
-            app:shapeAppearanceOverlay="@style/Circle" />
+            app:shapeAppearanceOverlay="@style/poster" />
 
 
         <TextView
             android:id="@+id/text_actor_name"
-            style="@style/SemiBold.Small"
+            style="@style/Typography.body_sm_medium"
+            android:textColor="@color/shade_secondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
