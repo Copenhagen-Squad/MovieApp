@@ -105,4 +105,5 @@
     <string name="button">Button</string>
     <string name="label">label</string>
     <string name="series">series</string>
+    <string name="movie">movie</string>
 </resources>
