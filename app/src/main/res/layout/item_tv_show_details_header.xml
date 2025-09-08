@@ -65,8 +65,22 @@
                 android:onClick="@{() -> listener.onClickPlayTrailer()}"
                 android:padding="10dp"
                 android:src="@drawable/ic_play_filled"
+                app:layout_constraintBottom_toTopOf="@+id/button_save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/save_button_bg"
+                android:layout_marginTop="10dp"
+                android:onClick="@{() -> listener.onClickSave()}"
+                android:padding="10dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_play_trailer" />
 
             <TextView
                 android:id="@+id/series"
