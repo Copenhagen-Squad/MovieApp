@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Base Typography style -->
+    <style name="Typography" />
+
     <!-- Display / xl -->
     <style name="Typography.display_xl">
         <item name="fontFamily">@font/manrope_bold</item>
