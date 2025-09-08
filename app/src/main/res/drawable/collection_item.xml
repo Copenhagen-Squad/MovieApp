@@ -4,7 +4,7 @@
         <shape
             android:shape="rectangle"
             >
-            <solid android:color="@color/background_card"/>
+            <solid android:color="@color/background_bottom_sheet_card"/>
             <corners android:radius="@dimen/radius_lg"/>
         </shape>
     </item>
@@ -12,8 +12,8 @@
     <item>
         <shape
             android:shape="rectangle"
-            >
-            <solid android:color="@color/background_bottom_sheet_card"/>
+            >background_card
+            <solid android:color="@color/background_card"/>
             <corners android:radius="@dimen/radius_lg"/>
         </shape>
     </item>
