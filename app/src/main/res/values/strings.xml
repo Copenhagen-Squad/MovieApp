@@ -102,6 +102,8 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
+    <string name="button">Button</string>
+    <string name="label">label</string>
     <string name="enter_your_email_or_username">Enter your email or username</string>
     <string name="welcome_back_to_cinaverse">Welcome back to CinaVerse!</string>
     <string name="forget_password">Forget Password?</string>

@@ -28,14 +28,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/Circle"
+            app:shapeAppearanceOverlay="@style/poster"
             tools:src="@drawable/actor"
             app:posterImage="@{item.mediaImage}"
             android:onClick="@{() -> listener.onClickActorResult(item.mediaID, item.mediaName)}"/>
 
         <TextView
             android:id="@+id/cast_name"
-            style="@style/Regular.Small.Secondary"
+            style="@style/Typography.body_sm_medium"
+            android:textColor="@color/shade_secondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

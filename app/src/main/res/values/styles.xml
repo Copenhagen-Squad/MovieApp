@@ -100,4 +100,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- radius / Lg -->
+    <style name="CustomFabStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/CustomFabCorners</item>
+    </style>
+
+    <style name="CustomFabCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
 </resources>
