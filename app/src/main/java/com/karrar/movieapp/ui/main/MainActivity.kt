@@ -69,9 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Setup action bar with nav controller
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // Setup custom bottom navigation
         setupCustomBottomNavigation()
-        setBottomNavigationVisibility(navController)
     }
 
     private fun initializeCustomNavigation() {
@@ -173,13 +171,6 @@ class MainActivity : AppCompatActivity() {
         label.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
     }
 
-    private fun setBottomNavigationVisibility(navController: NavController) {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            // Hide custom bottom navigation on login screen
-            findViewById<LinearLayout>(R.id.bottom_navigation).isVisible =
-                destination.id != R.id.loginFragment
-        }
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
