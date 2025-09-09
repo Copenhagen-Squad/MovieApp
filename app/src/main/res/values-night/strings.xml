@@ -3,4 +3,7 @@
     <string name="button">زر</string>
     <string name="label">label</string>
     <string name="match">Match</string>
+    <string name="actor_placeholder">Actor placeholder</string>
+    <string name="no_img">No Img</string>
+    <string name="actor_name">Actor Name</string>
 </resources>
