@@ -67,7 +67,7 @@ class HomeAdapter(
                         setVariable(
                             BR.adapterRecycler, ActorAdapter(
                                 currentItem.items,
-                                R.layout.item_actor_home,
+                                R.layout.item_actor,
                                 listener as ActorsInteractionListener
                             )
                         )
