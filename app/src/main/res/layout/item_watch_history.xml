@@ -99,7 +99,7 @@
 
                 <ImageView
                     android:src="@drawable/ic_calendar_duetone"
-                    android:contentDescription="@string/duration"
+                    android:contentDescription="@string/released_date"
                     app:tint="@color/shade_secondary"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
