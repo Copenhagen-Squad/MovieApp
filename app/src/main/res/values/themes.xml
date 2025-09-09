@@ -179,5 +179,14 @@
 
     </style>
 
+    <style name="tabsLayout"  parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabBackground">@drawable/bottom_line</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="tabIndicatorColor">@color/brand_primary</item>
+        <item name="tabSelectedTextColor">@color/brand_primary</item>
+    </style>
 
+    <style name="CardCorners.radiusLarge">
+        <item name="android:radius">@dimen/radius_lg</item>
+    </style>
 </resources>
