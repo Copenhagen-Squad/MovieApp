@@ -1,9 +1,12 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentListDetailsBinding
 import com.karrar.movieapp.ui.base.BaseFragment
@@ -17,6 +20,28 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
     override val layoutIdFragment = R.layout.fragment_list_details
     override val viewModel: ListDetailsViewModel by viewModels()
 
+    val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            Log.d("itemTouchHelper", "onMove")
+            return false
+        }
+
+        override fun onSwiped(
+            viewHolder: RecyclerView.ViewHolder,
+            direction: Int
+        ) {
+            val position = viewHolder.adapterPosition
+            val adapter = binding.lists.adapter as ListDetailsAdapter
+            Log.d("itemTouchHelper", "onSwiped")
+        }
+    })
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTitle(true, viewModel.args.listName)
@@ -24,6 +49,10 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
         collectLast(viewModel.listDetailsUIEvent) {
             it.getContentIfNotHandled()?.let { onEvent(it) }
         }
+
+        binding.lists.adapter = ListDetailsAdapter(mutableListOf(), viewModel)
+        itemTouchHelper.attachToRecyclerView(binding.lists)
+
     }
 
     private fun onEvent(event: ListDetailsUIEvent) {
