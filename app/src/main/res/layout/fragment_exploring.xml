@@ -103,6 +103,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_explore" />
 
+        <include
+            android:id="@+id/include_tabs"
+            layout="@layout/tabs"
+            app:layout_constraintTop_toBottomOf="@id/input_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_movies"
             style="@style/CardCorners.Small"
@@ -229,7 +236,7 @@
             android:id="@+id/recycler_trend"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/spacing_small"
+            android:paddingEnd="16dp"
             android:layout_marginTop="@dimen/spacing_small"
             android:clipToPadding="false"
             android:elevation="@dimen/spacing_too_small"

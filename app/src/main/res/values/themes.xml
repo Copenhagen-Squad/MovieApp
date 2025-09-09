@@ -130,13 +130,33 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="cast_image" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="poster" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomRight">@dimen/radius_lg</item>
+    </style>
+
+    <style name="PosterShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_lg</item>
+    </style>
+
     <style name="Chip.Regular.Small" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipStrokeColor">@color/chip_stroke</item>
         <item name="chipBackgroundColor">@color/chip_background</item>
         <item name="chipStrokeWidth">1dp</item>
         <item name="android:textAlignment">center</item>
     </style>
-
 
     <style name="chipChip" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipStrokeColor">@color/brand_color</item>
@@ -149,13 +169,21 @@
         <item name="chipStrokeColor">@color/selector_chip_stroke</item>
         <item name="chipStrokeWidth">1dp</item>
         <item name="android:textColor">@color/selector_chip_text</item>
-        <item name="chipCornerRadius">8dp</item>
+        <item name="chipCornerRadius">@dimen/radius_full</item>
+        <item name="android:textAppearance">@style/Typography.label_md_medium</item>
     </style>
 
 
     <style name="Regular.Small.Primary">
         <item name="android:textColor">@color/shade_primary_color</item>
 
+    </style>
+
+    <style name="tabsLayout"  parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabBackground">@drawable/bottom_line</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="tabIndicatorColor">@color/brand_primary</item>
+        <item name="tabSelectedTextColor">@color/brand_primary</item>
     </style>
 
 
