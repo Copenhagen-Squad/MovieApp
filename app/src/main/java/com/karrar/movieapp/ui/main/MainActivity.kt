@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-
-    // Custom bottom navigation views
     private lateinit var navHome: LinearLayout
     private lateinit var navExplore: LinearLayout
     private lateinit var navMatch: LinearLayout
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var labelMatch: TextView
     private lateinit var labelMe: TextView
 
-    private var currentTab = 0 // 0: Home, 1: Explore, 2: Match, 3: Me
+    private var currentTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +63,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navController = findNavController(R.id.nav_host_fragment)
-
-        // Setup action bar with nav controller
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         setupCustomBottomNavigation()
@@ -91,7 +87,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupCustomBottomNavigation() {
-        // Set click listeners for custom navigation
         navHome.setOnClickListener {
             navigateToDestination(R.id.homeFragment, 0)
         }
@@ -105,12 +100,10 @@ class MainActivity : AppCompatActivity() {
             navigateToDestination(R.id.profileFragment, 3)
         }
 
-        // Listen for navigation changes to update tab selection
         navController.addOnDestinationChangedListener { _, destination, _ ->
             updateTabSelection(destination.id)
         }
 
-        // Set initial selection
         updateTabSelection(R.id.homeFragment)
     }
 
@@ -119,7 +112,6 @@ class MainActivity : AppCompatActivity() {
 
         currentTab = tabIndex
 
-        // Navigate using nav controller
         try {
             navController.navigate(destinationId)
         } catch (e: IllegalArgumentException) {
@@ -130,10 +122,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateTabSelection(destinationId: Int) {
-        // Reset all tabs first
         resetAllTabs()
 
-        // Set selected tab based on destination
         when (destinationId) {
             R.id.homeFragment -> {
                 currentTab = 0

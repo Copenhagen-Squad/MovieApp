@@ -186,5 +186,7 @@
         <item name="tabSelectedTextColor">@color/brand_primary</item>
     </style>
 
-
+    <style name="CardCorners.radiusLarge">
+        <item name="android:radius">@dimen/radius_lg</item>
+    </style>
 </resources>
