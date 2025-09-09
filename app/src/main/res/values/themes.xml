@@ -186,11 +186,6 @@
         <item name="tabSelectedTextColor">@color/brand_primary</item>
     </style>
 
-    <style name="body.md.medium">
-        <item name="android:fontFamily">@font/manrope_medium</item>
-        <item name="android:textSize">@dimen/text_medium</item>
-    </style>
-
     <style name="body.sm.medium">
         <item name="android:fontFamily">@font/manrope_medium</item>
         <item name="android:textSize">@dimen/text_small</item>

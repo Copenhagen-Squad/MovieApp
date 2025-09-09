@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="info_section">section info\n</string>
     <string name="button">زر</string>
     <string name="label">label</string>
+    <string name="match">Match</string>
+    <string name="actor_placeholder">Actor placeholder</string>
+    <string name="no_img">No Img</string>
+    <string name="actor_name">Actor Name</string>
 </resources>

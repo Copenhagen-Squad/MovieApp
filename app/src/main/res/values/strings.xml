@@ -65,7 +65,7 @@
     <string name="seasons">Seasons</string>
     <string name="submit_toast">Submitted, Thank you for your feedback</string>
     <string name="total_episodes">%1$s Episodes</string>
-    <string name="m">%1$s m</string>
+    <string name="me">me</string>
     <string name="watch_history">Watch History</string>
     <string name="rated_movies">My Ratings</string>
     <string name="sign_out">Sign Out</string>
@@ -73,7 +73,7 @@
     <string name="are_you_sure">Are You Sure?</string>
     <string name="you_re_about_to_sign_out_of_your_account">You’re about to sign out of your account.</string>
     <string name="cancel">Cancel</string>
-    <string name="logout">Sign Out</string>
+    <string name="signout">Sign Out</string>
     <string name="this_list_has_no_movies">This list has no movies</string>
     <string name="zero">\.0</string>
     <string name="my_ratings">My Ratings</string>
@@ -103,6 +103,20 @@
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
     <string name="icon">icon</string>
+    <string name="info_section">section info\n</string>
     <string name="button">Button</string>
     <string name="label">label</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode_icon">Dark mode icon</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="content_preferences">Content Preferences</string>
+    <string name="logout">Logout</string>
+    <string name="history">History</string>
+    <string name="my_collections">My Collections</string>
+
+    <string name="match">Match</string>
+    <string name="actor_placeholder">Actor placeholder</string>
+    <string name="no_img">No Img</string>
+    <string name="actor_name">Actor Name</string>
 </resources>
