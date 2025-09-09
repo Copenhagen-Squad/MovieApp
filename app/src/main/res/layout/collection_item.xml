@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/collection_image"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/image"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/CardCorners.Small"/>
+
+    <TextView
+        android:id="@+id/collection_title"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/collection_image"
+        tools:text="Text"
+        style="@style/body.md.medium"
+        android:background="@drawable/bottom_rounded_corners"
+        android:backgroundTint="@color/shade_primary"/>
+    
+    <View
+        android:id="@+id/view1"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@id/collection_title"
+        app:layout_constraintStart_toStartOf="@id/collection_image"
+        app:layout_constraintEnd_toEndOf="@id/collection_image"
+        android:background="@drawable/bottom_rounded_corners"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:backgroundTint="@color/brand_tertiary"/>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        app:layout_constraintStart_toStartOf="@id/collection_image"
+        app:layout_constraintEnd_toEndOf="@id/collection_image"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bottom_rounded_corners"
+        android:backgroundTint="@color/shade_quinary"/>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
