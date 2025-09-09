@@ -7,5 +7,5 @@
 
     </corners>
 
-    <solid android:color="@color/shade_tertiary" />
+    <solid android:color="@color/brand_tertiary" />
 </shape>
