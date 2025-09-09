@@ -65,34 +65,27 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
-            app:boxBackgroundMode="none"
-            app:helperText="@{viewModel.loginUIState.userNameHelperText}"
-            app:hintEnabled="false"
+            android:afterTextChanged="@{(text) -> viewModel.onUserNameInputChange(text)}"
+            android:background="@drawable/text_input_bg"
+            android:drawableStart="@drawable/user"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical|start"
+            android:hint="@string/enter_your_email_or_username"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/shade_secondary_color"
+            android:textColorHint="@color/shade_tertiary"
             app:layout_constraintBottom_toTopOf="@id/tv_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username"
-            app:startIconDrawable="@drawable/user">
-
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{(text) -> viewModel.onUserNameInputChange(text)}"
-                android:background="@drawable/text_input_bg"
-                android:gravity="center_vertical|start"
-                android:hint="@string/enter_your_email_or_username"
-                android:inputType="textPersonName"
-                android:maxLines="1"
-                android:textColor="@color/shade_secondary_color"
-                android:textColorHint="@color/shade_tertiary" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
         <TextView
             android:id="@+id/tv_password"
@@ -107,42 +100,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
-            app:boxBackgroundMode="none"
-            app:endIconDrawable="@drawable/eye_opened"
-            app:helperText="@{viewModel.loginUIState.passwordHelperText}"
-            app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@+id/tv_password"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/shade_secondary_color"
-            app:startIconDrawable="@drawable/lock">
+            android:afterTextChanged="@{(text) -> viewModel.onPasswordInputChange(text)}"
+            android:background="@drawable/text_input_bg"
+            android:drawableStart="@drawable/lock"
+            android:drawableEnd="@drawable/eye_opened"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:hint="@string/password"
+            android:inputType="textPassword"
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:afterTextChanged="@{(text) -> viewModel.onPasswordInputChange(text)}"
-                android:background="@drawable/text_input_bg"
-                android:gravity="center_vertical"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="@color/shade_secondary_color"
-                android:textColorHint="@color/shade_tertiary" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:maxLines="1"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/shade_secondary_color"
+            android:textColorHint="@color/shade_tertiary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
         <TextView
             android:id="@+id/tv_forget_password"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/forget_password"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/Regular.Medium.Secondary"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password" />
 
