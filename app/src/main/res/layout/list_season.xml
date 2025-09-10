@@ -38,6 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_seasons"
             tools:itemCount="3"
+            android:background="@drawable/rounded_corners"
             tools:listitem="@layout/item_season" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
