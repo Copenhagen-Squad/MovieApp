@@ -195,13 +195,13 @@
             android:background="@drawable/button_bg"
             android:paddingHorizontal="@dimen/spacing_medium"
             android:paddingVertical="12dp"
+            android:gravity="center"
             android:text="@string/create_a_new_account"
             android:textAppearance="@style/Typography.body_sm_medium"
             android:textColor="@color/button_onSecondary"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.42"
             app:layout_constraintStart_toStartOf="parent" />
 
 
