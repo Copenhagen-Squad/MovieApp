@@ -12,8 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:background="@color/background_color">
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_corners">
 
         <TextView
             android:id="@+id/text_seasons"
@@ -31,14 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:orientation="vertical"
             android:adapter="@{adapterRecycler}"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_seasons"
             tools:itemCount="3"
-            android:background="@drawable/rounded_corners"
             tools:listitem="@layout/item_season" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
