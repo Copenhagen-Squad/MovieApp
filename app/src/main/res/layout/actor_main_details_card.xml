@@ -125,8 +125,7 @@
                 android:paddingBottom="8dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="12dp"
-                android:layout_marginEnd="6dp"
-                app:layout_constraintRadius="@dimen/radius_full">
+                android:layout_marginEnd="6dp">
 
                 <ImageView
                     android:layout_width="16dp"
@@ -148,6 +147,7 @@
                     android:layout_marginStart="0dp" />
 
             </LinearLayout>
+
             <!-- Facebook -->
             <LinearLayout
                 android:id="@+id/FacebookButton"
@@ -160,8 +160,7 @@
                 android:paddingBottom="8dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="12dp"
-                android:layout_marginEnd="6dp"
-                app:layout_constraintRadius="@dimen/radius_full">
+                android:layout_marginEnd="6dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -194,8 +193,7 @@
                 android:paddingBottom="8dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="12dp"
-                android:layout_marginEnd="6dp"
-                app:layout_constraintRadius="@dimen/radius_full">
+                android:layout_marginEnd="6dp">
 
                 <ImageView
                     android:layout_width="20dp"
