@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Join CineVerse"
+        android:fontFamily="@style/Typography.title_sm"
+        android:text="@string/join_cineverse"
         android:textColor="@color/shade_primary"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -37,10 +37,10 @@
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:lineSpacingMultiplier="1.0"
-        android:text="Let's get you set up! We'll take you to the website to create your account."
+        android:text="@string/let_s_get_you_set_up_we_ll_take_you_to_the_website_to_create_your_account"
         android:textColor="@color/shade_secondary"
         android:textSize="12sp"
-        android:fontFamily="sans-serif" />
+        android:fontFamily="@style/Typography.body_lg_medium" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
