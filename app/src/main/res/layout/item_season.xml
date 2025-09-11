@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:onClick="@{() -> listener.onClickSeason(item.seasonNumber)}"
-            app:cardBackgroundColor="@color/white_primary"
+            app:cardBackgroundColor="@color/background_card"
             app:cardCornerRadius="@dimen/radius_medium"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,7 @@
 
         <TextView
             android:id="@+id/text_episode_name"
-            style="@style/Regular.Medium.Primary"
+            style="@style/Typography.body_md_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_extra_small"
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/text_season_description"
-            style="@style/Regular.Small.Secondary"
+            style="@style/Typography.body_sm_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_too_small"
@@ -83,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_margin="@dimen/spacing_extra_small"
-            android:background="#ECECEC"
+            android:background="@color/stroke_primary"
             app:layout_constraintEnd_toEndOf="@id/card_season"
             app:layout_constraintStart_toStartOf="@id/image_episode"
             app:layout_constraintTop_toBottomOf="@id/image_episode" />
@@ -107,7 +107,7 @@
                 app:tint="#FFC107" />
 
             <TextView
-                style="@style/Regular.Medium.Secondary"
+                style="@style/Typography.label_md_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
@@ -127,7 +127,7 @@
                 app:tint="@color/shade_secondary_color" />
 
             <TextView
-                style="@style/Regular.Medium.Secondary"
+                style="@style/Typography.label_md_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
@@ -148,7 +148,7 @@
 
 
             <TextView
-                style="@style/Regular.Medium.Secondary"
+                style="@style/Typography.label_md_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
