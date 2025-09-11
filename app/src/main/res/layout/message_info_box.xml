@@ -45,7 +45,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logout" />
+            android:tint="@color/brand_primary"
+            app:srcCompat="@drawable/ic_logout_duetone" />
 
         <TextView
             android:id="@+id/tv_title"
