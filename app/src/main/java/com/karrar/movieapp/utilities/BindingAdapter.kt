@@ -258,3 +258,12 @@ fun setRating(view: RatingBar?, rating: Float) {
 fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
 }
+
+@BindingAdapter("horizontalPosterImageUrl")
+fun ImageView.loadHorizontalPoster(url: String?) {
+    this.load(url) {
+        crossfade(true)
+        placeholder(R.drawable.horizonatal_poster_image_placeholder)
+        error(R.drawable.horizonatal_poster_image_placeholder)
+    }
+}
