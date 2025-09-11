@@ -16,7 +16,6 @@
         android:background="@color/background_color"
         app:layoutDescription="@xml/fragment_actor_details_scene">
 
-
         <ImageView
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
@@ -31,13 +30,14 @@
             app:tint="@color/background_color"
             android:onClick="@{() -> viewModel.onClickBack()}"/>
 
-
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:overScrollMode="never"
-            app:layout_constraintTop_toBottomOf="@+id/actor_image">
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/details"
@@ -47,232 +47,59 @@
                 android:visibility="gone"
                 app:isVisible="@{viewModel.actorDetailsUIState.success}">
 
-                <androidx.cardview.widget.CardView
+                <!-- Actor Profile Card Component -->
+                <include
                     android:id="@+id/actor_profile_card"
+                    layout="@layout/actor_main_details_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/background_card"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-
-                            <FrameLayout
-                                android:layout_width="64dp"
-                                android:layout_height="80dp"
-                                android:background="@drawable/actor_img_raduis"
-                                android:clipToOutline="true">
-
-                                <ImageView
-                                    android:id="@+id/profileImage"
-                                    android:layout_width="64dp"
-                                    android:layout_height="80dp"
-                                    android:scaleType="centerCrop"
-                                    app:posterImage="@{viewModel.actorDetailsUIState.imageUrl}"                                    android:src="@drawable/test" />
-                            </FrameLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginStart="16dp"
-                                android:orientation="vertical">
-
-                                <!-- Name -->
-                                <TextView
-                                    android:id="@+id/profileName"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@{viewModel.actorDetailsUIState.name}"
-                                    android:textColor="@color/shade_primary"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold"
-                                    android:fontFamily="@style/Typography.title_md" />
-
-                                <!-- Birth Date -->
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical"
-                                    android:layout_marginTop="4dp">
-
-                                    <ImageView
-                                        android:layout_width="16dp"
-                                        android:layout_height="16dp"
-                                        android:src="@drawable/ic_cake"
-                                        app:tint="@color/shade_secondary" />
-
-                                    <TextView
-                                        android:id="@+id/birthDate"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{`Born on ` + viewModel.actorDetailsUIState.birthday}"
-                                        android:textColor="@color/shade_secondary"
-                                        android:layout_marginStart="8dp"
-                                        android:fontFamily="@style/Typography.label_md_medium"/>
-                                </LinearLayout>
-
-                                <!-- Location -->
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical"
-                                    android:layout_marginTop="4dp">
-
-                                    <ImageView
-                                        android:layout_width="16dp"
-                                        android:layout_height="16dp"
-                                        android:src="@drawable/ic_location"
-                                        app:tint="@color/shade_secondary" />
-
-                                    <TextView
-                                        android:id="@+id/location"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{`In ` + viewModel.actorDetailsUIState.placeOfBirth}"
-                                        android:textColor="@color/shade_secondary"
-                                        android:textSize="14sp"
-                                        android:layout_marginStart="8dp" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <!-- Social Media Links -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="16dp"
-                            android:gravity="start">
-
-                            <!-- YouTube Button -->
-                            <LinearLayout
-                                android:id="@+id/youtubeButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:background="@drawable/social_media_button_background"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="12dp"
-                                android:layout_marginEnd="6dp">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_youtube" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="YouTube"
-                                    android:textColor="@color/shade_primary"
-                                    android:textSize="12sp"
-                                    android:fontFamily="@style/Typography.body_sm_medium" />
-                            </LinearLayout>
-
-                            <!-- Facebook -->
-                            <LinearLayout
-                                android:id="@+id/FacebookButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:background="@drawable/social_media_button_background"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="12dp"
-                                android:layout_marginEnd="6dp">
-
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:src="@drawable/ic_facebook" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Facebook"
-                                    android:textColor="@color/shade_primary"
-                                    android:textSize="12sp"
-                                    android:fontFamily="@style/Typography.body_sm_medium" />
-                            </LinearLayout>
-
-                            <!-- Instagram -->
-                            <LinearLayout
-                                android:id="@+id/InstagramButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:background="@drawable/social_media_button_background"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="12dp"
-                                android:layout_marginEnd="6dp">
-
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:src="@drawable/ic_instagram" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Instagram"
-                                    android:textColor="@color/shade_primary"
-                                    android:textSize="12sp"
-                                    android:fontFamily="@style/Typography.body_sm_medium" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Additional Actor Info -->
+                <!-- Movies Section (moved before gallery to match Figma) -->
                 <TextView
-                    android:id="@+id/known_for_actor_title"
-                    style="@style/Regular.Small.Secondary"
+                    android:id="@+id/related_movie_title"
+                    style="@style/SemiBold.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/radius_medium"
                     android:layout_marginTop="@dimen/spacing_large"
-                    android:text="@string/konwn_for"
+                    app:showWhenListNotEmpty="@{viewModel.actorDetailsUIState.actorMovies}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/actor_profile_card" />
 
                 <TextView
-                    android:id="@+id/text_known_for_actor"
-                    style="@style/SemiBold.Medium"
+                    android:id="@+id/button_see_all"
+                    style="@style/Regular.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="@{viewModel.actorDetailsUIState.knownFor}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/known_for_actor_title"
-                    tools:text="Acting" />
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:onClick="@{() -> viewModel.onClickSeeAllMovie(HomeItemsType.NON)}"
+                    app:showWhenListNotEmpty="@{viewModel.actorDetailsUIState.actorMovies}"
+                    android:text="@string/show_more"
+                    android:textColor="@color/brand_primary"
+                    app:drawableEndCompat="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@+id/related_movie_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/related_movie_title" />
 
-                <!-- Gallery Section -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/related_movie_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/spacing_medium"
+                    app:items="@{viewModel.actorDetailsUIState.actorMovies}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/related_movie_title"
+                    tools:listitem="@layout/item_movie" />
+
+                <!-- Gallery Section (moved after movies to match Figma) -->
                 <LinearLayout
                     android:id="@+id/galleryHeader"
                     android:layout_width="match_parent"
@@ -280,7 +107,7 @@
                     android:orientation="horizontal"
                     android:layout_margin="16dp"
                     android:gravity="center_vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/text_known_for_actor"
+                    app:layout_constraintTop_toBottomOf="@+id/related_movie_recycler"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
 
@@ -306,18 +133,6 @@
                         android:paddingVertical="6dp" />
                 </LinearLayout>
 
-                <!-- Movie Posters Section -->
-                <LinearLayout
-                    android:id="@+id/moviePostersSection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="16dp"
-                    android:paddingBottom="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/galleryHeader"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
                 <!-- Actor Photos Gallery -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/actorPhotosSection"
@@ -328,7 +143,7 @@
                     android:paddingBottom="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/moviePostersSection">
+                    app:layout_constraintTop_toBottomOf="@+id/galleryHeader">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardActor1"
@@ -389,49 +204,6 @@
                     </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!-- Movies Section -->
-                <TextView
-                    android:id="@+id/related_movie_title"
-                    style="@style/SemiBold.Medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/radius_medium"
-                    android:layout_marginTop="@dimen/spacing_large"
-                    android:text="@string/movies"
-                    app:showWhenListNotEmpty="@{viewModel.actorDetailsUIState.actorMovies}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/actorPhotosSection" />
-
-                <TextView
-                    android:id="@+id/button_see_all"
-                    style="@style/Regular.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:onClick="@{() -> viewModel.onClickSeeAllMovie(HomeItemsType.NON)}"
-                    app:showWhenListNotEmpty="@{viewModel.actorDetailsUIState.actorMovies}"
-                    android:text="@string/see_all"
-                    android:textColor="@color/brand_color"
-                    app:drawableEndCompat="@drawable/ic_arrow_right"
-                    app:layout_constraintBottom_toBottomOf="@+id/related_movie_title"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/related_movie_title" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/related_movie_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/spacing_medium"
-                    app:items="@{viewModel.actorDetailsUIState.actorMovies}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/related_movie_title"
-                    tools:listitem="@layout/item_movie" />
-
                 <!-- Biography Section -->
                 <TextView
                     android:id="@+id/over_view_title"
@@ -442,7 +214,7 @@
                     android:layout_marginTop="@dimen/radius_large"
                     android:text="@string/biography"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/related_movie_recycler"
+                    app:layout_constraintTop_toBottomOf="@+id/actorPhotosSection"
                     app:showWhenTextNotEmpty="@{viewModel.actorDetailsUIState.biography}"/>
 
                 <TextView
