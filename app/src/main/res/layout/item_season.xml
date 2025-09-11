@@ -56,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_extra_small"
             android:ellipsize="end"
-            android:textColor="@color/shade_primary"
             android:text="@{item.seasonName}"
+            android:textColor="@color/shade_primary"
             app:layout_constraintStart_toEndOf="@+id/image_episode"
             app:layout_constraintTop_toTopOf="@+id/image_episode"
             tools:text="Season 2" />
@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
-                android:text='@{String.format("%.1f", item.episodeCount)}'
+                android:text='@{String.valueOf(item.episodeCount)}'
                 tools:text="7.5" />
 
             <!-- spacer -->
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
-                android:text='@{@string/total_episodes(String.valueOf(item.episodeCount))}'
+                android:text='@{item.episodeCount != null? @string/total_episodes(item.episodeCount): @string/total_episodes(0)}'
                 tools:text="20 Episodes" />
 
             <!-- spacer -->
