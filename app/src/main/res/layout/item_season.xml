@@ -12,6 +12,10 @@
         <variable
             name="item"
             type="com.karrar.movieapp.ui.tvShowDetails.tvShowUIState.SeasonUIState" />
+
+        <variable
+            name="episode"
+            type="com.karrar.movieapp.ui.tvShowDetails.episodes.EpisodeUIState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -112,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
-                android:text='@{String.valueOf(item.episodeCount)}'
+                android:text='@{String.format("%.1f", episode.episodeRate)}'
                 tools:text="7.5" />
 
             <!-- spacer -->
@@ -132,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
-                android:text='@{item.episodeCount != null? @string/total_episodes(item.episodeCount): @string/total_episodes(0)}'
+                android:text='@{@string/total_episodes(String.valueOf(item.episodeCount)) + "Episodes"}'
                 tools:text="20 Episodes" />
 
             <!-- spacer -->
