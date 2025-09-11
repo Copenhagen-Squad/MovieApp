@@ -7,4 +7,9 @@
     <string name="actor_placeholder">Actor placeholder</string>
     <string name="no_img">No Img</string>
     <string name="actor_name">Actor Name</string>
+    <string name="go_to_website">Go to Website</string>
+    <string name="join_cineverse">Join CineVerse</string>
+    <string name="let_s_get_you_set_up_we_ll_take_you_to_the_website_to_create_your_account">Let\'s get you set up! We\'ll take you to the website to create your account.</string>
+    <string name="show_more">Show More</string>
+    <string name="gallery">Gallery</string>
 </resources>
