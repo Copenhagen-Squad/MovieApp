@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@color/background_card"
         android:orientation="vertical"
+        app:cardElevation="0dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -124,6 +125,7 @@
                 android:background="@drawable/social_media_button_background"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+
                 android:paddingStart="10dp"
                 android:paddingEnd="12dp"
                 android:layout_marginEnd="6dp">
