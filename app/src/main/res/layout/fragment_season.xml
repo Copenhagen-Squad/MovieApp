@@ -24,6 +24,7 @@
 
         <!-- Loading  -->
         <com.karrar.movieapp.ui.components.indicator.MovieCircularProgressBar
+            android:id="@+id/loading_indicator"
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:strokeWidth="5dp"
@@ -45,6 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             >
             <TextView
+                android:id="@+id/try_again_text"
                 style="@style/Typography.body_sm_medium"
                 android:textColor="@color/button_onPrimary"
                 android:layout_width="wrap_content"
