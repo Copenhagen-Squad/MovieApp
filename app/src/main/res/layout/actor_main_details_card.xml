@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="8dp"
+    app:cardElevation="0dp"
     tools:targetApi="24">
 
     <LinearLayout
@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
             <FrameLayout
                 android:layout_width="64dp"
                 android:layout_height="80dp"
@@ -35,7 +34,9 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@drawable/test" />
+
             </FrameLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -131,7 +132,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@drawable/ic_youtube"
-                    android:layout_marginEnd="0dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -165,7 +166,9 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_facebook" />
+                    android:src="@drawable/ic_facebook"
+                    android:layout_marginEnd="8dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -193,12 +196,15 @@
                 android:paddingBottom="8dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="12dp"
-                android:layout_marginEnd="6dp">
+                android:layout_marginEnd="8dp"
+                >
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_instagram" />
+                    android:src="@drawable/ic_instagram"
+                    android:layout_marginEnd="8dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
