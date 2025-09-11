@@ -56,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_extra_small"
             android:ellipsize="end"
+            android:textColor="@color/shade_primary"
             android:text="@{item.seasonName}"
             app:layout_constraintStart_toEndOf="@+id/image_episode"
             app:layout_constraintTop_toTopOf="@+id/image_episode"
