@@ -33,11 +33,9 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:overScrollMode="never"
-            android:layout_marginTop="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/actor_image">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/details"
@@ -47,17 +45,212 @@
                 android:visibility="gone"
                 app:isVisible="@{viewModel.actorDetailsUIState.success}">
 
-                <!-- Actor Profile Card Component -->
-                <include
+                <!-- Actor Profile Card -->
+                <androidx.cardview.widget.CardView
                     android:id="@+id/actor_profile_card"
-                    layout="@layout/actor_main_details_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- Movies Section (moved before gallery to match Figma) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background_card"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <FrameLayout
+                                android:layout_width="64dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/actor_img_raduis"
+                                android:clipToOutline="true">
+
+                                <ImageView
+                                    android:id="@+id/profileImage"
+                                    android:layout_width="64dp"
+                                    android:layout_height="80dp"
+                                    android:scaleType="centerCrop"
+                                    app:posterImage="@{viewModel.actorDetailsUIState.imageUrl}"
+                                    android:src="@drawable/test" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="16dp"
+                                android:orientation="vertical">
+
+                                <!-- Name -->
+                                <TextView
+                                    android:id="@+id/profileName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.actorDetailsUIState.name}"
+                                    android:textColor="@color/shade_primary"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@style/Typography.title_md" />
+
+                                <!-- Birth Date -->
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginTop="4dp">
+
+                                    <ImageView
+                                        android:layout_width="16dp"
+                                        android:layout_height="16dp"
+                                        android:src="@drawable/ic_cake"
+                                        app:tint="@color/shade_secondary" />
+
+                                    <TextView
+                                        android:id="@+id/birthDate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{`Born on ` + viewModel.actorDetailsUIState.birthday}"
+                                        android:textColor="@color/shade_secondary"
+                                        android:layout_marginStart="8dp"
+                                        android:fontFamily="@style/Typography.label_md_medium"/>
+                                </LinearLayout>
+
+                                <!-- Location -->
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginTop="4dp">
+
+                                    <ImageView
+                                        android:layout_width="16dp"
+                                        android:layout_height="16dp"
+                                        android:src="@drawable/ic_location"
+                                        app:tint="@color/shade_secondary" />
+
+                                    <TextView
+                                        android:id="@+id/location"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{`In ` + viewModel.actorDetailsUIState.placeOfBirth}"
+                                        android:textColor="@color/shade_secondary"
+                                        android:textSize="14sp"
+                                        android:layout_marginStart="8dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Social Media Links -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:gravity="start">
+
+                            <!-- YouTube Button -->
+                            <LinearLayout
+                                android:id="@+id/youtubeButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/social_media_button_background"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="12dp"
+                                android:layout_marginEnd="6dp">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_youtube"
+                                    android:layout_marginEnd="6dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="YouTube"
+                                    android:textColor="@color/shade_primary"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@style/Typography.body_sm_medium" />
+                            </LinearLayout>
+
+                            <!-- Facebook -->
+                            <LinearLayout
+                                android:id="@+id/FacebookButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/social_media_button_background"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="12dp"
+                                android:layout_marginEnd="6dp">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_facebook"
+                                    android:layout_marginEnd="6dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Facebook"
+                                    android:textColor="@color/shade_primary"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@style/Typography.body_sm_medium" />
+                            </LinearLayout>
+
+                            <!-- Instagram -->
+                            <LinearLayout
+                                android:id="@+id/InstagramButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/social_media_button_background"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="12dp"
+                                android:layout_marginEnd="6dp">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_instagram"
+                                    android:layout_marginEnd="6dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Instagram"
+                                    android:textColor="@color/shade_primary"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@style/Typography.body_sm_medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/related_movie_title"
                     style="@style/SemiBold.Medium"
