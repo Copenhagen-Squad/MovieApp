@@ -109,7 +109,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star_duetone"
-                app:tint="#FFC107" />
+                app:tint="@color/additional_primary_yellow" />
 
             <TextView
                 style="@style/Typography.label_md_regular"
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_too_small"
-                android:text='@{@string/total_episodes(String.valueOf(item.episodeCount)) + "Episodes"}'
+                android:text='@{@string/total_episodes(String.valueOf(item.episodeCount))}'
                 tools:text="20 Episodes" />
 
             <!-- spacer -->
