@@ -76,6 +76,7 @@
                 android:onClick="@{() -> listener.onClickSave()}"
                 android:padding="10dp"
                 android:src="@drawable/ic_add"
+                app:tint="@color/button_onSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button_play_trailer" />
@@ -187,7 +188,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/time"
                 app:layout_constraintStart_toEndOf="@id/time"
                 app:layout_constraintTop_toTopOf="@+id/time"
-                tools:text="2014" />
+                tools:text="2h 32m" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
