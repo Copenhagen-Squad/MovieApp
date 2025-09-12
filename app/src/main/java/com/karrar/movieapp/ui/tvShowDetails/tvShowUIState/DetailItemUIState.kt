@@ -17,5 +17,5 @@ sealed class DetailItemUIState(val priority: Int) {
 
     class Comment(val data: ReviewUIState) : DetailItemUIState(5)
 
-    object SeeAllReviewsButton : DetailItemUIState(6)
+//    object SeeAllReviewsButton : DetailItemUIState(6)
 }
