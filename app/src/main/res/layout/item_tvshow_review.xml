@@ -14,6 +14,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:background="@drawable/card_bg"
         android:paddingHorizontal="@dimen/spacing_medium"
         android:paddingTop="@dimen/spacing_small">
 
@@ -56,9 +59,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{item.content}"
-            android:maxLines="5"
             android:ellipsize="end"
+            android:maxLines="5"
+            android:text="@{item.content}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name"
