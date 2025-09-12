@@ -59,7 +59,7 @@
             <include
                 android:id="@+id/error"
                 layout="@layout/error2"
-                app:isError="@{!viewModel.ratedUiState.error.isEmpty}"
+                app:isError="@{!viewModel.ratedUiState.error.isEmpty()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
