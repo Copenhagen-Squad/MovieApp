@@ -21,8 +21,8 @@
             android:id="@+id/user_image"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:scaleType="centerCrop"
             android:background="@color/gray"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:posterImage="@{item.userImage}"
@@ -57,26 +57,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{item.content}"
-            android:maxLines="5"
             android:ellipsize="end"
+            android:maxLines="4"
+            android:text="@{item.content}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name"
             tools:text="Krasinski's instincts are very good, and once you've placed the primary action there, then it allows the story instincts are very good, and once you've placed the primary action there, then it allows the story" />
 
-        <androidx.appcompat.widget.AppCompatRatingBar
+        <RatingBar
             android:id="@+id/rating_bar"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:isIndicator="true"
             android:progressDrawable="@drawable/rating_custom"
+            android:numStars="5"
             android:rating="@{item.rating}"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:stepSize="0.5"
-            android:transformPivotX="0dp"
             app:layout_constraintStart_toStartOf="@+id/comment"
             app:layout_constraintTop_toBottomOf="@+id/comment" />
 
