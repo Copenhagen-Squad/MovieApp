@@ -44,9 +44,10 @@
             app:lottie_rawRes="@raw/loading_animation"
             app:isVisible="@{viewModel.uiState.loading}" />
 
+        <!-- error -->
         <include
             android:id="@+id/error"
-            layout="@layout/error_movie_details"
+            layout="@layout/error2"
             app:isError="@{!viewModel.uiState.errorUIStates.isEmpty()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
