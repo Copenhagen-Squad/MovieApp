@@ -159,8 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                app:movieHours="TODO"
-                app:movieMinutes="TODO"
+                android:text="TODO"
                 android:textAppearance="@style/Typography.label_md_regular"
                 android:textColor="@color/shade_secondary"
                 app:layout_constraintBottom_toBottomOf="@id/time"
@@ -203,7 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="@string/overview"
+            android:text="@string/storyline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_details_card" />
 
