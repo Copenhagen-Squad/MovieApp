@@ -106,6 +106,7 @@
 
             <!-- rating -->
             <ImageView
+                android:contentDescription="@string/rating"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star_duetone"
@@ -126,6 +127,7 @@
 
             <!-- episodes -->
             <ImageView
+                android:contentDescription="@string/episodes"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_video_library_duetone"
@@ -146,10 +148,11 @@
 
             <!-- year -->
             <ImageView
+                android:contentDescription="@string/released_date"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_calendar_duetone"
-                app:tint="@color/background_card" />
+                app:tint="@color/shade_secondary" />
 
 
             <TextView
