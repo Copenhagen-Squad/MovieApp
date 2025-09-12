@@ -189,4 +189,7 @@
     <style name="CardCorners.radiusLarge">
         <item name="cornerSize">@dimen/radius_lg</item>
     </style>
+    <style name="small_button.enabled" parent="TextAppearance.AppCompat.Button">
+        <item name="backgroundTint">@color/button_onTertiary</item>
+    </style>
 </resources>
