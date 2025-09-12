@@ -326,6 +326,19 @@
         <action
             android:id="@+id/action_tvShowDetailFragment_to_youtubePlayerActivity"
             app:destination="@id/youtubePlayerActivity" />
+        <action
+            android:id="@+id/action_tvShowDetailsFragment_to_seasonFragment"
+            app:destination="@id/seasonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seasonFragment"
+        android:name="com.karrar.movieapp.ui.tvShowDetails.season.SeasonFragment"
+        android:label="Seasons"
+        tools:layout="@layout/fragment_season">
+        <argument
+            android:name="tvShowId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>
