@@ -199,7 +199,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="@string/overview"
+            android:text="@string/storyline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_details_card" />
 
