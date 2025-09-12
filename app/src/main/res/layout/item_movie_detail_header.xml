@@ -148,9 +148,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="@dimen/spacing_small"
                 android:src="@drawable/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="@id/stars"
+                app:layout_constraintBottom_toBottomOf="@id/star"
                 app:layout_constraintStart_toEndOf="@+id/duration"
-                app:layout_constraintTop_toTopOf="@id/stars" />
+                app:layout_constraintTop_toTopOf="@id/star" />
 
             <TextView
                 android:id="@+id/release_date"
@@ -172,7 +172,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="@dimen/spacing_small"
                 android:src="@drawable/ic_clock"
-                app:layout_constraintBottom_toBottomOf="@id/stars"
+                app:layout_constraintBottom_toBottomOf="@id/star"
                 app:layout_constraintStart_toEndOf="@+id/stars"
                 app:layout_constraintTop_toTopOf="@id/stars" />
 
