@@ -71,15 +71,15 @@
                 android:id="@+id/button_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/save_button_bg"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/save_button_bg"
                 android:onClick="@{() -> listener.onClickSave()}"
                 android:padding="10dp"
                 android:src="@drawable/ic_add"
-                app:tint="@color/button_onSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_play_trailer" />
+                app:layout_constraintTop_toBottomOf="@+id/button_play_trailer"
+                app:tint="@color/button_onSecondary" />
 
             <TextView
                 android:id="@+id/series"
@@ -164,6 +164,7 @@
                 app:layout_constraintStart_toEndOf="@id/date"
                 app:layout_constraintTop_toTopOf="@+id/date"
                 tools:text="2014" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/time"
                 android:layout_width="16dp"
@@ -181,13 +182,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                app:movieHours="@{item.hours}"
-                app:movieMinutes="@{item.minutes}"
                 android:textAppearance="@style/Typography.label_md_regular"
                 android:textColor="@color/shade_secondary"
                 app:layout_constraintBottom_toBottomOf="@id/time"
                 app:layout_constraintStart_toEndOf="@id/time"
                 app:layout_constraintTop_toTopOf="@+id/time"
+                app:movieHours="@{item.hours}"
+                app:movieMinutes="@{item.minutes}"
                 tools:text="2h 32m" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -210,6 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="24dp"
             android:text="@{item.overview}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/over_view_title"
