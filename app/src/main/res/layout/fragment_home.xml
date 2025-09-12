@@ -14,6 +14,12 @@
         android:layout_height="match_parent"
         android:background="@color/background_color">
 
+        <include
+            android:id="@+id/homeAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/appbar"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -22,7 +28,7 @@
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeAppBar"
             app:hideIfTrue="@{viewModel.homeUiState.loading || viewModel.homeUiState.error.size() &gt;5}"
             app:spanCount="1" />
 
@@ -33,8 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:isLoading="@{viewModel.homeUiState.loading}"
-            />
+            app:isLoading="@{viewModel.homeUiState.loading}" />
 
         <include
             android:id="@+id/error"

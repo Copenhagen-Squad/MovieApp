@@ -114,6 +114,7 @@
     <string name="logout">Logout</string>
     <string name="history">History</string>
     <string name="my_collections">My Collections</string>
+    <string name="your_collections">Your Collections</string>
 
     <string name="match">Match</string>
     <string name="actor_placeholder">Actor placeholder</string>

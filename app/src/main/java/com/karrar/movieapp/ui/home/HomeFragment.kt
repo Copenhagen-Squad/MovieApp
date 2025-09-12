@@ -9,6 +9,7 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentHomeBinding
 import com.karrar.movieapp.ui.base.BaseFragment
 import com.karrar.movieapp.ui.home.adapter.HomeAdapter
+import com.karrar.movieapp.ui.home.adapter.PopularMovieAdapter
 import com.karrar.movieapp.ui.home.homeUiState.HomeUIEvent
 import com.karrar.movieapp.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setVisibility()
         setTitle(false)
         setAdapter()
         collectEvent()
@@ -44,6 +46,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         it.adventureMovies,
                         it.trendingMovies,
                         it.actors,
+                        it.collections
                     )
                 )
             }
@@ -94,6 +97,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
         findNavController().navigate(action)
+    }
+
+    private fun setVisibility(){
+        binding.homeAppBar.icBack.visibility = View.GONE
+        binding.homeAppBar.ivEndAction.visibility = View.GONE
+        binding.homeAppBar.tvCaption.text = "Welcome"
     }
 
 }

@@ -6,4 +6,8 @@ data class PopularUiState(
     val imageUrl: String,
     val movieRate:Double,
     val genre: List<String>
-)
+){
+    val formattedGenre: String
+        get() = genre.joinToString(", ")
+}
+

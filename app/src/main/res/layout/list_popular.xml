@@ -10,14 +10,12 @@
 
     </data>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_popular_movie"
         android:layout_width="match_parent"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="@dimen/spacing_small"
         android:layout_height="wrap_content"
-        app:usePagerSnapHelper="@{true}"
         android:adapter="@{adapterRecycler}"
         android:orientation="horizontal"
         android:overScrollMode="never"

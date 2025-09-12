@@ -3,6 +3,7 @@ package com.karrar.movieapp.ui.home
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.ui.models.ActorUiState
 import com.karrar.movieapp.ui.home.homeUiState.PopularUiState
+import com.karrar.movieapp.ui.models.CollectionUiState
 import com.karrar.movieapp.ui.models.MediaUiState
 
 sealed class HomeItem(val priority: Int) {
@@ -26,5 +27,7 @@ sealed class HomeItem(val priority: Int) {
     data class Adventure(val items: List<MediaUiState>, val type: HomeItemsType = HomeItemsType.ADVENTURE) : HomeItem(8)
 
     data class Actor(val items: List<ActorUiState>) : HomeItem(9)
+
+    data class Collections(val items: List<CollectionUiState>) : HomeItem(9)
 
 }
