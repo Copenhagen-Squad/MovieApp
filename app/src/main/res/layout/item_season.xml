@@ -149,7 +149,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_calendar_duetone"
-                app:tint="@color/shade_secondary_color" />
+                app:tint="@color/background_card" />
 
 
             <TextView
