@@ -28,6 +28,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/ctaCard"
             android:layout_marginTop="12dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,7 +48,9 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_magic_stick_duetone" />
+                    android:src="@drawable/ic_magic_stick_duetone"
+                    app:tint="@color/brand_primary"
+                    />
 
             </FrameLayout>
 
@@ -76,6 +79,7 @@
                 <TextView
                     android:id="@+id/title_text"
                     style="@style/Typography.title_sm"
+                    android:textColor="@color/shade_primary"
                     android:layout_marginBottom="@dimen/spacing_too_small"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -86,7 +90,8 @@
 
                 <TextView
                     android:id="@+id/description_text"
-                    style="@style/Typography.title_sm"
+                    style="@style/Typography.body_sm_medium"
+                    android:textColor="@color/shade_secondary"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Explore all movies and series by genre or search for anything you like."

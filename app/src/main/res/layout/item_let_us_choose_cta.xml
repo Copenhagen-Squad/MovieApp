@@ -24,12 +24,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="What Should I Watch?"
+            android:text="@string/what_should_i_watch"
             android:textColor="@color/shade_primary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/ctaCard"
             android:layout_marginTop="12dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
