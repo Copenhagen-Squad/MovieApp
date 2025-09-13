@@ -157,9 +157,7 @@ class HomeAdapter(
         val displayMetrics = viewPager.resources.displayMetrics
         val screenWidth = displayMetrics.widthPixels
 
-        // Minimum overlap in pixels (for small devices)
         val minSidePeek = viewPager.context.resources.getDimensionPixelOffset(R.dimen.spacing_extra_large)
-        // Adaptive overlap: 5% of screen width or at least minSidePeek
         val sidePeek = maxOf(screenWidth * 0.05f, minSidePeek.toFloat())
 
         val extraLift = viewPager.context.resources.getDimensionPixelOffset(R.dimen.spacing_extra_extra_large)
