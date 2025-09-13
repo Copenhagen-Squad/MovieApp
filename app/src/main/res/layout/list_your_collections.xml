@@ -31,7 +31,7 @@
             android:textColor="@color/shade_primary"
             app:layout_constraintTop_toTopOf="parent"
             app:showSeeAll="true"
-            tools:text="Popular" />
+            tools:text="Your Collections" />
 <!--        android:text="@{movieType.YOUR_COLLECTIONS.value}"-->
         <!--        app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllCollections()}"-->
 
@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header"
-            app:spanCount="2"
+
             tools:listitem="@layout/item_saved_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -142,9 +142,8 @@ class HomeAdapter(
                 is HomeItem.BrowseEverything -> R.layout.item_browser_everything_cta
                 is HomeItem.Slider -> R.layout.list_popular
                 is HomeItem.OnTheAiring -> R.layout.list_tvshow
-                is HomeItem.RecentlyReleased,
-                is HomeItem.Upcoming,
-                    -> R.layout.list_movie
+                is HomeItem.RecentlyReleased -> R.layout.list_movie
+                is HomeItem.Upcoming, -> R.layout.list_movie
                 is HomeItem.RecentlyViewed -> R.layout.list_recently_viewed
                 is HomeItem.LetUsChooseForYou -> R.layout.item_let_us_choose_cta
                 is HomeItem.CollectionsList -> R.layout.list_your_collections

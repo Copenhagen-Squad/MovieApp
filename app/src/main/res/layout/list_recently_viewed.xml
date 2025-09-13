@@ -17,7 +17,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_color"
         android:layout_marginVertical="@dimen/spacing_medium">
         <com.karrar.movieapp.ui.components.header.SectionHeaderView
             android:id="@+id/header"
