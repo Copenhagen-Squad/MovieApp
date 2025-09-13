@@ -23,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:showSeeAll="true"
+            app:sectionTitle="@{movieType.RECENTLY_VIEWED.value}"
+            app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllRecentlyViewed()}"
             tools:text="Popular"
             app:isVisible="@{adapterRecycler.itemCount != 0}"
             style="@style/Typography.title_sm"
             android:textColor="@color/shade_primary"
             app:layout_constraintTop_toTopOf="parent" />
-<!--        android:text="@{movieType.RECENTLY_VIEWED.value}"-->
-        <!--        app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllRecentlyViewed()}"-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie"
