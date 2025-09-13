@@ -28,7 +28,7 @@ class GetMediaByTypeUseCase @Inject constructor(
             }
             AllMediaType.LATEST,
             AllMediaType.AIRING_TODAY,
-            -> {
+                -> {
                 wrapper(seriesRepository::getAiringTodayTvShowPager, tvShowMapper::map)
             }
             AllMediaType.ON_THE_AIR -> {
@@ -43,7 +43,7 @@ class GetMediaByTypeUseCase @Inject constructor(
             AllMediaType.TRENDING -> {
                 wrapper(movieRepository::getTrendingMoviesPager, movieMapper::map)
             }
-            AllMediaType.NOW_STREAMING -> {
+            AllMediaType.RECENTLY_RELEASED -> {
                 wrapper(movieRepository::getNowPlayingMoviesPager, movieMapper::map)
             }
             AllMediaType.UPCOMING -> {
