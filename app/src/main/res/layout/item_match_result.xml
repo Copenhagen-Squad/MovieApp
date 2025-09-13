@@ -4,16 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--todo    <data>-->
-    <!--        <variable-->
-    <!--            name="item"-->
-    <!--            type="com.karrar.movieapp.ui.match.MatchItemUI" />-->
-
-    <!-- todo       &lt;!&ndash; Optional: click callbacks from the host &ndash;&gt;-->
-    <!--        <variable-->
-    <!--            name="callbacks"-->
-    <!--            type="com.karrar.movieapp.ui.match.MatchResultCallbacks" />-->
-    <!--    </data>-->
+    <data>
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.match.MatchItemUI" />
+        <variable
+            name="callbacks"
+            type="com.karrar.movieapp.ui.match.MatchResultCallbacks" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -143,6 +141,7 @@
                     app:layout_constraintEnd_toStartOf="@id/actions"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvType"
+                    app:textSafe='@{item.title}'
                     tools:text="Until Dawn" />
 
                 <TextView
@@ -155,6 +154,7 @@
                     app:layout_constraintEnd_toEndOf="@id/tvName"
                     app:layout_constraintStart_toStartOf="@id/tvName"
                     app:layout_constraintTop_toBottomOf="@id/tvName"
+                    app:textSafe='@{item.genres}'
                     tools:text="Horror, Mystery, Science Fiction" />
 
                 <LinearLayout
@@ -179,6 +179,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
+                        app:textFormatted='@{item.voteAverage}'
                         tools:text="8.5" />
 
                     <ImageView
@@ -193,6 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
+                        app:textSafe='@{item.runtimeFormatted}'
                         tools:text="2h 32m" />
 
                     <ImageView
@@ -207,6 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
+                        app:textSafe='@{item.releaseDateShort}'
                         tools:text="2008, Jul 18" />
                 </LinearLayout>
 
