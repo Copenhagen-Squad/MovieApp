@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.match.MatchFragment">
 
-    <data>
+<!--    <data>-->
 
-        <variable
-            name="viewModel"
-            type="com.karrar.movieapp.ui." /><!-- todo-->
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.karrar.movieapp.ui." />&lt;!&ndash; todo&ndash;&gt;-->
 
-    </data>
+<!--    </data>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

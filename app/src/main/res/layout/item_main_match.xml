@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Not sure what to watch?"
+            android:text="@string/not_sure_what_to_watch"
             android:textColor="@color/shade_primary" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center"
-            android:text="Answer a few quick questions and we’ll match you with the perfect picks."
+            android:text="@string/answer_a_few_quick_questions_and_we_ll_match_you_with_the_perfect_picks"
             android:textColor="@color/shade_secondary" />
 
         <com.google.android.material.button.MaterialButton
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="Start Matching"
+            android:text="@string/start_matching"
             android:textColor="@color/white_primary"
             app:backgroundTint="@color/button_primary"
             app:cornerRadius="@dimen/radius_md" />

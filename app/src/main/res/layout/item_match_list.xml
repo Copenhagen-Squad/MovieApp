@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.2"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gradient" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:imageUrl='@{item.posterUrl}'
+        app:layout_constraintBottom_toTopOf="@id/card"
+        app:layout_constraintDimensionRatio="3:4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CustomRounded"
+        tools:srcCompat="@drawable/horizonatal_poster_image_placeholder" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/background_card"
+        app:cardCornerRadius="@dimen/radius_lg"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/poster">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvType"
+                style="@style/Typography.label_md_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="@string/movie"
+                android:textAllCaps="true"
+                android:textColor="@color/brand_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/actions"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/metaRow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvType">
+
+                <FrameLayout
+                    android:id="@+id/btnPlayContainer"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/button_primary_background"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/play_trailer"
+                        app:srcCompat="@drawable/ic_play_duetone"
+                        app:tint="@color/button_onPrimary" />
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:id="@+id/btnSaveContainer"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_secondry_bg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/add"
+                        app:srcCompat="@drawable/ic_bookmark_filled"
+                        app:tint="@color/shade_secondary" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/Typography.title_md"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintEnd_toStartOf="@id/actions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvType"
+                app:textSafe='@{item.title}'
+                tools:text="Until Dawn" />
+
+            <TextView
+                android:id="@+id/tvGenres"
+                style="@style/Typography.body_sm_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/shade_secondary_color"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:textSafe='@{item.genres}'
+                tools:text="Horror, Mystery, Science Fiction" />
+
+            <LinearLayout
+                android:id="@+id/metaRow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvGenres">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    app:srcCompat="@drawable/ic_star_duetone"
+                    app:tint="@color/additional_primary_yellow" />
+
+                <TextView
+                    style="@style/Typography.label_md_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:textFormatted='@{item.voteAverage}'
+                    tools:text="8.5" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    app:srcCompat="@drawable/ic_clock_duetone"
+                    app:tint="@color/shade_secondary_color" />
+
+                <TextView
+                    style="@style/Typography.label_md_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:textSafe='@{item.runtimeFormatted}' />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    app:srcCompat="@drawable/ic_calendar_duetone"
+                    app:tint="@color/shade_secondary_color" />
+
+                <TextView
+                    style="@style/Typography.label_md_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:textSafe='@{item.releaseDateShort}' />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startButton"
+        style="@style/Typography.body_sm_medium"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/view_details"
+        android:textColor="@color/white_primary"
+        app:backgroundTint="@color/button_primary"
+        app:cornerRadius="@dimen/radius_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
