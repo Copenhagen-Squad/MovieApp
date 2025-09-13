@@ -73,34 +73,36 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginStart="@dimen/spacing_too_small"
-                    android:src="@drawable/ic_star_duetone" />
+                    android:src="@drawable/ic_star_duetone"
+                    app:tint="@color/additional_primary_yellow"
+                    />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/text_movie_title"
-            style="@style/SemiBold.Medium"
+            style="@style/Typography.body_md_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
             android:maxWidth="240dp"
             android:text="@{item.title}"
-            android:textColor="@color/white_primary"
+            android:textColor="@color/shade_primary"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_gravity="center"
             tools:text="Inception" />
 
         <TextView
             android:id="@+id/text_category"
-            style="@style/SemiBold.Small"
+            style="@style/Typography.body_sm_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/white_secondary"
+            android:textColor="@color/shade_secondary"
             app:genre="@{item.genre}"
             android:layout_marginTop="@dimen/spacing_too_small"
-            tools:text="Action • Sci-Fi" />
+            tools:text="Action, Sci-Fi" />
 
     </LinearLayout>
 </layout>
