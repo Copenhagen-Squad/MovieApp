@@ -58,7 +58,7 @@ class HomeAdapter(
                     holder.binding.setVariable(BR.adapterRecycler, adapter)
 
                     val viewPager = holder.binding.root.findViewById<ViewPager2>(R.id.viewpager_popular_movie)
-                    viewPager?.adapter = adapter  // ⚡ Make sure adapter is set
+                    viewPager?.adapter = adapter
                     viewPager?.offscreenPageLimit = 3
                     attachCarouselTransformer(viewPager)
                     startAutoScroll(viewPager, currentItem.items.size)
