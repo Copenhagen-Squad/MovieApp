@@ -1,8 +1,6 @@
 package com.karrar.movieapp.ui.home
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.karrar.movieapp.domain.RequestStatus
 import com.karrar.movieapp.domain.enums.AllMediaType
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.domain.usecase.home.HomeUseCasesContainer
