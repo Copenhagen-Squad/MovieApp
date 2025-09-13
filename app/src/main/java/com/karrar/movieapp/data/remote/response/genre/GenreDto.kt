@@ -1,10 +1,16 @@
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
 package com.karrar.movieapp.data.remote.response.genre
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
+data class GenreResponse(
+    @SerialName("genres") val genres: List<GenreDto>
+)
+
+@Serializable
 data class GenreDto(
-    @SerializedName("id")
-    val id: Int?,
-    @SerializedName("name")
-    val name: String?
+    @SerialName("id") val id: Int,
+    @SerialName("name")  val name: String
 )

@@ -1,0 +1,32 @@
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
+package com.karrar.movieapp.data.utils
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ApiResponse<T>(
+    @SerialName("page")
+    val page: Int? = null,
+
+    @SerialName("results")
+    val results: List<T>? = null,
+
+    @SerialName("items")
+    val items: List<T>? = null,
+
+    @SerialName("total_pages")
+    val totalPages: Int? = null,
+
+    @SerialName("total_results")
+    val totalResults: Int? = null,
+
+    @SerialName("status_code")
+    val statusCode: Int? = null,
+
+    @SerialName("success")
+    val success: Boolean? = null,
+
+    @SerialName("status_message")
+    val statusMessage: String? = null,
+)

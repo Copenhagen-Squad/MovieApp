@@ -1,15 +1,13 @@
+@file:OptIn(kotlinx.serialization.InternalSerializationApi::class)
 package com.karrar.movieapp.data.remote.response.tvShow
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-import com.google.gson.annotations.SerializedName
-
+@Serializable
 data class ProductionCompanyDto(
-    @SerializedName("id")
-    val id: Int? = null,
-    @SerializedName("logo_path")
-    val logoPath: String? = null,
-    @SerializedName("name")
-    val name: String? = null,
-    @SerializedName("origin_country")
-    val originCountry: String? = null
+    @SerialName("id") val id: Int?,
+    @SerialName("logo_path") val logoPath: String? = null,
+    @SerialName("name") val name: String?,
+    @SerialName("origin_country") val originCountry: String?,
 )
