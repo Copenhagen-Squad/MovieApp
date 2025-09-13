@@ -39,7 +39,9 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_folder_duetone" />
+                android:src="@drawable/ic_folder_duetone"
+                app:tint="@color/brand_primary"
+                />
 
         </FrameLayout>
 
