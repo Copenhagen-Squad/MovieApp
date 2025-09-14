@@ -5,11 +5,9 @@
 
     <data>
 
-        <import type="com.karrar.movieapp.domain.enums.AllMediaType"/>
-
         <variable
             name="adapterRecycler"
-            type="com.karrar.movieapp.ui.home.adapter.TVShowAdapter" />
+            type="com.karrar.movieapp.ui.home.adapter.RecentlyViewedAdapter" />
 
         <variable
             name="movieType"
@@ -19,31 +17,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_medium">
-
-        <TextView
-            android:id="@+id/text_title"
+        android:layout_marginVertical="@dimen/spacing_medium">
+        <com.karrar.movieapp.ui.components.header.SectionHeaderView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:showSeeAll="true"
+            app:sectionTitle="@{movieType.RECENTLY_VIEWED.value}"
+            app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllRecentlyViewed()}"
+            tools:text="Popular"
+            app:isVisible="@{adapterRecycler.itemCount != 0}"
             style="@style/Typography.title_sm"
             android:textColor="@color/shade_primary"
-            tools:text="Title"
-            android:layout_marginStart="@dimen/spacing_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{movieType.value}"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            style="@style/Typography.body_md_medium"
-            android:textColor="@color/brand_primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:onClick="@{() -> adapterRecycler.listener.onClickSeeTVShow(AllMediaType.ON_THE_AIR)}"
-            android:text="@string/show_more"
-            app:layout_constraintBaseline_toBaselineOf="@+id/text_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie"
@@ -60,8 +46,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_title"
-            tools:listitem="@layout/item_movie" />
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            tools:listitem="@layout/item_recently_viewed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
