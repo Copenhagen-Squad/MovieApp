@@ -183,9 +183,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- error -->
         <include
             android:id="@+id/error"
-            layout="@layout/error_search"
+            layout="@layout/error2"
             app:isError="@{!viewModel.uiState.error.isEmpty()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

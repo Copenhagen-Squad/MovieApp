@@ -17,6 +17,7 @@ import com.karrar.movieapp.domain.enums.MediaType
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
+import com.karrar.movieapp.ui.components.header.SectionHeaderView
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -300,4 +301,15 @@ fun starsDrawableByRating(container: LinearLayout, ratingValue: Float?) {
         val isFilled = index < ratingInt
         starView.setImageResource(if (isFilled) R.drawable.star_fill_new else R.drawable.star_outline_new)
     }
+}
+
+
+@BindingAdapter("sectionTitle")
+fun SectionHeaderView.setSectionTitle(title: String?) {
+    title?.let { setTitle(it) }
+}
+
+@BindingAdapter("onSeeAllClick")
+fun SectionHeaderView.setOnSeeAllClick(listener: (() -> Unit)?) {
+    listener?.let { setSeeAllClickListener(it) }
 }
