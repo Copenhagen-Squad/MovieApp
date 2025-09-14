@@ -2,9 +2,7 @@ package com.karrar.movieapp.domain.usecases.match
 
 import com.karrar.movieapp.domain.models.Genre
 import com.karrar.movieapp.domain.usecases.GenreUseCase
-import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
-import com.karrar.movieapp.ui.match.ExploreScreenState
 import com.karrar.movieapp.ui.match.MatchEvent
 import com.karrar.movieapp.ui.match.MatchInteractionListener
 import com.karrar.movieapp.ui.match.MatchMapper
@@ -13,7 +11,6 @@ import com.karrar.movieapp.ui.match.MatchUiState
 import com.karrar.movieapp.ui.match.QuestionType
 import com.karrar.movieapp.ui.match.QuestionUiState
 import com.moscow.domain.model.Movie
-import com.moscow.domain.service.blur.BlurProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -44,7 +41,6 @@ class MatchViewModel @Inject constructor(
                     it.copy(
                         isLoading = false,
                         shouldShowError = true,
-                        errorMessage = errorMessage
                     )
                 }
             },
@@ -148,7 +144,6 @@ class MatchViewModel @Inject constructor(
         updateState {
             it.copy(
                 isLoadingRecommendations = false,
-                errorMessage = errorMessage,
                 shouldShowError = true
             )
         }
@@ -202,44 +197,36 @@ class MatchViewModel @Inject constructor(
     // ADD THESE MISSING HELPER METHODS
     private fun getMoodQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Happy", false),
-            QuestionUiState(2, "Sad", false),
-            QuestionUiState(3, "Excited", false),
-            QuestionUiState(4, "Relaxed", false)
+            QuestionUiState(1, "Happy", "",false),
+            QuestionUiState(2, "Sad", "false"),
+            QuestionUiState(3, "Excited", "false"),
+            QuestionUiState(4, "Relaxed", "false")
         )
     }
 
     private fun getGenreQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Action", false),
-            QuestionUiState(2, "Comedy", false),
-            QuestionUiState(3, "Drama", false),
-            QuestionUiState(4, "Horror", false)
+            QuestionUiState(1, "Action", "false"),
+            QuestionUiState(2, "Comedy", "false"),
+            QuestionUiState(3, "Drama", "false"),
+            QuestionUiState(4, "Horror", "false")
         )
     }
 
     private fun getTimeQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Short (< 90 min)", false),
-            QuestionUiState(2, "Medium (90-120 min)", false),
-            QuestionUiState(3, "Long (> 120 min)", false)
+            QuestionUiState(1, "Short (< 90 min)", "false"),
+            QuestionUiState(2, "Medium (90-120 min)", "false"),
+            QuestionUiState(3, "Long (> 120 min)", "false")
         )
     }
 
     private fun getMovieTypeQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Popular", false),
-            QuestionUiState(2, "Recent", false),
-            QuestionUiState(3, "Classic", false),
-            QuestionUiState(4, "Hidden Gems", false)
+            QuestionUiState(1, "Popular", "false"),
+            QuestionUiState(2, "Recent", "false"),
+            QuestionUiState(3, "Classic", "false"),
+            QuestionUiState(4, "Hidden Gems", "false")
         )
     }
-}
-
-fun MatchUiState.GenreUiState.toExploreUiState(): ExploreScreenState.GenreUiState {
-    return ExploreScreenState.GenreUiState(
-        id = this.id,
-        name = this.name,
-        isSelected = this.isSelected
-    )
 }

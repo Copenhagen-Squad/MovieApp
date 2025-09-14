@@ -1,51 +1,63 @@
 package com.karrar.movieapp.ui.match
 
+import androidx.annotation.DrawableRes
+import com.karrar.movieapp.R
+
 data class MatchUiState(
     val isLoading: Boolean = false,
-    val enableBlur: Boolean = false,
-    val errorMessage: String? = null,
+    val isLoadingRecommendations: Boolean = false,
     val shouldShowError: Boolean = false,
+    val errorMessage: Int? = null,
+    val enableBlur: String = "high",
+
+    // Navigation
     val currentPage: MatchPages = MatchPages.StartPage,
     val currentQuestionType: QuestionType = QuestionType.MOOD,
-    val isLoadingRecommendations: Boolean = false,
-    val isNextButtonActivated: Boolean = false,
-
-    // Genre related
-    val movieGenre: List<GenreUiState> = emptyList(),
 
     // Questions
-    val moodQuestions: List<QuestionUiState> = emptyList(),
-    val genreQuestions: List<QuestionUiState> = emptyList(),
-    val timeQuestions: List<QuestionUiState> = emptyList(),
-    val movieTypeQuestions: List<QuestionUiState> = emptyList(),
+    val moodQuestions: List<QuestionUiState> = getMoodQuestionAnswers(),
+    val genreQuestions: List<QuestionUiState> = getGenreQuestionAnswers(),
+    val timeQuestions: List<QuestionUiState> = getTimeQuestionAnswers(),
+    val movieTypeQuestions: List<QuestionUiState> = getMovieTypeQuestionAnswers(),
 
-    // Match results
-    val matchResults: List<MovieUiState> = emptyList()
+    // Results
+    val movieGenre: List<ExploreScreenState.GenreUiState> = emptyList(),
+    val matchResults: List<MovieScreenState.MovieDetailsUiState> = emptyList()
 ) {
-    // Nested data classes
-    data class GenreUiState(
-        val id: Int,
-        val name: String,
-        val isSelected: Boolean = false
-    )
 
-    data class MovieUiState(
-        val id: Int,
-        val title: String,
-        val overview: String = "",
-        val posterPath: String = "",
-        val backdropPath: String = "",
-        val releaseDate: String = "",
-        val voteAverage: Double = 0.0,
-        val genres: List<String> = emptyList()
-    )
+    // ========== Computed Properties ==========
+
+    val matchProgress: Float =
+        currentQuestionType.ordinal.plus(1).toFloat() / QuestionType.entries.size
+
+    val isNextButtonActivated: Boolean = when (currentQuestionType) {
+        QuestionType.MOOD -> moodQuestions.any { it.isSelected }
+        QuestionType.GENRE -> genreQuestions.any { it.isSelected }
+        QuestionType.TIME -> timeQuestions.any { it.isSelected }
+        QuestionType.TYPE -> movieTypeQuestions.any { it.isSelected }
+    }
+
+    val selectedMoodQuestions: List<QuestionUiState>
+        get() = moodQuestions.filter { it.isSelected }
+
+    val selectedGenres: List<QuestionUiState>
+        get() = genreQuestions.filter { it.isSelected }
+
+    val selectedTimeQuestion: List<QuestionUiState>
+        get() = timeQuestions.filter { it.isSelected }
+
+    val selectedMovieTypeQuestion: List<QuestionUiState>
+        get() = movieTypeQuestions.filter { it.isSelected }
 }
 
 data class QuestionUiState(
     val id: Int,
-    val text: String,
-    val isSelected: Boolean = false
+    val name: String,
+    val description: String = "null",
+    val isSelected: Boolean = false,
+    @DrawableRes val iconResource: Int? = null
 )
+
 
 enum class QuestionType {
     MOOD,
@@ -54,3 +66,74 @@ enum class QuestionType {
     TYPE
 }
 
+// ========== Question Answer Functions ==========
+
+fun getMoodQuestionAnswers(): List<QuestionUiState> = listOf(
+    QuestionUiState(
+        id = 1,
+        name = "Chill",
+        iconResource = R.drawable.ic_headphone_duetone
+    ),
+    QuestionUiState(
+        id = 2,
+        name = "Excited",
+        iconResource = R.drawable.ic_flame_duetone
+    ),
+    QuestionUiState(
+        id = 3,
+        name = "Emotional",
+        iconResource = R.drawable.ic_heart_duetone
+    ),
+    QuestionUiState(
+        id = 4,
+        name = "Curious",
+        iconResource = R.drawable.ic_search_duetone
+    )
+)
+
+fun getGenreQuestionAnswers(): List<QuestionUiState> = listOf(
+    QuestionUiState(id = 1, name = "Action"),
+    QuestionUiState(id = 2, name = "Comedy"),
+    QuestionUiState(id = 3, name = "Drama"),
+    QuestionUiState(id = 4, name = "Romance"),
+    QuestionUiState(id = 5, name = "Sci-Fi"),
+    QuestionUiState(id = 6, name = "Thriller"),
+    QuestionUiState(id = 7, name = "Animation"),
+    QuestionUiState(id = 8, name = "Mystery")
+)
+
+fun getTimeQuestionAnswers(): List<QuestionUiState> = listOf(
+    QuestionUiState(
+        id = 1,
+        name = "Short",
+        description = "Less than 90 minutes",
+        iconResource = R.drawable.ic_time_short_duetone
+    ),
+    QuestionUiState(
+        id = 2,
+        name = "Medium",
+        description = "90 to 120 minutes",
+        iconResource = R.drawable.ic_time_medium_duetone
+    ),
+    QuestionUiState(
+        id = 3,
+        name = "Long",
+        description = "More than 120 minutes",
+        iconResource = R.drawable.ic_time_long_duetone
+    )
+)
+
+fun getMovieTypeQuestionAnswers(): List<QuestionUiState> = listOf(
+    QuestionUiState(
+        id = 1,
+        name = "Recent"
+    ),
+    QuestionUiState(
+        id = 2,
+        name = "Classic"
+    ),
+    QuestionUiState(
+        id = 3,
+        name = "Both"
+    )
+)
