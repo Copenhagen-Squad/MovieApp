@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navController = findNavController(R.id.nav_host_fragment)
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
         setupCustomBottomNavigation()
     }

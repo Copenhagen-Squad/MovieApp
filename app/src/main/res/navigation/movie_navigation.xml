@@ -25,6 +25,22 @@
             android:id="@+id/action_homeFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
 
+        <action
+            android:id="@+id/action_homeFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_watchHistoryFragment"
+            app:destination="@id/watchHistoryFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_myListFragment"
+            app:destination="@+id/myListFragment"/>
+        <action
+            android:id="@+id/action_homeFragment_to_listDetailsFragment"
+            app:destination="@+id/listDetailsFragment"/>
+
+
     </fragment>
 
     <fragment
@@ -326,6 +342,19 @@
         <action
             android:id="@+id/action_tvShowDetailFragment_to_youtubePlayerActivity"
             app:destination="@id/youtubePlayerActivity" />
+        <action
+            android:id="@+id/action_tvShowDetailsFragment_to_seasonFragment"
+            app:destination="@id/seasonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seasonFragment"
+        android:name="com.karrar.movieapp.ui.tvShowDetails.season.SeasonFragment"
+        android:label="Seasons"
+        tools:layout="@layout/fragment_season">
+        <argument
+            android:name="tvShowId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>
