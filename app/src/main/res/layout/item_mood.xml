@@ -6,7 +6,7 @@
     <data>
         <variable
             name="mood"
-            type="com.karrar.movieapp.ui.models.MoodUi" />
+            type="com.karrar.movieapp.ui.models.MoodUiState" />
 
         <variable
             name="listener"
