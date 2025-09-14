@@ -8,6 +8,5 @@ interface MatchInteractionListener {
     fun onNavigateBack()
     fun onMovieClick(id: Int)
     fun onSaveClick(id: Int)
-    fun onPlayClick(id: Int, url: String)
     fun onRetry()
 }

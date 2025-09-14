@@ -47,11 +47,6 @@ data class QuestionUiState(
     val isSelected: Boolean = false
 )
 
-sealed interface MatchPages {
-    object StartPage : MatchPages
-    object QuestionsPage : MatchPages
-    object ResultsPage : MatchPages
-}
 enum class QuestionType {
     MOOD,
     GENRE,
@@ -59,8 +54,3 @@ enum class QuestionType {
     TYPE
 }
 
-sealed class MatchEvent {
-    data class OnMovieClick(val id: Int) : MatchEvent()
-    data class AddToCollection(val id: Int) : MatchEvent()
-    data class OpenTrailer(val url: String) : MatchEvent()
-}

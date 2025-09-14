@@ -20,7 +20,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MatchViewModel @Inject constructor(
     private val getMatchedMovies: GetMatchedMovies,
-    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val genreUseCase: GenreUseCase,
 ) : BaseViewModel<MatchUiState, MatchEvent>(MatchUiState()),
     MatchInteractionListener {
@@ -194,17 +193,6 @@ class MatchViewModel @Inject constructor(
         sendEvent(MatchEvent.AddToCollection(id = id))
     }
 
-    override fun onPlayClick(id: Int, url: String) {
-        updateState { it.copy(isLoading = true) }
-        launchWithResult(
-            action = { getMovieDetailsUseCase(id) },
-            onSuccess = { movieDetails ->
-                updateState { state -> state.copy(isLoading = false) }
-                sendEvent(MatchEvent.OpenTrailer(url = movieDetails.size))
-            },
-            onError = { _ -> updateState { it.copy(isLoading = false) } }
-        )
-    }
 
     override fun onRetry() {
         getGenres()
