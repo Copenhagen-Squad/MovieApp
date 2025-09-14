@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var labelMatch: TextView
     private lateinit var labelMe: TextView
 
+    private lateinit var bottomNavContainer: LinearLayout
+
     private var currentTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +86,8 @@ class MainActivity : AppCompatActivity() {
         labelExplore = binding.labelExplore
         labelMatch = binding.labelMatch
         labelMe = binding.labelMe
+
+        bottomNavContainer = binding.customBottomNavigation
     }
 
     private fun setupCustomBottomNavigation() {
@@ -101,6 +105,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            if (destination.id == R.id.loginFragment) {
+                bottomNavContainer.isVisible = false
+            } else {
+                bottomNavContainer.isVisible = true
+            }
+            // ------------------------------------------------------------------------------
+
             updateTabSelection(destination.id)
         }
 
@@ -160,7 +172,6 @@ class MainActivity : AppCompatActivity() {
         icon.setColorFilter(ContextCompat.getColor(this, android.R.color.darker_gray))
         label.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

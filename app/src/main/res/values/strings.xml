@@ -125,4 +125,5 @@
     <string name="no_img">No Img</string>
     <string name="actor_name">Actor Name</string>
     <string name="released_date">Released Date</string>
+    <string name="logo">logo</string>
 </resources>

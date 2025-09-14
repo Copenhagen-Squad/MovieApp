@@ -5,9 +5,10 @@ import javax.inject.Inject
 
 class ValidateFiledUseCase @Inject constructor(){
     operator fun invoke(text: String) : FormFieldState {
-        if (text.isBlank() || text.isEmpty()){
-            return FormFieldState.InValid("Required")
+        if (!text.all { it.isLetterOrDigit()|| it == '_'  }) {
+            return FormFieldState.InValid("Usernames can only include letters and numbers")
         }
+
         return FormFieldState.Valid
     }
 }
