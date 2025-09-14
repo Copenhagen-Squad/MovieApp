@@ -127,7 +127,12 @@
     <string name="released_date">Released Date</string>
     <string name="try_again">Try Again</string>
     <string name="join_cineverse">Join CineVerse</string>
+    <string name="arrow">arrow</string>
+    <string name="star_circlr_shape">star circlr shape</string>
+    <string name="let_the_world_lnow_how_you_felt">Let the world lnow how you felt</string>
     <string name="let_s_get_you_set_up_we_ll_take_you_to_the_website_to_create_your_account">Let\'s get you set up! We\'ll take you to the website to create your account.</string>
+    <string name="did_you_watch_it">Did you watch it?</string>
+    <string name="give_it_stars">Give it Stars</string>
     <string name="rating">rating</string>
     <string name="storyline">Storyline</string>
     <string name="what_should_i_watch">What Should I Watch?</string>
