@@ -1,8 +1,10 @@
 package com.karrar.movieapp.domain.usecases.match
 
+import com.karrar.movieapp.domain.models.Genre
 import com.karrar.movieapp.domain.usecases.GenreUseCase
 import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.ui.match.ExploreScreenState
 import com.karrar.movieapp.ui.match.MatchEvent
 import com.karrar.movieapp.ui.match.MatchInteractionListener
 import com.karrar.movieapp.ui.match.MatchMapper
@@ -33,8 +35,7 @@ class MatchViewModel @Inject constructor(
         updateState { it.copy(isLoading = true, errorMessage = null) }
         launchWithResult(
             action = { genreUseCase.getMoviesGenres() },
-            onSuccess = { genres ->
-                updateState {
+            onSuccess = { genres: List<Genre> ->                updateState {
                     it.copy(movieGenre = genres.map { genre -> genre.toUi() })
                 }
                 loadMatchData()
@@ -133,7 +134,7 @@ class MatchViewModel @Inject constructor(
         updateState {
             it.copy(
                 matchResults = movies.take(5).map { movie ->
-                    MatchMapper.toUiState(
+                    MatchMapper.toMatchUiState(
                         movie = movie,
                         genres = uiState.value.movieGenre
                     )
@@ -144,11 +145,11 @@ class MatchViewModel @Inject constructor(
         }
     }
 
-    private fun onLoadMatchDataError(errorMessage: String) { // Changed from Int to String
+    private fun onLoadMatchDataError(errorMessage: String) {
         updateState {
             it.copy(
                 isLoadingRecommendations = false,
-                errorMessage = errorMessage, // Now String type
+                errorMessage = errorMessage,
                 shouldShowError = true
             )
         }
@@ -245,4 +246,12 @@ class MatchViewModel @Inject constructor(
             QuestionUiState(4, "Hidden Gems", false)
         )
     }
+}
+
+fun MatchUiState.GenreUiState.toExploreUiState(): ExploreScreenState.GenreUiState {
+    return ExploreScreenState.GenreUiState(
+        id = this.id,
+        name = this.name,
+        isSelected = this.isSelected
+    )
 }

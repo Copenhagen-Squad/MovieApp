@@ -47,12 +47,11 @@ data class QuestionUiState(
     val isSelected: Boolean = false
 )
 
-enum class MatchPages {
-    StartPage,
-    QuestionsPage,
-    ResultsPage
+sealed interface MatchPages {
+    object StartPage : MatchPages
+    object QuestionsPage : MatchPages
+    object ResultsPage : MatchPages
 }
-
 enum class QuestionType {
     MOOD,
     GENRE,

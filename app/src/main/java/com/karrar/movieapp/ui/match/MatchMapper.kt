@@ -1,9 +1,6 @@
 package com.karrar.movieapp.ui.match
 
-import com.moscow.cineverse.common_ui_state.DurationUiState
-import com.moscow.cineverse.screen.details.movie_details.MovieScreenState
-import com.moscow.cineverse.screen.explore.ExploreScreenState
-import com.moscow.cinverse.presentation.R
+import com.karrar.movieapp.R
 import com.moscow.domain.model.Movie
 import java.util.Locale
 
@@ -15,6 +12,7 @@ object MatchMapper {
         R.string.mood_emotional to listOf(18, 10749),           // Drama, Romance
         R.string.mood_curious to listOf(99, 9648)               // Documentary, Mystery
     )
+
 
     private val genreToMovieGenres = mapOf(
         R.string.genre_action to 28,
