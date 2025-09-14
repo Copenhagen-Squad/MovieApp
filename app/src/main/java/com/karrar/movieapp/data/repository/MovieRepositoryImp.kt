@@ -34,7 +34,6 @@ class MovieRepositoryImpl @Inject constructor(
             ?: emptyList()
     }
 
-
     override suspend fun getMatchedMovies(
         page: Int,
         genres: String?,

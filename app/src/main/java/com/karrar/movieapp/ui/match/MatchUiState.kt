@@ -1,121 +1,67 @@
 package com.karrar.movieapp.ui.match
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import com.karrar.movieapp.R
-
 data class MatchUiState(
     val isLoading: Boolean = false,
+    val enableBlur: Boolean = false,
+    val errorMessage: String? = null,
+    val shouldShowError: Boolean = false,
     val currentPage: MatchPages = MatchPages.StartPage,
-    val moodQuestions: List<QuestionUiState> = getMoodQuestionAnswers(),
-    val genreQuestions: List<QuestionUiState> = getGenreQuestionAnswers(),
-    val timeQuestions: List<QuestionUiState> = getTimeQuestionAnswers(),
-    val movieTypeQuestions: List<QuestionUiState> = getMovieTypeQuestionAnswers(),
     val currentQuestionType: QuestionType = QuestionType.MOOD,
-    val movieGenre: List<ExploreScreenState.GenreUiState> = emptyList(),
-    val matchResults: List<MovieScreenState.MovieDetailsUiState> = emptyList(),
     val isLoadingRecommendations: Boolean = false,
-    val errorMessage: Int? = null,
-    val enableBlur: String = "high",
-    val shouldShowError: Boolean = false
+    val isNextButtonActivated: Boolean = false,
+
+    // Genre related
+    val movieGenre: List<GenreUiState> = emptyList(),
+
+    // Questions
+    val moodQuestions: List<QuestionUiState> = emptyList(),
+    val genreQuestions: List<QuestionUiState> = emptyList(),
+    val timeQuestions: List<QuestionUiState> = emptyList(),
+    val movieTypeQuestions: List<QuestionUiState> = emptyList(),
+
+    // Match results
+    val matchResults: List<MovieUiState> = emptyList()
 ) {
-    val matchProgress: Float =
-        currentQuestionType.ordinal.plus(1).toFloat() / QuestionType.entries.size
-    val isNextButtonActivated: Boolean = when (currentQuestionType) {
-        QuestionType.MOOD -> moodQuestions.any { it.isSelected }
-        QuestionType.GENRE -> genreQuestions.any { it.isSelected }
-        QuestionType.TIME -> timeQuestions.any { it.isSelected }
-        QuestionType.TYPE -> movieTypeQuestions.any { it.isSelected }
-    }
-    val selectedMoodQuestions: List<QuestionUiState>
-        get() = moodQuestions.filter { it.isSelected }
+    // Nested data classes
+    data class GenreUiState(
+        val id: Int,
+        val name: String,
+        val isSelected: Boolean = false
+    )
 
-
-    val selectedGenres: List<QuestionUiState>
-        get() = genreQuestions.filter { it.isSelected }
-
-    val selectedTimeQuestion: List<QuestionUiState>
-        get() = timeQuestions.filter { it.isSelected }
-
-    val selectedMovieTypeQuestion: List<QuestionUiState>
-        get() = movieTypeQuestions.filter { it.isSelected }
-
+    data class MovieUiState(
+        val id: Int,
+        val title: String,
+        val overview: String = "",
+        val posterPath: String = "",
+        val backdropPath: String = "",
+        val releaseDate: String = "",
+        val voteAverage: Double = 0.0,
+        val genres: List<String> = emptyList()
+    )
 }
 
 data class QuestionUiState(
     val id: Int,
-    @StringRes val name: Int,
-    @StringRes val description: Int? = null,
-    val isSelected: Boolean = false,
-    @DrawableRes val iconResource: Int? = null,
+    val text: String,
+    val isSelected: Boolean = false
 )
 
-fun getMoodQuestionAnswers() = listOf(
-    QuestionUiState(
-        id = 1,
-        name = R.string.mood_chill,
-        iconResource = R.drawable.headphone_icon
-    ),
-    QuestionUiState(
-        id = 2,
-        name = R.string.mood_excited,
-        iconResource = R.drawable.flame_icon
-    ),
-    QuestionUiState(
-        id = 3,
-        name = R.string.mood_emotional,
-        iconResource = R.drawable.heart_icon
-    ),
-    QuestionUiState(
-        id = 4,
-        name = R.string.mood_curious,
-        iconResource = R.drawable.due_tone_search
-    )
-)
+enum class MatchPages {
+    StartPage,
+    QuestionsPage,
+    ResultsPage
+}
 
-fun getMovieTypeQuestionAnswers() = listOf(
-    QuestionUiState(
-        id = 1,
-        name = R.string.recent,
-    ),
-    QuestionUiState(
-        id = 2,
-        name = R.string.classic,
-    ),
-    QuestionUiState(
-        id = 3,
-        name = R.string.both,
-    )
-)
+enum class QuestionType {
+    MOOD,
+    GENRE,
+    TIME,
+    TYPE
+}
 
-fun getTimeQuestionAnswers() = listOf(
-    QuestionUiState(
-        id = 1,
-        name = R.string.time_short_label,
-        description = R.string.time_short_desc,
-        iconResource = R.drawable.time_short_icon
-    ),
-    QuestionUiState(
-        id = 2,
-        name = R.string.time_medium_label,
-        description = R.string.time_medium_desc,
-        iconResource = R.drawable.time_medium_icon
-    ),
-    QuestionUiState(
-        id = 3,
-        name = R.string.time_long_label,
-        description = R.string.time_long_desc,
-        iconResource = R.drawable.time_long_icon
-    )
-)
-
-fun getGenreQuestionAnswers() = listOf(
-    QuestionUiState(id = 1, name = R.string.genre_action),
-    QuestionUiState(id = 2, name = R.string.genre_comedy),
-    QuestionUiState(id = 3, name = R.string.genre_drama),
-    QuestionUiState(id = 4, name = R.string.genre_romance),
-    QuestionUiState(id = 5, name = R.string.genre_scifi),
-    QuestionUiState(id = 6, name = R.string.genre_thriller),
-    QuestionUiState(id = 7, name = R.string.genre_animation),
-    QuestionUiState(id = 8, name = R.string.genre_mystery)
-)
+sealed class MatchEvent {
+    data class OnMovieClick(val id: Int) : MatchEvent()
+    data class AddToCollection(val id: Int) : MatchEvent()
+    data class OpenTrailer(val url: String) : MatchEvent()
+}

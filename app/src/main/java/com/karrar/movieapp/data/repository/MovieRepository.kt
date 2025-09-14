@@ -7,7 +7,10 @@ interface MovieRepository {
     suspend fun getPopularMovies(page: Int): List<Movie>
     suspend fun deleteRatingMovie(movieId: Int)
     suspend fun getUserRatingMovie(movieId: Int): Int
+
     suspend fun getRecommendationsMovie(id: Int, page: Int): List<Movie>
+
+
 
     suspend fun getMatchedMovies(
         page: Int,

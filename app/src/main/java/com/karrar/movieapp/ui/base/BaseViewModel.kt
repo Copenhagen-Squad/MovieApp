@@ -12,14 +12,12 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<T, E> : ViewModel() {
+abstract class BaseViewModel<T, E>(
+    initialState: T
+) : ViewModel() {
 
-    // Abstract property that subclasses must override
-    abstract val initialState: T
-
-    // Use lazy initialization to avoid initialization order issues
-    private val _uiState by lazy { MutableStateFlow(initialState) }
-    val uiState: StateFlow<T> by lazy { _uiState.asStateFlow() }
+    private val _uiState = MutableStateFlow(initialState)
+    val uiState: StateFlow<T> = _uiState.asStateFlow()
 
     private val _uiEffect = Channel<E>()
     val uiEffect: Flow<E> = _uiEffect.receiveAsFlow()
@@ -28,7 +26,6 @@ abstract class BaseViewModel<T, E> : ViewModel() {
         _uiState.update { transform(it) }
     }
 
-    // Add the missing sendEvent method
     protected fun sendEvent(event: E) {
         viewModelScope.launch {
             _uiEffect.send(event)
@@ -38,7 +35,7 @@ abstract class BaseViewModel<T, E> : ViewModel() {
     protected fun <R> launchWithResult(
         action: suspend () -> R,
         onSuccess: (R) -> Unit,
-        onError: (String) -> Unit, // Changed to String to match usage
+        onError: (String) -> Unit,
         onStart: () -> Unit = {},
         onFinally: () -> Unit = {}
     ) {

@@ -1,10 +1,8 @@
 package com.karrar.movieapp.ui.match
 
-import androidx.compose.runtime.Stable
 import com.google.errorprone.annotations.Immutable
 
 @Immutable
-@Stable
 data class ExploreScreenState(
 
     val searchKeyWord: String = "",
@@ -53,7 +51,8 @@ data class ExploreScreenState(
 
     data class GenreUiState(
         val id: Int,
-        val name: String
+        val name: String,
+        val isSelected: Boolean = false
     )
 }
 
