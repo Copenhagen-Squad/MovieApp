@@ -1,11 +1,9 @@
 package com.karrar.movieapp.domain
 
-import androidx.annotation.StringRes
-import com.karrar.movieapp.R
 
-enum class QuestionType(@StringRes val titleResource: Int) {
-    MOOD(R.string.what_mood),
-    GENRE(R.string.pick_genre),
-    TIME(R.string.how_much_time),
-    TYPE(R.string.recent_or_classic)
+enum class QuestionType(val titleResource: String) {
+    MOOD("how are you feeling today?" ),
+    GENRE("pick your favorite genre"),
+    TIME("how much time do you have?"),
+    TYPE("what type of movie are you in the mood for?");
 }

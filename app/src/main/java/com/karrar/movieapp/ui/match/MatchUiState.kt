@@ -60,14 +60,6 @@ data class QuestionUiState(
 )
 
 
-enum class QuestionType {
-    MOOD,
-    GENRE,
-    TIME,
-    TYPE
-}
-
-// ========== Question Answer Functions ==========
 
 fun getMoodQuestionAnswers(): List<QuestionUiState> = listOf(
     QuestionUiState(
