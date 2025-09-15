@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.core.widget.TextViewCompat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -155,13 +156,14 @@ class MainActivity : AppCompatActivity() {
         icon.setImageResource(selectedIconRes)
         icon.setColorFilter(ContextCompat.getColor(this, R.color.brand_primary))
         label.setTextColor(ContextCompat.getColor(this, R.color.brand_primary))
-        label.setTypeface(label.typeface, android.graphics.Typeface.BOLD)
+        TextViewCompat.setTextAppearance(label, R.style.Typography_label_md_semi_bold)
     }
 
     private fun setTabUnselected(icon: ImageView, label: TextView, unSelectedIconRes: Int) {
         icon.setImageResource(unSelectedIconRes)
         icon.setColorFilter(ContextCompat.getColor(this, R.color.shade_tertiary))
         label.setTextColor(ContextCompat.getColor(this, R.color.shade_tertiary))
+        TextViewCompat.setTextAppearance(label, R.style.Typography_label_md_regular)
     }
 
 
