@@ -340,5 +340,9 @@
             android:name="tvShowId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/matchQuestionsFragment"
+        android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
+        android:label="MatchQuestionsFragment" />
 
 </navigation>
