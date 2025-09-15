@@ -79,7 +79,10 @@
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textColor="@color/shade_primary"
-                android:textColorHint="@color/shade_tertiary" />
+                android:gravity="center_vertical"
+                android:textColorHint="@color/shade_tertiary"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -119,7 +122,9 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@color/shade_primary"
-                android:textColorHint="@color/shade_tertiary" />
+                android:textColorHint="@color/shade_tertiary"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
