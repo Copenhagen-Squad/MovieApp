@@ -126,14 +126,17 @@ class MainActivity : AppCompatActivity() {
                 currentTab = 0
                 setTabSelected(iconHome, labelHome, R.drawable.ic_home_duetone)
             }
+
             R.id.exploringFragment -> {
                 currentTab = 1
                 setTabSelected(iconExplore, labelExplore, R.drawable.ic_search_duetone)
             }
+
             R.id.myListFragment -> {
                 currentTab = 2
                 setTabSelected(iconMatch, labelMatch, R.drawable.ic_magic_stick_duetone)
             }
+
             R.id.profileFragment -> {
                 currentTab = 3
                 setTabSelected(iconMe, labelMe, R.drawable.ic_user_square_duetone)
