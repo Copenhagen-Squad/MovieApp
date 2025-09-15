@@ -158,6 +158,20 @@
             app:layout_constraintStart_toStartOf="@id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_forget_password" />
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/spacing_extra_large"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/brand_tertiary"
+            app:isVisible="@{viewModel.loginUIState.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_password"
+            app:trackColor="@color/brand_primary" />
+
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_continue_as_guest"
             android:layout_width="match_parent"
