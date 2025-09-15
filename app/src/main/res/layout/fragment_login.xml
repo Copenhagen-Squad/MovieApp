@@ -75,14 +75,14 @@
                 android:layout_height="match_parent"
                 android:afterTextChanged="@{(text) -> viewModel.onUserNameInputChange(text)}"
                 android:background="@drawable/text_input_bg"
+                android:gravity="center_vertical"
                 android:hint="@string/enter_your_email_or_username"
                 android:inputType="textPersonName"
                 android:maxLines="1"
-                android:textColor="@color/shade_primary"
-                android:gravity="center_vertical"
-                android:textColorHint="@color/shade_tertiary"
                 android:paddingTop="0dp"
-                android:paddingBottom="0dp"/>
+                android:paddingBottom="0dp"
+                android:textColor="@color/shade_primary"
+                android:textColorHint="@color/shade_tertiary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -107,7 +107,8 @@
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_password"
-            app:passwordToggleEnabled="true"
+            app:endIconMode="password_toggle"
+            app:endIconDrawable="@drawable/ic_password_eye_selector"
             app:passwordToggleTint="@color/shade_secondary_color"
             app:startIconDrawable="@drawable/lock"
             >
@@ -121,25 +122,24 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/shade_primary"
-                android:textColorHint="@color/shade_tertiary"
                 android:paddingTop="0dp"
-                android:paddingBottom="0dp"/>
+                android:paddingBottom="0dp"
+                android:textColor="@color/shade_primary"
+                android:textColorHint="@color/shade_tertiary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_forget_password"
+            style="@style/Typography.body_md_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
             android:text="@string/forget_password"
             android:textAlignment="viewEnd"
             android:textAppearance="@style/Regular.Medium.Secondary"
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
-            app:layout_constraintTop_toBottomOf="@id/edit_text_password"
-            android:layout_marginTop="@dimen/spacing_12"
-            style="@style/Typography.body_md_regular"
-            />
+            app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_login"
@@ -165,7 +165,6 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing_20"
-            app:cornerRadius="@dimen/radius_lg"
             android:backgroundTint="@color/button_secondary"
             android:elevation="0dp"
             android:enabled="@{viewModel.loginUIState.validForm}"
@@ -179,22 +178,8 @@
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/button_login"
-            style="@style/Typography.body_md_medium"
             />
 
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="@dimen/spacing_extra_large"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:indicatorColor="@color/brand_tertiary"
-            app:isVisible="@{viewModel.loginUIState.loading}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_password"
-            app:trackColor="@color/brand_primary" />
 
 
         <com.google.android.material.button.MaterialButton
