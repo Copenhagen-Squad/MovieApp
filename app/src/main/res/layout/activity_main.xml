@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
+        android:background="@color/background_screen"
         android:fitsSystemWindows="true"
         tools:context="ui.main.MainActivity">
 
@@ -30,7 +30,7 @@
             android:id="@+id/custom_bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background_color"
+            android:background="@color/background_card"
             android:orientation="horizontal"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
@@ -56,7 +56,7 @@
                     android:id="@+id/icon_home"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_home_duetone"
                     android:contentDescription="Home"
                     app:tint="#6C7086" />
 
