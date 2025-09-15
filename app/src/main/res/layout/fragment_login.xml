@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.karrar.movieapp.ui.login.LoginViewModel" />
@@ -14,8 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/background_screen"
         android:padding="@dimen/spacing_medium"
-        tools:context=".ui.login.LoginFragment"
-        >
+        tools:context=".ui.login.LoginFragment">
 
         <ImageView
             android:id="@+id/image_view_logo"
@@ -101,17 +101,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
+            app:endIconDrawable="@drawable/ic_password_eye_selector"
+            app:endIconMode="password_toggle"
             app:errorEnabled="false"
             app:helperText="@{viewModel.loginUIState.passwordHelperText}"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_password"
-            app:endIconMode="password_toggle"
-            app:endIconDrawable="@drawable/ic_password_eye_selector"
             app:passwordToggleTint="@color/shade_secondary_color"
-            app:startIconDrawable="@drawable/lock"
-            >
+            app:startIconDrawable="@drawable/lock">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/Typography.body_md_medium"
@@ -143,6 +142,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_login"
+            style="@style/Typography.body_md_medium"
             android:layout_width="0dp"
             android:layout_height="@dimen/spacing_48"
             android:layout_marginTop="@dimen/spacing_20"
@@ -150,15 +150,13 @@
             android:enabled="@{viewModel.loginUIState.validForm}"
             android:onClick="@{()->viewModel.onClickLogin()}"
             android:text="@string/login"
-            app:cornerRadius="@dimen/radius_lg"
             android:textAllCaps="false"
             android:textColor="@color/button_onPrimary"
+            app:cornerRadius="@dimen/radius_lg"
             app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
-            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password"
-            style="@style/Typography.body_md_medium"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_continue_as_guest"
@@ -177,25 +175,24 @@
             app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
-            app:layout_constraintTop_toBottomOf="@+id/button_login"
-            />
-
+            app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cornerRadius="@dimen/radius_md"
             android:backgroundTint="@color/button_secondary"
+            android:elevation="0dp"
             android:onClick="@{()->viewModel.onClickSignUp()}"
+            android:stateListAnimator="@null"
             android:text="@string/create_a_new_account"
             android:textAppearance="@style/Typography.body_sm_medium"
             android:textColor="@color/button_onSecondary"
+            app:cornerRadius="@dimen/radius_md"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
