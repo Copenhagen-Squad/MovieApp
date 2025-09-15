@@ -35,6 +35,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.TMDB_SIGNUP_URL))
                 startActivity(browserIntent)
             }
+            LoginUIEvent.ShowSignUpBottomSheet -> {
+                showSignUpBottomSheet()
+            }
         }
+    }
+
+    private fun showSignUpBottomSheet() {
+        val bottomSheet = SignUpBottomSheetFragment()
+        bottomSheet.show(parentFragmentManager, SignUpBottomSheetFragment.TAG)
     }
 }
