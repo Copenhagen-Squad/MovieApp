@@ -129,6 +129,9 @@ dependencies {
     // Splash Screen
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
+    // ViewPager2 for OnBoarding
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
     // Lottie Animations
     implementation 'com.airbnb.android:lottie:6.4.1'
 
