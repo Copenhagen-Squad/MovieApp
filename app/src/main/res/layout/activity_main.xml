@@ -69,7 +69,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:contentDescription="Home"
-                        android:src="@drawable/ic_home_duetone"
+                        android:src="@drawable/ic_home"
                         app:tint="#6C7086" />
 
                     <TextView
@@ -165,7 +165,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:contentDescription="Me"
-                        android:src="@drawable/ic_user"
+                        android:src="@drawable/ic_user_square"
                         app:tint="#6C7086" />
 
                     <TextView
