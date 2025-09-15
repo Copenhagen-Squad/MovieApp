@@ -2,6 +2,7 @@ package com.karrar.movieapp.ui.match
 
 import androidx.annotation.DrawableRes
 import com.karrar.movieapp.R
+import com.karrar.movieapp.domain.QuestionType
 
 data class MatchUiState(
     val isLoading: Boolean = false,

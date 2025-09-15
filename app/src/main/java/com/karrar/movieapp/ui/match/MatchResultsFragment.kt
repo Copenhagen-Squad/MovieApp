@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.karrar.movieapp.R
+import com.karrar.movieapp.data.MatchResultsAdapter
 
 class MatchResultsFragment : Fragment(R.layout.fragment_match_results), MatchResultCallbacks {
 

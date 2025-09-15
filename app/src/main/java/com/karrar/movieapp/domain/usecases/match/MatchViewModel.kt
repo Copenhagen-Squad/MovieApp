@@ -3,12 +3,12 @@ package com.karrar.movieapp.domain.usecases.match
 import com.karrar.movieapp.domain.models.Genre
 import com.karrar.movieapp.domain.usecases.GenreUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
-import com.karrar.movieapp.ui.match.MatchEvent
+import com.karrar.movieapp.domain.MatchEvent
 import com.karrar.movieapp.ui.match.MatchInteractionListener
-import com.karrar.movieapp.ui.match.MatchMapper
+import com.karrar.movieapp.data.MatchMapper
 import com.karrar.movieapp.ui.match.MatchPages
 import com.karrar.movieapp.ui.match.MatchUiState
-import com.karrar.movieapp.ui.match.QuestionType
+import com.karrar.movieapp.domain.QuestionType
 import com.karrar.movieapp.ui.match.QuestionUiState
 import com.moscow.domain.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel

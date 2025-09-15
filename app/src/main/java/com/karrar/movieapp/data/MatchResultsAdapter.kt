@@ -1,4 +1,4 @@
-package com.karrar.movieapp.ui.match
+package com.karrar.movieapp.data
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.karrar.movieapp.databinding.ItemMatchResultBinding
+import com.karrar.movieapp.ui.match.MatchItemUI
+import com.karrar.movieapp.ui.match.MatchResultCallbacks
 
 class MatchResultsAdapter(
     private val callbacks: MatchResultCallbacks

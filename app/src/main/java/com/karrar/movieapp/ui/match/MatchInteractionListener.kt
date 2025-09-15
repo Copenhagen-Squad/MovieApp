@@ -1,5 +1,7 @@
 package com.karrar.movieapp.ui.match
 
+import com.karrar.movieapp.domain.QuestionType
+
 interface MatchInteractionListener {
     fun onClickStartMatching()
     fun onClickFinishMatching()

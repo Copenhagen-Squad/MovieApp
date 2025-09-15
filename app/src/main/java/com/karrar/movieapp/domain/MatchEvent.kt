@@ -1,4 +1,4 @@
-package com.karrar.movieapp.ui.match
+package com.karrar.movieapp.domain
 
 sealed class MatchEvent {
     data class OnMovieClick(val id: Int) : MatchEvent()

@@ -1,5 +1,9 @@
-package com.karrar.movieapp.ui.match
+package com.karrar.movieapp.data
 
+import com.karrar.movieapp.ui.match.DurationUiState
+import com.karrar.movieapp.ui.match.ExploreScreenState
+import com.karrar.movieapp.ui.match.MatchUiState
+import com.karrar.movieapp.ui.match.MovieScreenState
 import com.moscow.domain.model.Movie
 import java.util.Locale
 
