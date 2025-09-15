@@ -35,7 +35,7 @@
             android:alpha="@{isCurrent ? 1f : 0.2f}"
             style="@style/Typography.title_sm"
             android:layout_marginStart="@dimen/radius_xl"
-            android:layout_marginEnd="@dimen/radius_xl"
+            android:layout_marginEnd="@dimen/radius_xs"
             android:textColor="@color/shade_primary"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -47,15 +47,12 @@
             android:alpha="@{isCurrent ? 1f : 0.2f}"
             android:adapter="@{adapterRecycler}"
             android:clipToPadding="false"
-            android:orientation="vertical"
             android:overScrollMode="never"
             android:scrollbars="none"
             app:layoutManager="@{layoutManager}"
             app:layout_constraintEnd_toEndOf="@id/question"
             app:layout_constraintStart_toStartOf="@id/question"
             app:layout_constraintTop_toBottomOf="@id/question"
-            app:spanCount="2"
-            tools:itemCount="4"
             tools:listitem="@layout/item_question_choice" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

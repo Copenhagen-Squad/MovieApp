@@ -23,13 +23,14 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/radius_lg">
+        android:layout_marginBottom="@dimen/radius_lg"
+        android:layout_marginEnd="@dimen/radius_lg">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_emotional"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="0dp"
             android:onClick="@{() -> listener.onChoiceSelected(choice)}"
