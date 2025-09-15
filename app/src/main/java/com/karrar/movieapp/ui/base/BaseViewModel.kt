@@ -19,8 +19,9 @@ abstract class BaseViewModel<T, E>(
     private val _uiState = MutableStateFlow(initialState)
     val uiState: StateFlow<T> = _uiState.asStateFlow()
 
+
+
     private val _uiEffect = Channel<E>()
-    val uiEffect: Flow<E> = _uiEffect.receiveAsFlow()
 
     protected fun updateState(transform: (T) -> T) {
         _uiState.update { transform(it) }

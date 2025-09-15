@@ -1,5 +1,8 @@
 package com.karrar.movieapp.ui.match
 
+import com.moscow.domain.model.Movie
+import java.util.Locale
+
 
 object MatchMapper {
 
@@ -63,6 +66,26 @@ object MatchMapper {
             releaseDateLte = releaseDateLte
         )
     }
+
+    fun toUiState(
+        movie: Movie,
+        genres: List<ExploreScreenState.GenreUiState>
+    ): MovieScreenState.MovieDetailsUiState {
+        return MovieScreenState.MovieDetailsUiState(
+            id = movie.id,
+            title = movie.title,
+            trailerUrl = movie.trailerUrl,
+            posterUrl = movie.posterUrl,
+            rating = String.format(Locale.getDefault(),"%.1f", movie.rating),
+            genres = if (genres.isEmpty()) emptyList() else
+                movie.genreIds.map { it -> genres.first { genre -> genre.id == it }.name },
+            releaseDate = movie.releaseDate,
+            duration = DurationUiState(0, 0),
+            description = movie.overview
+        )
+    }
+
+
 
 }
 

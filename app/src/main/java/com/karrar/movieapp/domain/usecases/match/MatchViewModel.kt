@@ -18,30 +18,53 @@ import javax.inject.Inject
 class MatchViewModel @Inject constructor(
     private val getMatchedMovies: GetMatchedMovies,
     private val genreUseCase: GenreUseCase,
-) : BaseViewModel<MatchUiState, MatchEvent>(MatchUiState()),
+) : BaseViewModel<MatchUiState, MatchEvent>(MatchUiState(
+    moodQuestions = listOf(
+        QuestionUiState(1, "Happy", "", false),
+        QuestionUiState(2, "Sad", "", false),
+        QuestionUiState(3, "Excited", "", false),
+        QuestionUiState(4, "Relaxed", "", false)
+    ),
+    genreQuestions = listOf(
+        QuestionUiState(1, "Action", "", false),
+        QuestionUiState(2, "Comedy", "", false),
+        QuestionUiState(3, "Drama", "", false),
+        QuestionUiState(4, "Horror", "", false)
+    ),
+    timeQuestions = listOf(
+        QuestionUiState(1, "Short (< 90 min)", "", false),
+        QuestionUiState(2, "Medium (90-120 min)", "", false),
+        QuestionUiState(3, "Long (> 120 min)", "", false)
+    ),
+    isLoading = TODO(),
+    isLoadingRecommendations = TODO(),
+    shouldShowError = TODO(),
+    errorMessage = TODO(),
+    enableBlur = TODO(),
+    currentPage = TODO(),
+    currentQuestionType = TODO(),
+    movieTypeQuestions = TODO(),
+    matchResults = TODO()
+)),
     MatchInteractionListener {
-
 
     override fun getData() {
         getGenres()
     }
 
-
     private fun getGenres() {
-        updateState { it.copy(isLoading = true, errorMessage = null) }
+        updateState { it.copy(isLoading = true) }
         launchWithResult(
             action = { genreUseCase.getMoviesGenres() },
-            onSuccess = { genres: List<Genre> ->                updateState {
+            onSuccess = { genres: List<Genre> ->
+                updateState {
                     it.copy(movieGenre = genres.map { genre -> genre.toUi() })
                 }
                 loadMatchData()
             },
             onError = { errorMessage ->
                 updateState {
-                    it.copy(
-                        isLoading = false,
-                        shouldShowError = true,
-                    )
+                    it.copy(shouldShowError = true)
                 }
             },
         )
@@ -56,7 +79,7 @@ class MatchViewModel @Inject constructor(
     }
 
     override fun onClickNextQuestion() {
-        if (uiState.value.isNextButtonActivated)
+        if (uiState.value.isNextButtonActivated) {
             updateState { state ->
                 val nextIndex = state.currentQuestionType.ordinal + 1
                 QuestionType.entries.getOrNull(nextIndex)
@@ -67,9 +90,9 @@ class MatchViewModel @Inject constructor(
 
                 state.copy(currentQuestionType = QuestionType.entries[nextIndex])
             }
+        }
     }
 
-    // REMOVED DUPLICATE - Keep only this one
     override fun onAnswerSelected(
         type: QuestionType,
         answer: QuestionUiState
@@ -84,25 +107,31 @@ class MatchViewModel @Inject constructor(
                     )
                 } else state
 
-                QuestionType.GENRE -> if (state.currentQuestionType == QuestionType.GENRE) state.copy(
-                    genreQuestions = state.genreQuestions.map {
-                        if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else it
-                    }
-                ) else state
+                QuestionType.GENRE -> if (state.currentQuestionType == QuestionType.GENRE) {
+                    state.copy(
+                        genreQuestions = state.genreQuestions.map {
+                            if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else it
+                        }
+                    )
+                } else state
 
-                QuestionType.TIME -> if (state.currentQuestionType == QuestionType.TIME) state.copy(
-                    timeQuestions = state.timeQuestions.map {
-                        if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else
-                            it.copy(isSelected = false)
-                    }
-                ) else state
+                QuestionType.TIME -> if (state.currentQuestionType == QuestionType.TIME) {
+                    state.copy(
+                        timeQuestions = state.timeQuestions.map {
+                            if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else
+                                it.copy(isSelected = false)
+                        }
+                    )
+                } else state
 
-                QuestionType.TYPE -> if (state.currentQuestionType == QuestionType.TYPE) state.copy(
-                    movieTypeQuestions = state.movieTypeQuestions.map {
-                        if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else
-                            it.copy(isSelected = false)
-                    }
-                ) else state
+                QuestionType.TYPE -> if (state.currentQuestionType == QuestionType.TYPE) {
+                    state.copy(
+                        movieTypeQuestions = state.movieTypeQuestions.map {
+                            if (it.id == answer.id) it.copy(isSelected = !it.isSelected) else
+                                it.copy(isSelected = false)
+                        }
+                    )
+                } else state
             }
         }
     }
@@ -129,7 +158,7 @@ class MatchViewModel @Inject constructor(
         updateState {
             it.copy(
                 matchResults = movies.take(5).map { movie ->
-                    MatchMapper.toMatchUiState(
+                    MatchMapper.toUiState(
                         movie = movie,
                         genres = uiState.value.movieGenre
                     )
@@ -142,10 +171,7 @@ class MatchViewModel @Inject constructor(
 
     private fun onLoadMatchDataError(errorMessage: String) {
         updateState {
-            it.copy(
-                isLoadingRecommendations = false,
-                shouldShowError = true
-            )
+            it.copy(shouldShowError = true)
         }
     }
 
@@ -158,21 +184,19 @@ class MatchViewModel @Inject constructor(
                             MatchPages.StartPage
                         else
                             MatchPages.QuestionsPage,
-                        currentQuestionType = QuestionType.entries[state.currentQuestionType.ordinal.minus(
-                            1
-                        ).coerceAtLeast(0)]
+                        currentQuestionType = QuestionType.entries[
+                            state.currentQuestionType.ordinal.minus(1).coerceAtLeast(0)
+                        ]
                     )
                 }
             }
 
             MatchPages.ResultsPage -> updateState {
                 it.copy(
-                    currentPage = MatchPages.StartPage,
-                    currentQuestionType = QuestionType.MOOD,
                     moodQuestions = getMoodQuestionAnswers(),
                     genreQuestions = getGenreQuestionAnswers(),
                     timeQuestions = getTimeQuestionAnswers(),
-                    movieTypeQuestions = getMovieTypeQuestionAnswers()
+                    movieTypeQuestions = getMovieTypeQuestionAnswers(),
                 )
             }
 
@@ -188,45 +212,44 @@ class MatchViewModel @Inject constructor(
         sendEvent(MatchEvent.AddToCollection(id = id))
     }
 
-
     override fun onRetry() {
         getGenres()
-        updateState { it.copy(shouldShowError = false, errorMessage = null) }
+        updateState { it.copy() }
     }
 
-    // ADD THESE MISSING HELPER METHODS
+    // Fixed helper methods with correct QuestionUiState constructor
     private fun getMoodQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Happy", "",false),
-            QuestionUiState(2, "Sad", "false"),
-            QuestionUiState(3, "Excited", "false"),
-            QuestionUiState(4, "Relaxed", "false")
+            QuestionUiState(1, "Happy", "", false),
+            QuestionUiState(2, "Sad", "", false),
+            QuestionUiState(3, "Excited", "", false),
+            QuestionUiState(4, "Relaxed", "", false)
         )
     }
 
     private fun getGenreQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Action", "false"),
-            QuestionUiState(2, "Comedy", "false"),
-            QuestionUiState(3, "Drama", "false"),
-            QuestionUiState(4, "Horror", "false")
+            QuestionUiState(1, "Action", "", false),
+            QuestionUiState(2, "Comedy", "", false),
+            QuestionUiState(3, "Drama", "", false),
+            QuestionUiState(4, "Horror", "", false)
         )
     }
 
     private fun getTimeQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Short (< 90 min)", "false"),
-            QuestionUiState(2, "Medium (90-120 min)", "false"),
-            QuestionUiState(3, "Long (> 120 min)", "false")
+            QuestionUiState(1, "Short (< 90 min)", "", false),
+            QuestionUiState(2, "Medium (90-120 min)", "", false),
+            QuestionUiState(3, "Long (> 120 min)", "", false)
         )
     }
 
     private fun getMovieTypeQuestionAnswers(): List<QuestionUiState> {
         return listOf(
-            QuestionUiState(1, "Popular", "false"),
-            QuestionUiState(2, "Recent", "false"),
-            QuestionUiState(3, "Classic", "false"),
-            QuestionUiState(4, "Hidden Gems", "false")
+            QuestionUiState(1, "Popular", "", false),
+            QuestionUiState(2, "Recent", "", false),
+            QuestionUiState(3, "Classic", "", false),
+            QuestionUiState(4, "Hidden Gems", "", false)
         )
     }
 }
