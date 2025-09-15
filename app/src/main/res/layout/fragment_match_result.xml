@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="item"
             type="com.karrar.movieapp.ui.match.MatchItemUI" />
+
         <variable
             name="callbacks"
             type="com.karrar.movieapp.ui.match.MatchResultCallbacks" />
@@ -15,7 +17,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
 
         <ImageView
             android:id="@+id/backdrop"
@@ -23,28 +26,25 @@
             android:layout_height="0dp"
             android:alpha="0.2"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/poster"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/gradient" />
 
-
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/poster"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            app:imageUrl='@{item.posterUrl}'
             app:layout_constraintBottom_toTopOf="@id/card"
             app:layout_constraintDimensionRatio="3:4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CustomRounded"
-            tools:srcCompat="@drawable/horizonatal_poster_image_placeholder" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CustomRoundedPager" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
@@ -55,6 +55,7 @@
             app:cardCornerRadius="@dimen/radius_lg"
             app:cardElevation="0dp"
             app:cardUseCompatPadding="false"
+            app:layout_constraintBottom_toTopOf="@id/startButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poster">
@@ -62,7 +63,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/tvType"
@@ -222,6 +223,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_margin="16dp"
+            android:onClick='@{() -> callbacks.onViewDetails(item)}'
             android:text="@string/view_details"
             android:textColor="@color/white_primary"
             app:backgroundTint="@color/button_primary"

@@ -5,29 +5,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.karrar.movieapp.databinding.ItemMatchResultBinding
+import com.karrar.movieapp.databinding.ItemMatchPosterBinding
 
-class MatchResultsAdapter(
-    private val callbacks: MatchResultCallbacks
-) : ListAdapter<MatchItemUI, MatchResultsAdapter.VH>(Diff) {
+class MatchPostersAdapter
+    : ListAdapter<MatchItemUI, MatchPostersAdapter.VH>(Diff) {
 
     object Diff : DiffUtil.ItemCallback<MatchItemUI>() {
         override fun areItemsTheSame(a: MatchItemUI, b: MatchItemUI) = a.id == b.id
         override fun areContentsTheSame(a: MatchItemUI, b: MatchItemUI) = a == b
     }
 
-    inner class VH(val binding: ItemMatchResultBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class VH(val binding: ItemMatchPosterBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemMatchResultBinding.inflate(inflater, parent, false)
-        return VH(binding)
+        val inf = LayoutInflater.from(parent.context)
+        return VH(ItemMatchPosterBinding.inflate(inf, parent, false))
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val item = getItem(position)
-        holder.binding.item = item
-        holder.binding.callbacks = callbacks
+        holder.binding.item = getItem(position)
         holder.binding.executePendingBindings()
     }
 }

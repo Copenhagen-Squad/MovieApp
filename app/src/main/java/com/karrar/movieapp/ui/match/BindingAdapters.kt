@@ -12,10 +12,26 @@ import com.karrar.movieapp.utilities.ErrorUI
 
 @BindingAdapter("imageUrl")
 fun ImageView.bindImage(url: String?) {
-    this.load(url) {
+    val iv = this
+    iv.load(url) {
         crossfade(true)
-        placeholder(R.drawable.horizonatal_poster_image_placeholder)
-        error(R.drawable.horizonatal_poster_image_placeholder)
+        placeholder(R.drawable.ic_movie)
+        error(R.drawable.ic_movie)
+
+        listener(
+            onStart = {
+                iv.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                iv.setBackgroundResource(R.drawable.gradient)
+            },
+            onError = { _, _ ->
+                iv.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                iv.setBackgroundResource(R.drawable.gradient)
+            },
+            onSuccess = { _, _ ->
+                iv.scaleType = ImageView.ScaleType.CENTER_CROP
+                iv.background = null
+            }
+        )
     }
 }
 
