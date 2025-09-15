@@ -6,7 +6,19 @@
     <data>
         <variable
             name="adapterRecycler"
-            type="com.karrar.movieapp.ui.adapters.MoodAdapter" />
+            type="com.karrar.movieapp.ui.match.questions.adapter.ChoicesAdapter" />
+
+        <variable
+            name="question"
+            type="String" />
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="isCurrent"
+            type="Boolean" />
 
     </data>
 
@@ -15,11 +27,12 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@string/what_mood_are_you_in"
+            android:alpha="@{isCurrent ? 1f : 0.2f}"
             style="@style/Typography.title_sm"
             android:layout_marginStart="@dimen/radius_xl"
             android:layout_marginEnd="@dimen/radius_xl"
@@ -31,17 +44,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/radius_xl"
             android:layout_marginBottom="@dimen/radius_2xl"
+            android:alpha="@{isCurrent ? 1f : 0.2f}"
             android:adapter="@{adapterRecycler}"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:overScrollMode="never"
             android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layoutManager="@{layoutManager}"
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintTop_toBottomOf="@id/question"
             app:spanCount="2"
             tools:itemCount="4"
-            tools:listitem="@layout/item_mood" />
+            tools:listitem="@layout/item_question_choice" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
