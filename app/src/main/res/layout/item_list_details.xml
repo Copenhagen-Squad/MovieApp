@@ -7,11 +7,11 @@
 
         <variable
             name="item"
-            type="com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState" />
+            type="com.karrar.movieapp.ui.myList.collectionDetails.collectionDetailsUIState.SavedMediaUIState" />
 
         <variable
             name="listener"
-            type="com.karrar.movieapp.ui.myList.listDetails.ListDetailsInteractionListener" />
+            type="com.karrar.movieapp.ui.myList.collectionDetails.ListDetailsInteractionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
