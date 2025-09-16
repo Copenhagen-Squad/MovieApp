@@ -1,4 +1,4 @@
-package com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState
+package com.karrar.movieapp.ui.myList.collectionDetails.collectionDetailsUIState
 
 import com.karrar.movieapp.utilities.Constants
 

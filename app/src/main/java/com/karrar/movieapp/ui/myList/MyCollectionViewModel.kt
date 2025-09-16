@@ -5,10 +5,10 @@ import com.karrar.movieapp.domain.usecases.mylist.CreateMovieListUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyListUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
-import com.karrar.movieapp.ui.myList.myListUIState.CreateListDialogUIState
-import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
-import com.karrar.movieapp.ui.myList.myListUIState.MyListUIEvent
-import com.karrar.movieapp.ui.myList.myListUIState.MyListUIState
+import com.karrar.movieapp.ui.myList.myCollectionUIState.CreateCollectionDialogUIState
+import com.karrar.movieapp.ui.myList.myCollectionUIState.CreatedCollectionUIState
+import com.karrar.movieapp.ui.myList.myCollectionUIState.MyCollectionUIEvent
+import com.karrar.movieapp.ui.myList.myCollectionUIState.MyCollectionUIState
 import com.karrar.movieapp.utilities.ErrorUI.INTERNET_CONNECTION
 import com.karrar.movieapp.utilities.ErrorUI.NEED_LOGIN
 import com.karrar.movieapp.utilities.ErrorUI.NO_LOGIN
@@ -22,20 +22,20 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MyListsViewModel @Inject constructor(
+class MyCollectionViewModel @Inject constructor(
     private val createMovieListUseCase: CreateMovieListUseCase,
     private val getMyListUseCase: GetMyListUseCase,
-    private val createdListUIMapper: CreatedListUIMapper,
+    private val createdCollectionUIMapper: CreatedCollectionUIMapper,
 ) : BaseViewModel(), CreatedListInteractionListener {
 
-    private val _createdListUIState = MutableStateFlow(MyListUIState())
+    private val _createdListUIState = MutableStateFlow(MyCollectionUIState())
     val createdListUIState = _createdListUIState.asStateFlow()
 
-    private val _createListDialogUIState = MutableStateFlow(CreateListDialogUIState())
-    val createListDialogUIState = _createListDialogUIState.asStateFlow()
+    private val _createCollectionDialogUIState = MutableStateFlow(CreateCollectionDialogUIState())
+    val createListDialogUIState = _createCollectionDialogUIState.asStateFlow()
 
-    private val _myListUIEvent: MutableStateFlow<Event<MyListUIEvent?>> = MutableStateFlow(Event(null))
-    val myListUIEvent = _myListUIEvent.asStateFlow()
+    private val _myCollectionUIEvent: MutableStateFlow<Event<MyCollectionUIEvent?>> = MutableStateFlow(Event(null))
+    val myListUIEvent = _myCollectionUIEvent.asStateFlow()
 
     override fun getData() {
         _createdListUIState.update {
@@ -47,7 +47,7 @@ class MyListsViewModel @Inject constructor(
         }
         viewModelScope.launch {
             try {
-                val list = getMyListUseCase().map { createdListUIMapper.map(it) }
+                val list = getMyListUseCase().map { createdCollectionUIMapper.map(it) }
                 _createdListUIState.update {
                     it.copy(isLoading = false, isEmpty = list.isEmpty(), createdList = list)
                 }
@@ -58,11 +58,11 @@ class MyListsViewModel @Inject constructor(
     }
 
     fun onListNameInputChange(listName: CharSequence) {
-        _createListDialogUIState.update { it.copy(mediaListName = listName.toString()) }
+        _createCollectionDialogUIState.update { it.copy(mediaListName = listName.toString()) }
     }
 
     fun onCreateList() {
-        _myListUIEvent.update { Event(MyListUIEvent.CreateButtonClicked) }
+        _myCollectionUIEvent.update { Event(MyCollectionUIEvent.CreateButtonClicked) }
     }
 
     fun onClickAddList() {
@@ -71,22 +71,22 @@ class MyListsViewModel @Inject constructor(
                 _createdListUIState.update {
                     it.copy(
                         isLoading = false,
-                        createdList = createMovieListUseCase(_createListDialogUIState.value.mediaListName)
-                            .map { createdListUIMapper.map(it) },
+                        createdList = createMovieListUseCase(_createCollectionDialogUIState.value.mediaListName)
+                            .map { createdCollectionUIMapper.map(it) },
                         error = emptyList(),
                         isEmpty = false,
                     )
                 }
             } catch (t: Throwable) {
-                _myListUIEvent.update { Event(MyListUIEvent.DisplayError(t.message.toString())) }
+                _myCollectionUIEvent.update { Event(MyCollectionUIEvent.DisplayError(t.message.toString())) }
             }
-            _createListDialogUIState.update { it.copy(mediaListName = "") }
-            _myListUIEvent.emit(Event(MyListUIEvent.CLickAddEvent))
+            _createCollectionDialogUIState.update { it.copy(mediaListName = "") }
+            _myCollectionUIEvent.emit(Event(MyCollectionUIEvent.CLickAddEvent))
         }
     }
 
-    override fun onListClick(item: CreatedListUIState) {
-        _myListUIEvent.update { Event(MyListUIEvent.OnSelectItem(item)) }
+    override fun onListClick(item: CreatedCollectionUIState) {
+        _myCollectionUIEvent.update { Event(MyCollectionUIEvent.OnSelectItem(item)) }
     }
 
     override fun onClickBack() {

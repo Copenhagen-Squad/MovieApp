@@ -38,6 +38,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             ProfileUIEvent.WatchHistoryEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToWatchHistoryFragment()
             }
+            ProfileUIEvent.MyCollectionEvent -> {
+                ProfileFragmentDirections.actionProfileFragmentToMyCollectionFragment()
+            }
         }
         findNavController().navigate(action)
     }
