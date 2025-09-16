@@ -75,6 +75,7 @@ class DetailAdapter(
                 }
             }
 
+            is DetailItemUIState.BehindTheScenesText -> {}
             DetailItemUIState.ReviewText -> {}
 
         }
@@ -96,11 +97,11 @@ class DetailAdapter(
             is DetailItemUIState.SimilarMovies -> R.layout.list_similar_movie
             is DetailItemUIState.Rating -> R.layout.item_rating
             is DetailItemUIState.Comment -> R.layout.item_movie_review
+            is DetailItemUIState.BehindTheScenesText -> R.layout.item_movie_behindthescene
             DetailItemUIState.ReviewText -> R.layout.item_review_text
 
         }
     }
-
 }
 
 
