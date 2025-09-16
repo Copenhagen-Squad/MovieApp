@@ -319,3 +319,8 @@ fun SectionHeaderView.setOnSeeAllClick(listener: (() -> Unit)?) {
 fun AppBar.setOnClickBack(listener: (() -> Unit)?) {
     listener?.let { setOnBackClickListener(it) }
 }
+
+@BindingAdapter("AppBarTitle")
+fun AppBar.bindAppBarTitle(title: String?) {
+    setTitle(title ?: "")
+}

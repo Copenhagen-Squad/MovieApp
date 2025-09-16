@@ -32,6 +32,9 @@ class ListDetailsViewModel @Inject constructor(
     private val _listDetailsUIEvent = MutableStateFlow<Event<ListDetailsUIEvent?>>(Event(null))
     val listDetailsUIEvent = _listDetailsUIEvent.asStateFlow()
 
+    val listTitle: String
+        get() = args.listName ?: "Default List Name"
+
     init {
         getData()
     }
@@ -66,6 +69,10 @@ class ListDetailsViewModel @Inject constructor(
 
     override fun onItemClick(item: SavedMediaUIState) {
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
+    }
+
+    override fun onClickBack() {
+        _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnClickBack) }
     }
 
 }
