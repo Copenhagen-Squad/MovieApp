@@ -102,6 +102,7 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
+    <string name="bookmark">Bookmark</string>
     <string name="icon">icon</string>
     <string name="info_section">section info\n</string>
     <string name="button">Button</string>
@@ -148,4 +149,6 @@
     <string name="get_started">Get Started</string>
     <string name="onboarding_image_description">OnBoarding Image</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">Discover, track and rate your favorite movies and series</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_collection">My Collection</string>
 </resources>
