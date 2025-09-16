@@ -29,7 +29,7 @@ class MatchQuestionsViewModel @Inject constructor() :
         updateCurrentQuestion(currentType)
 
         if (currentType == QuestionType.TIME_PERIOD) {
-            _uiState.update { it.copy(isLoading = true) }
+            _uiState.update { it.copy(isLoading = true, progress = 100) }
             return
         }
 
@@ -58,6 +58,7 @@ class MatchQuestionsViewModel @Inject constructor() :
             )
         }
     }
+
 
     private fun updateCurrentQuestion(type: QuestionType) {
         _questions.update { list ->
