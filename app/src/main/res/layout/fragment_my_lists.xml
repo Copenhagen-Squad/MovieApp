@@ -7,10 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.karrar.movieapp.ui.myList.MyListsViewModel" />
+            type="com.karrar.movieapp.ui.myList.MyCollectionViewModel" />
 
     </data>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.myList.MyCollectionFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

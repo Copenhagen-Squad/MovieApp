@@ -3,7 +3,7 @@ package com.karrar.movieapp.ui.home
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.ui.home.homeUiState.PopularUiState
 import com.karrar.movieapp.ui.models.MediaUiState
-import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
+import com.karrar.movieapp.ui.myList.myCollectionUIState.CreatedCollectionUIState
 import com.karrar.movieapp.ui.profile.watchhistory.MediaHistoryUiState
 
 sealed class HomeItem(val priority: Int) {
@@ -33,7 +33,7 @@ sealed class HomeItem(val priority: Int) {
     ) : HomeItem(7)
 
     data class CollectionsList(
-        val items: List<CreatedListUIState>,
+        val items: List<CreatedCollectionUIState>,
         val type: HomeItemsType = HomeItemsType.YOUR_COLLECTIONS
     ) : HomeItem(8)
 
