@@ -125,6 +125,9 @@
         <action
             android:id="@+id/action_profileFragment_to_watchHistoryFragment"
             app:destination="@id/watchHistoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_MyCollectionFragment"
+            app:destination="@id/myListFragment" />
 
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
@@ -137,7 +140,7 @@
 
     <fragment
         android:id="@+id/myListFragment"
-        android:name="com.karrar.movieapp.ui.myList.MyListsFragment"
+        android:name="com.karrar.movieapp.ui.myList.MyCollectionFragment"
         tools:layout="@layout/fragment_my_lists">
         <action
             android:id="@+id/action_myListFragment_to_createSavedList"
@@ -249,7 +252,7 @@
     </dialog>
     <dialog
         android:id="@+id/createSavedList"
-        android:name="com.karrar.movieapp.ui.myList.CreateListDialog"
+        android:name="com.karrar.movieapp.ui.myList.CreateCollectionDialog"
         tools:layout="@layout/fragment_create_list_dialog">
 
     </dialog>
@@ -291,7 +294,7 @@
     </activity>
     <fragment
         android:id="@+id/listDetailsFragment"
-        android:name="com.karrar.movieapp.ui.myList.listDetails.ListDetailsFragment"
+        android:name="com.karrar.movieapp.ui.myList.collectionDetails.CollectionDetailsFragment"
         tools:layout="@layout/fragment_list_details">
         <argument
             android:name="id"
