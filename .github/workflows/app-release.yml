@@ -59,8 +59,8 @@ jobs:
 
       - name: Decode Keystore
         run: |
-          mkdir -p release
-          echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
+          mkdir -p app/release
+          echo $SIGNING_KEYSTORE_BASE64 | base64 -d > app/release/my-release-key.keystore
         env:
           SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
