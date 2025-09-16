@@ -90,7 +90,7 @@ class MyCollectionViewModel @Inject constructor(
     }
 
     override fun onClickBack() {
-        _myListUIEvent.update { Event(MyListUIEvent.OnBackClick) }
+        _myCollectionUIEvent.update { Event(MyCollectionUIEvent.OnBackClick) }
     }
 
     private fun setError(t: Throwable) {

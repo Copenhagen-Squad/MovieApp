@@ -48,7 +48,7 @@ class MyCollectionFragment : BaseFragment<FragmentMyListsBinding>() {
                     event.createdCollectionUIState.name
                 )
             }
-            MyListUIEvent.OnBackClick -> {
+            MyCollectionUIEvent.OnBackClick -> {
                 findNavController().popBackStack()
             }
             else -> {

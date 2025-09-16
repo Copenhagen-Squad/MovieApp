@@ -33,7 +33,7 @@ class CollectionDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
             } else {
                 navigateToTvShowDetails(event.savedMediaUIState.mediaID)
             }
-        } else if (event is ListDetailsUIEvent.OnClickBack) {
+        } else if (event is CollectionDetailsUIEvent.OnClickBack) {
             navigateBack()
         }
     }

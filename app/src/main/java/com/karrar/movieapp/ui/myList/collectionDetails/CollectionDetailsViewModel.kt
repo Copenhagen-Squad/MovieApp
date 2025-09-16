@@ -72,7 +72,7 @@ class CollectionDetailsViewModel @Inject constructor(
     }
 
     override fun onClickBack() {
-        _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnClickBack) }
+        _collectionDetailsUIEvent.update { Event(CollectionDetailsUIEvent.OnClickBack) }
     }
 
 }
