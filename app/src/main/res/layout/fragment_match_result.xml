@@ -70,8 +70,6 @@
                     style="@style/Typography.label_md_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="4dp"
                     android:text="@string/movie"
                     android:textAllCaps="true"
                     android:textColor="@color/brand_primary"
@@ -101,7 +99,7 @@
                         android:onClick='@{() -> callbacks.onPlay(item)}'>
 
                         <ImageView
-                            android:layout_width="20dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:contentDescription="@string/play_trailer"
@@ -139,7 +137,8 @@
                     style="@style/Typography.title_md"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
                     android:textColor="@color/shade_primary"
                     app:layout_constraintEnd_toStartOf="@id/actions"
                     app:layout_constraintStart_toStartOf="parent"
