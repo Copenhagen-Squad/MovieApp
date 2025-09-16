@@ -22,14 +22,12 @@ class QuestionAdapter(
 ) : BaseAdapter<Question>(items, listener) {
 
     override val layoutID: Int = R.layout.list_question_choices
-    private val choicesAdapters = mutableMapOf<Int, ChoicesAdapter>()
 
     override fun bind(holder: ItemViewHolder, position: Int) {
         val item = items[position]
 
-        val choicesAdapter = choicesAdapters.getOrPut(position) {
-            ChoicesAdapter(item.choices, item.type, listener, onSelect)
-        }
+        val choicesAdapter = ChoicesAdapter(item.displayChoices, item.type, listener, onSelect)
+
 
         val layoutManager = getLayoutManager(holder.itemView.context, item)
 
@@ -45,7 +43,8 @@ class QuestionAdapter(
     fun emitItems(items: List<Question>) {
         this.items.clear()
         this.items.addAll(items)
-        notifyDataSetChanged()
+        notifyItemInserted(itemCount)
+        notifyItemRangeChanged(0, itemCount)
     }
 
     private fun getLayoutManager(context: Context, item: Question): RecyclerView.LayoutManager {
@@ -55,9 +54,10 @@ class QuestionAdapter(
                 flexDirection = FlexDirection.ROW
                 justifyContent = JustifyContent.FLEX_START
             }
+
             QuestionType.MEDIA_RUNTIME -> LinearLayoutManager(context)
             QuestionType.TIME_PERIOD -> {
-                if (item.choices.size <= 3) GridLayoutManager(context, item.choices.size)
+                if (item.displayChoices.size <= 3) GridLayoutManager(context, item.displayChoices.size)
                 else GridLayoutManager(context, 1)
             }
         }

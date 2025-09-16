@@ -5,7 +5,14 @@ data class Question(
     val type: QuestionType,
     val choices: List<Choice>,
     val isAnswered: Boolean,
-)
+){
+    val displayChoices: List<Choice>
+        get() = if (isAnswered) {
+            choices.filter { it.isSelected }
+        } else {
+            choices
+        }
+}
 
 enum class QuestionType {
     MOOD,

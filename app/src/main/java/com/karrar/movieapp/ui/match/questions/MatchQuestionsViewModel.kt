@@ -63,10 +63,13 @@ class MatchQuestionsViewModel @Inject constructor() :
         _questions.update { list ->
             list.map { q ->
                 if (q.type == type) {
-                    val selected = getSelectedChoices(type)
+                    val selectedChoices = getSelectedChoices(type)
+                    val updatedChoices = q.choices.map { choice ->
+                        choice.copy(isSelected = selectedChoices.any { it.name == choice.name })
+                    }
                     q.copy(
-                        choices = selected.map { it.copy(isSelected = true) },
-                        isAnswered = true
+                        choices = updatedChoices,
+                        isAnswered = selectedChoices.isNotEmpty()
                     )
                 } else q
             }
