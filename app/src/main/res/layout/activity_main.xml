@@ -70,7 +70,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Home"
                         android:src="@drawable/ic_home"
-                        app:tint="#6C7086" />
+                        app:tint="@color/shade_tertiary" />
 
                     <TextView
                         android:id="@+id/label_home"
@@ -78,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Home"
-                        android:textColor="#6C7086"
+                        android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -102,7 +102,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Explore"
                         android:src="@drawable/ic_search"
-                        app:tint="#6C7086" />
+                        app:tint="@color/shade_tertiary" />
 
                     <TextView
                         android:id="@+id/label_explore"
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Explore"
-                        android:textColor="#6C7086"
+                        android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -134,7 +134,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Match"
                         android:src="@drawable/ic_magic_stick"
-                        app:tint="#6C7086" />
+                        app:tint="@color/shade_tertiary" />
 
                     <TextView
                         android:id="@+id/label_match"
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Match"
-                        android:textColor="#6C7086"
+                        android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -166,7 +166,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Me"
                         android:src="@drawable/ic_user_square"
-                        app:tint="#6C7086" />
+                        app:tint="@color/shade_tertiary" />
 
                     <TextView
                         android:id="@+id/label_me"
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Me"
-                        android:textColor="#6C7086"
+                        android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
                 </LinearLayout>
