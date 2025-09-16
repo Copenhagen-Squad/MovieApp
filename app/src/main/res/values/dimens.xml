@@ -8,6 +8,7 @@
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
+    <dimen name="spacing_extra_extra_large">50dp</dimen>
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>
@@ -21,6 +22,7 @@
     <dimen name="text_title">16sp</dimen>
     <dimen name="text_medium">14sp</dimen>
     <dimen name="text_small">12sp</dimen>
+    <dimen name="text_title_medium">18sp</dimen>
 
     <!-- radius -->
     <dimen name="radius_2xs">2dp</dimen>
@@ -43,5 +45,11 @@
 
     <!-- chips -->
     <dimen name="chip_height">32dp</dimen>
+
+    <dimen name="on_boarding_btn_size">48dp</dimen>
+    <dimen name="vertical_btn_padding">14dp</dimen>
+    <dimen name="on_boarding_card_top_margin">53dp</dimen>
+    <dimen name="zero_dp">0dp</dimen>
+
 
 </resources>

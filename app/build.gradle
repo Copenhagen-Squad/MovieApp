@@ -37,10 +37,25 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnitPlatformBuilder"
+
+        versionCode project.hasProperty("versionCode") ? project.versionCode.toInteger() : 1
+        versionName project.hasProperty("versionName") ? project.versionName : "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("SIGNING_KEYSTORE") ?: localProperties.getProperty("SIGNING_KEYSTORE"))
+            storePassword System.getenv("SIGNING_STORE_PASSWORD") ?: localProperties.getProperty("SIGNING_STORE_PASSWORD")
+            keyAlias System.getenv("SIGNING_KEY_ALIAS") ?: localProperties.getProperty("SIGNING_KEY_ALIAS")
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD") ?: localProperties.getProperty("SIGNING_KEY_PASSWORD")
+        }
     }
 
     buildTypes {
         release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -126,6 +141,9 @@ dependencies {
 
     // Splash Screen
     implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    // ViewPager2 for OnBoarding
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     // Lottie Animations
     implementation 'com.airbnb.android:lottie:6.4.1'
