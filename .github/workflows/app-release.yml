@@ -58,7 +58,9 @@ jobs:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
       - name: Decode Keystore
-        run: echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
+        run: |
+          mkdir -p release
+          echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
         env:
           SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
