@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -15,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.core.widget.TextViewCompat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -134,8 +134,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.matchResultsFragment -> {
-
-            R.id.myListFragment -> {
                 currentTab = 2
                 setTabSelected(iconMatch, labelMatch, R.drawable.ic_magic_stick_duetone)
             }
@@ -146,6 +144,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun resetAllTabs() {
         setTabUnselected(iconHome, labelHome, R.drawable.ic_home)
