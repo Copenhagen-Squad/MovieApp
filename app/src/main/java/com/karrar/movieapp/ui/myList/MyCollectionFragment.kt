@@ -1,7 +1,6 @@
 package com.karrar.movieapp.ui.myList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -10,16 +9,16 @@ import androidx.navigation.fragment.findNavController
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentMyListsBinding
 import com.karrar.movieapp.ui.base.BaseFragment
-import com.karrar.movieapp.ui.myList.myListUIState.MyListUIEvent
+import com.karrar.movieapp.ui.myList.myCollectionUIState.MyCollectionUIEvent
 import com.karrar.movieapp.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MyListsFragment : BaseFragment<FragmentMyListsBinding>() {
+class MyCollectionFragment : BaseFragment<FragmentMyListsBinding>() {
 
     override val layoutIdFragment: Int = R.layout.fragment_my_lists
-    override val viewModel: MyListsViewModel by activityViewModels()
+    override val viewModel: MyCollectionViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,19 +33,19 @@ class MyListsFragment : BaseFragment<FragmentMyListsBinding>() {
         }
     }
 
-    private fun onEvent(event: MyListUIEvent) {
+    private fun onEvent(event: MyCollectionUIEvent) {
         var action: NavDirections? = null
         when (event) {
-            MyListUIEvent.CreateButtonClicked -> {
-                action = MyListsFragmentDirections.actionMyListFragmentToCreateSavedList()
+            MyCollectionUIEvent.CreateButtonClicked -> {
+                action = MyCollectionFragmentDirections.actionMyListFragmentToCreateSavedList()
             }
-            is MyListUIEvent.DisplayError -> {
+            is MyCollectionUIEvent.DisplayError -> {
                 Toast.makeText(requireContext(), event.errorMessage, Toast.LENGTH_LONG).show()
             }
-            is MyListUIEvent.OnSelectItem -> {
-                action = MyListsFragmentDirections.actionMyListFragmentToSavedListFragment(
-                    event.createdListUIState.listID,
-                    event.createdListUIState.name
+            is MyCollectionUIEvent.OnSelectItem -> {
+                action = MyCollectionFragmentDirections.actionMyListFragmentToSavedListFragment(
+                    event.createdCollectionUIState.listID,
+                    event.createdCollectionUIState.name
                 )
             }
             else -> {
