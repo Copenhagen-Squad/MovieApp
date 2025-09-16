@@ -18,6 +18,8 @@
 
         <import type="android.view.View" />
 
+        <import type="android.text.TextUtils"/>
+
         <import type="android.view.Gravity" />
 
     </data>
@@ -64,7 +66,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                    android:gravity="@{TextUtils.isEmpty(choice.description) ? Gravity.CENTER : Gravity.CENTER_VERTICAL}"
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <TextView
