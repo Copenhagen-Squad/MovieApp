@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.exploringFragment,
-                R.id.myListFragment,
+                R.id.matchResultsFragment,
                 R.id.profileFragment,
             )
         )
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             navigateToDestination(R.id.exploringFragment, 1)
         }
         navMatch.setOnClickListener {
-            navigateToDestination(R.id.myListFragment, 2)
+            navigateToDestination(R.id.matchResultsFragment, 2)
         }
         navMe.setOnClickListener {
             navigateToDestination(R.id.profileFragment, 3)
@@ -128,14 +128,17 @@ class MainActivity : AppCompatActivity() {
                 currentTab = 0
                 setTabSelected(iconHome, labelHome)
             }
+
             R.id.exploringFragment -> {
                 currentTab = 1
                 setTabSelected(iconExplore, labelExplore)
             }
-            R.id.myListFragment -> {
+
+            R.id.matchResultsFragment -> {
                 currentTab = 2
                 setTabSelected(iconMatch, labelMatch)
             }
+
             R.id.profileFragment -> {
                 currentTab = 3
                 setTabSelected(iconMe, labelMe)
