@@ -1,0 +1,81 @@
+name: Release on Firebase
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # ==== Read and increment PATCH ====
+      - name: Read version properties
+        id: version
+        run: |
+          PATCH=$(grep PATCH version.properties | cut -d'=' -f2)
+          PATCH=$((PATCH+1))
+          MAJOR=$(grep MAJOR version.properties | cut -d'=' -f2)
+          MINOR=$(grep MINOR version.properties | cut -d'=' -f2)
+          echo "MAJOR=$MAJOR" >> $GITHUB_ENV
+          echo "MINOR=$MINOR" >> $GITHUB_ENV
+          echo "PATCH=$PATCH" >> $GITHUB_ENV
+          VERSION_NAME="$MAJOR.$MINOR.$PATCH"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+          echo "$PATCH" > patch.tmp
+
+      - name: Update version.properties
+        run: |
+          sed -i "s/PATCH=.*/PATCH=$PATCH/" version.properties
+
+      # ==== Calculate versionCode ====
+      - name: Calculate versionCode
+        id: version_code
+        run: |
+          CODE=$(git rev-list --count origin/develop)
+          echo "VERSION_CODE=$CODE" >> $GITHUB_ENV
+
+      # ==== Setup secrets ====
+      - name: Decode google-services.json
+        run: echo $GOOGLE_SERVICES_JSON | base64 -d > app/google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+
+      - name: Decode Keystore
+        run: echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
+        env:
+          SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
+
+      # ==== Build Release APK ====
+      - name: Build Release APK
+        run: ./gradlew assembleRelease -PversionCode=$VERSION_CODE -PversionName=$VERSION_NAME
+        env:
+          SIGNING_KEYSTORE: release/my-release-key.keystore
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+
+      # ==== Upload to Firebase ====
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers
+          file: app/build/outputs/apk/release/app-release.apk
