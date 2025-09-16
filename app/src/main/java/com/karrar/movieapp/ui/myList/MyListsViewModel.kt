@@ -89,6 +89,10 @@ class MyListsViewModel @Inject constructor(
         _myListUIEvent.update { Event(MyListUIEvent.OnSelectItem(item)) }
     }
 
+    override fun onClickBack() {
+        _myListUIEvent.update { Event(MyListUIEvent.OnBackClick) }
+    }
+
     private fun setError(t: Throwable) {
         _createdListUIState.update {
             val error = if (t.message == NO_LOGIN) {
