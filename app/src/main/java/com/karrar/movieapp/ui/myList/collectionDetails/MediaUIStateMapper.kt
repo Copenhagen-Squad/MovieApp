@@ -1,8 +1,8 @@
-package com.karrar.movieapp.ui.myList.listDetails
+package com.karrar.movieapp.ui.myList.collectionDetails
 
 import com.karrar.movieapp.domain.mappers.Mapper
 import com.karrar.movieapp.domain.models.SaveListDetails
-import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
+import com.karrar.movieapp.ui.myList.collectionDetails.collectionDetailsUIState.SavedMediaUIState
 import javax.inject.Inject
 
 class MediaUIStateMapper @Inject constructor() : Mapper<SaveListDetails, SavedMediaUIState> {
