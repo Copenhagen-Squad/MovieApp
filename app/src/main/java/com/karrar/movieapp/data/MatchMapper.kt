@@ -2,11 +2,10 @@ package com.karrar.movieapp.data
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.karrar.movieapp.ui.match.MatchUiState
-import com.karrar.movieapp.ui.match.ExploreScreenState
-import com.karrar.movieapp.ui.match.MovieScreenState
-import com.karrar.movieapp.ui.match.QuestionUiState
 import com.karrar.movieapp.ui.match.DurationUiState
+import com.karrar.movieapp.ui.match.ExploreScreenState
+import com.karrar.movieapp.ui.match.MatchUiState
+import com.karrar.movieapp.ui.match.MovieScreenState
 import java.time.LocalDate
 
 object MatchMapper {
@@ -47,6 +46,7 @@ object MatchMapper {
                 "Medium" -> {
                     runtimeGte = 90; runtimeLte = 120
                 }
+
                 "Long" -> runtimeGte = 120
             }
         }
