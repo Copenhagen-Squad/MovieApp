@@ -77,7 +77,8 @@
 
                 <TextView
                     android:id="@+id/title_text"
-                    style="@style/Typography.title_lg"
+                    style="@style/Typography.title_sm"
+                    android:textColor="@color/shade_primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_too_small"
