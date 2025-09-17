@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.imageview.ShapeableImageView
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.MediaType
 import com.karrar.movieapp.ui.base.BaseAdapter
@@ -268,6 +269,15 @@ fun ImageView.loadHorizontalPoster(url: String?) {
         crossfade(true)
         placeholder(R.drawable.horizonatal_poster_image_placeholder)
         error(R.drawable.horizonatal_poster_image_placeholder)
+    }
+}
+
+@BindingAdapter("app:imageRes")
+fun setImageRes(view: ShapeableImageView, resId: Int?) {
+    if (resId != null) {
+        view.setImageResource(resId)
+    } else {
+        view.setImageDrawable(null)
     }
 }
 @BindingAdapter("app:highlightEmojiByRating")

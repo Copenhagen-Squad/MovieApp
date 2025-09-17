@@ -134,6 +134,10 @@
     <string name="did_you_watch_it">Did you watch it?</string>
     <string name="give_it_stars">Give it Stars</string>
     <string name="rating">rating</string>
+    <string name="what_mood_are_you_in">What mood are you in?</string>
+    <string name="next">Next</string>
+    <string name="start_matching">Start Matching</string>
+    <string name="loading_recommendations_you_ll_love">Loading recommendations you’ll love...</string>
     <string name="storyline">Storyline</string>
     <string name="what_should_i_watch">What Should I Watch?</string>
     <string name="oops_no_internet">Oops! No Internet</string>

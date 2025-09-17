@@ -360,6 +360,11 @@
             app:argType="integer" />
     </fragment>
     <fragment
+        android:id="@+id/matchQuestionsFragment"
+        android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
+        android:label="MatchQuestionsFragment" />
+  
+  <fragment
         android:id="@+id/matchResultsFragment"
         android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
         tools:layout="@layout/fragment_match_result">
