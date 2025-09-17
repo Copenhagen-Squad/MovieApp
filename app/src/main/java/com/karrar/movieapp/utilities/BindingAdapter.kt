@@ -1,7 +1,9 @@
 package com.karrar.movieapp.utilities
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -268,6 +270,39 @@ fun ImageView.loadHorizontalPoster(url: String?) {
         error(R.drawable.horizonatal_poster_image_placeholder)
     }
 }
+@BindingAdapter("app:highlightEmojiByRating")
+fun highlightEmojiByRating(container: ViewGroup, ratingValue: Float?) {
+    val selectedIndex: Int = ((ratingValue ?: 0f).toInt() - 1).coerceIn(-1, 4)
+
+    val normalScale = 1f
+    val selectedScale = 1.5f
+    val dimAlpha = 0.4f
+
+    val childCount = container.childCount
+    for (childPosition in 0 until childCount) {
+        val childView: ImageView = container.getChildAt(childPosition) as ImageView
+        val isSelected = childPosition == selectedIndex
+
+        childView.animate()
+            .scaleX(if (isSelected) selectedScale else normalScale)
+            .scaleY(if (isSelected) selectedScale else normalScale)
+            .alpha(if (isSelected) 1f else dimAlpha)
+            .setDuration(200)
+            .start()
+    }
+}
+@BindingAdapter("app:starsDrawableByRating")
+fun starsDrawableByRating(container: LinearLayout, ratingValue: Float?) {
+    val ratingInt: Int = (ratingValue ?: 0f).toInt().coerceIn(0, 5)
+    val childCount = container.childCount
+
+    for (index in 0 until childCount) {
+        val starView = container.getChildAt(index) as? ImageView ?: continue
+        val isFilled = index < ratingInt
+        starView.setImageResource(if (isFilled) R.drawable.star_fill_new else R.drawable.star_outline_new)
+    }
+}
+
 
 @BindingAdapter("sectionTitle")
 fun SectionHeaderView.setSectionTitle(title: String?) {

@@ -8,15 +8,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.core.widget.TextViewCompat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -138,38 +137,45 @@ class MainActivity : AppCompatActivity() {
         when (destinationId) {
             R.id.homeFragment -> {
                 currentTab = 0
-                setTabSelected(iconHome, labelHome)
+                setTabSelected(iconHome, labelHome, R.drawable.ic_home_duetone)
             }
+
             R.id.exploringFragment -> {
                 currentTab = 1
-                setTabSelected(iconExplore, labelExplore)
+                setTabSelected(iconExplore, labelExplore, R.drawable.ic_search_duetone)
             }
+
             R.id.myListFragment -> {
                 currentTab = 2
-                setTabSelected(iconMatch, labelMatch)
+                setTabSelected(iconMatch, labelMatch, R.drawable.ic_magic_stick_duetone)
             }
+
             R.id.profileFragment -> {
                 currentTab = 3
-                setTabSelected(iconMe, labelMe)
+                setTabSelected(iconMe, labelMe, R.drawable.ic_user_square_duetone)
             }
         }
     }
 
     private fun resetAllTabs() {
-        setTabUnselected(iconHome, labelHome)
-        setTabUnselected(iconExplore, labelExplore)
-        setTabUnselected(iconMatch, labelMatch)
-        setTabUnselected(iconMe, labelMe)
+        setTabUnselected(iconHome, labelHome, R.drawable.ic_home)
+        setTabUnselected(iconExplore, labelExplore, R.drawable.ic_search)
+        setTabUnselected(iconMatch, labelMatch, R.drawable.ic_magic_stick)
+        setTabUnselected(iconMe, labelMe, R.drawable.ic_user_square)
     }
 
-    private fun setTabSelected(icon: ImageView, label: TextView) {
-        icon.setColorFilter(ContextCompat.getColor(this, android.R.color.holo_blue_bright))
-        label.setTextColor(ContextCompat.getColor(this, android.R.color.holo_blue_bright))
+    private fun setTabSelected(icon: ImageView, label: TextView, selectedIconRes: Int) {
+        icon.setImageResource(selectedIconRes)
+        icon.setColorFilter(ContextCompat.getColor(this, R.color.brand_primary))
+        label.setTextColor(ContextCompat.getColor(this, R.color.brand_primary))
+        TextViewCompat.setTextAppearance(label, R.style.Typography_label_md_semi_bold)
     }
 
-    private fun setTabUnselected(icon: ImageView, label: TextView) {
-        icon.setColorFilter(ContextCompat.getColor(this, android.R.color.darker_gray))
-        label.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
+    private fun setTabUnselected(icon: ImageView, label: TextView, unSelectedIconRes: Int) {
+        icon.setImageResource(unSelectedIconRes)
+        icon.setColorFilter(ContextCompat.getColor(this, R.color.shade_tertiary))
+        label.setTextColor(ContextCompat.getColor(this, R.color.shade_tertiary))
+        TextViewCompat.setTextAppearance(label, R.style.Typography_label_md_regular)
     }
 
     override fun onSupportNavigateUp(): Boolean {

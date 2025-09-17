@@ -132,13 +132,17 @@
     <string name="released_date">Released Date</string>
     <string name="try_again">Try Again</string>
     <string name="join_cineverse">Join CineVerse</string>
+    <string name="arrow">arrow</string>
+    <string name="star_circlr_shape">star circlr shape</string>
+    <string name="let_the_world_lnow_how_you_felt">Let the world lnow how you felt</string>
     <string name="let_s_get_you_set_up_we_ll_take_you_to_the_website_to_create_your_account">Let\'s get you set up! We\'ll take you to the website to create your account.</string>
+    <string name="did_you_watch_it">Did you watch it?</string>
+    <string name="give_it_stars">Give it Stars</string>
     <string name="rating">rating</string>
     <string name="storyline">Storyline</string>
     <string name="what_should_i_watch">What Should I Watch?</string>
     <string name="oops_no_internet">Oops! No Internet</string>
     <string name="looks_like_you_re_offline_let_s_reconnect_so_nyou_don_t_miss_out">Looks like you\'re offline. Let\'s reconnect so\nyou don\'t miss out!</string>
-
     <string name="welcome_to_your_movie_universe">Welcome to your movie universe</string>
     <string name="discover_track_and_rate_your_favorite_movies_series">Discover, track, and rate your favorite\n movies &amp; series.</string>
     <string name="track_everything">Track everything</string>
@@ -149,4 +153,5 @@
     <string name="onboarding_image_description">OnBoarding Image</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">Discover, track and rate your favorite movies and series</string>
     <string name="logo">logo</string>
+    <string name="you_gave_it">You gave it</string>
 </resources>
