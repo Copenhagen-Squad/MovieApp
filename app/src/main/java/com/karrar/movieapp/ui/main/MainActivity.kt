@@ -109,7 +109,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 bottomNavContainer.isVisible = true
             }
-            // ------------------------------------------------------------------------------
 
             updateTabSelection(destination.id)
         }
