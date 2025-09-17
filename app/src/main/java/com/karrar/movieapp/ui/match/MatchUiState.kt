@@ -25,9 +25,7 @@ data class MatchUiState(
     val movieGenre: List<ExploreScreenState.GenreUiState> = emptyList(),
     val matchResults: List<MovieScreenState.MovieDetailsUiState> = emptyList()
 ) {
-
     // ========== Computed Properties ==========
-
     val matchProgress: Float =
         currentQuestionType.ordinal.plus(1).toFloat() / QuestionType.entries.size
 
@@ -54,12 +52,10 @@ data class MatchUiState(
 data class QuestionUiState(
     val id: Int,
     val name: String,
-    val description: String = "null",
+    val description: String = "",
     val isSelected: Boolean = false,
     @DrawableRes val iconResource: Int? = null
 )
-
-
 
 fun getMoodQuestionAnswers(): List<QuestionUiState> = listOf(
     QuestionUiState(

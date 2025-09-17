@@ -32,29 +32,9 @@ data class MovieScreenState(
         val duration: DurationUiState,
         val description: String
     )
-
-    data class DurationUiState(
-        val hours: Int,
-        val minutes: Int
-    ) {
-        override fun toString(): String {
-            return when {
-                hours > 0 -> "${hours}h ${minutes}m"
-                else -> "${minutes}m"
-            }
-        }
-    }
 }
 
-// Define missing data classes
-data class ReviewUiState(
-    val id: String,
-    val author: String,
-    val content: String,
-    val rating: Float?,
-    val createdAt: String
-)
-
+// Define MediaItemUiState data class
 data class MediaItemUiState(
     val id: Int,
     val title: String,
