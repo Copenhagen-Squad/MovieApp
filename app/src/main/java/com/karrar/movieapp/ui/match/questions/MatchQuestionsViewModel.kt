@@ -2,6 +2,7 @@ package com.karrar.movieapp.ui.match.questions
 
 import com.karrar.movieapp.R
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.utilities.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,7 +30,7 @@ class MatchQuestionsViewModel @Inject constructor() :
         updateCurrentQuestion(currentType)
 
         if (currentType == QuestionType.TIME_PERIOD) {
-            _uiState.update { it.copy(isLoading = true, progress = 100) }
+            _uiState.update { it.copy(isLoading = true) }
             return
         }
 
@@ -50,11 +51,9 @@ class MatchQuestionsViewModel @Inject constructor() :
         }
 
         _uiState.update { state ->
-            val total = items.size
-            val answered = _questions.value.count { it.isAnswered }
             state.copy(
                 currentQuestionType = nextType,
-                progress = (answered * 100) / total
+                progress = state.progress + Constants.PROGRESS_VALUE,
             )
         }
     }

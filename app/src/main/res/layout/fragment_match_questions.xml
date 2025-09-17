@@ -31,6 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:trackColor="@color/background_card"
             app:trackCornerRadius="@dimen/radius_full"
+            app:isVisible="@{!isLoading}"
             app:trackThickness="12dp"
             tools:progress="50" />
 
