@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -15,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.core.widget.TextViewCompat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.exploringFragment,
-                R.id.myListFragment,
+                R.id.matchResultsFragment,
                 R.id.profileFragment,
             )
         )
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             navigateToDestination(R.id.exploringFragment, 1)
         }
         navMatch.setOnClickListener {
-            navigateToDestination(R.id.myListFragment, 2)
+            navigateToDestination(R.id.matchResultsFragment, 2)
         }
         navMe.setOnClickListener {
             navigateToDestination(R.id.profileFragment, 3)
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
                 setTabSelected(iconExplore, labelExplore, R.drawable.ic_search_duetone)
             }
 
-            R.id.myListFragment -> {
+            R.id.matchResultsFragment -> {
                 currentTab = 2
                 setTabSelected(iconMatch, labelMatch, R.drawable.ic_magic_stick_duetone)
             }
@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun resetAllTabs() {
         setTabUnselected(iconHome, labelHome, R.drawable.ic_home)

@@ -97,7 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
 
             is HomeUIEvent.ClickLetUsChooseForYouEvent -> {
-                HomeFragmentDirections.actionHomeFragmentToMyListFragment()
+                HomeFragmentDirections.actionHomeFragmentToMatchResultsFragment()
             }
 
             is HomeUIEvent.ClickCollectionList -> {
@@ -108,7 +108,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
 
             HomeUIEvent.ClickSeeAllCollectionsEvent -> {
-                HomeFragmentDirections.actionHomeFragmentToMyListFragment()
+                HomeFragmentDirections.actionHomeFragmentToMatchResultsFragment()
             }
         }
         findNavController().navigate(action)
