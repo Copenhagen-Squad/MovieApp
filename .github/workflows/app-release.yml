@@ -59,8 +59,8 @@ jobs:
 
       - name: Decode Keystore
         run: |
-          mkdir -p app/release
-          echo $SIGNING_KEYSTORE_BASE64 | base64 -d > app/release/my-release-key.keystore
+          mkdir -p release
+          echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
         env:
           SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
@@ -68,7 +68,7 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease -PversionCode=$VERSION_CODE -PversionName=$VERSION_NAME
         env:
-          SIGNING_KEYSTORE: app/release/my-release-key.keystore
+          SIGNING_KEYSTORE: release/my-release-key.keystore
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}

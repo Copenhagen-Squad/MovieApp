@@ -44,7 +44,15 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(System.getenv("SIGNING_KEYSTORE") ?: localProperties.getProperty("SIGNING_KEYSTORE"))
+            // Use project root-relative path for keystore
+            def keystorePath = System.getenv("SIGNING_KEYSTORE") ?: localProperties.getProperty("SIGNING_KEYSTORE")
+            if (keystorePath) {
+                // If path is relative, make it relative to project root
+                if (!keystorePath.startsWith('/')) {
+                    keystorePath = rootProject.file(keystorePath).absolutePath
+                }
+                storeFile file(keystorePath)
+            }
             storePassword System.getenv("SIGNING_STORE_PASSWORD") ?: localProperties.getProperty("SIGNING_STORE_PASSWORD")
             keyAlias System.getenv("SIGNING_KEY_ALIAS") ?: localProperties.getProperty("SIGNING_KEY_ALIAS")
             keyPassword System.getenv("SIGNING_KEY_PASSWORD") ?: localProperties.getProperty("SIGNING_KEY_PASSWORD")
@@ -56,7 +64,6 @@ android {
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.release
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
