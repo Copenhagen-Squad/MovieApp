@@ -18,7 +18,7 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
 
     private val pageCb = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
-            binding.item = items[position]
+            binding.itemMatch = items[position]
             binding.executePendingBindings()
         }
     }
@@ -93,7 +93,7 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
         items = newItems
         if (items.isEmpty()) return
 
-        binding.item = items.first()
+        binding.itemMatch = items.first()
         binding.poster.adapter = posterAdapter
 
         posterAdapter.submitList(items) {
@@ -121,7 +121,7 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
                 val middle = items.size / 2
                 pager.setCurrentItem(middle, false)
 
-                binding.item = items[middle]
+                binding.itemMatch = items[middle]
                 binding.executePendingBindings()
             }
         }
