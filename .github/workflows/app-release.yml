@@ -169,29 +169,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # ==== Create GitHub Release ====
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ env.VERSION_NAME }}
-          release_name: MovieApp v${{ env.VERSION_NAME }}
-          body: |
-            ## MovieApp v${{ env.VERSION_NAME }}
-            
-            ### Release Info
-            - **Version Code:** ${{ env.VERSION_CODE }}
-            - **Build Date:** $(date '+%Y-%m-%d %H:%M:%S UTC')
-            - **Commit:** ${{ github.sha }}
-            
-            ### Download
-            - Available on Firebase App Distribution
-            - Shared in Slack channel #s_copenhagen
-
-          draft: false
-          prerelease: false
-
       # ==== Failure notification ====
       - name: Notify Slack on failure
         if: failure()
