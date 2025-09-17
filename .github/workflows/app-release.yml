@@ -11,16 +11,20 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+        with:
+          cache-read-only: false
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -29,16 +33,25 @@ jobs:
       - name: Read version properties
         id: version
         run: |
+          if [[ ! -f version.properties ]]; then
+            echo "version.properties not found, creating default..."
+            echo "MAJOR=1" > version.properties
+            echo "MINOR=0" > version.properties
+            echo "PATCH=0" >> version.properties
+          fi
+          
           PATCH=$(grep PATCH version.properties | cut -d'=' -f2)
           PATCH=$((PATCH+1))
           MAJOR=$(grep MAJOR version.properties | cut -d'=' -f2)
           MINOR=$(grep MINOR version.properties | cut -d'=' -f2)
+          
           echo "MAJOR=$MAJOR" >> $GITHUB_ENV
           echo "MINOR=$MINOR" >> $GITHUB_ENV
           echo "PATCH=$PATCH" >> $GITHUB_ENV
           VERSION_NAME="$MAJOR.$MINOR.$PATCH"
           echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-          echo "$PATCH" > patch.tmp
+          
+          echo "Building version: $VERSION_NAME"
 
       - name: Update version.properties
         run: |
@@ -48,30 +61,66 @@ jobs:
       - name: Calculate versionCode
         id: version_code
         run: |
-          CODE=$(git rev-list --count origin/develop)
+          CODE=$(git rev-list --count HEAD)
           echo "VERSION_CODE=$CODE" >> $GITHUB_ENV
+          echo "Version Code: $CODE"
 
       # ==== Setup secrets ====
       - name: Decode google-services.json
-        run: echo $GOOGLE_SERVICES_JSON | base64 -d > app/google-services.json
+        run: |
+          if [[ -z "$GOOGLE_SERVICES_JSON" ]]; then
+            echo "ERROR: GOOGLE_SERVICES_JSON secret is not set"
+            exit 1
+          fi
+          echo $GOOGLE_SERVICES_JSON | base64 -d > app/google-services.json
+          echo "SUCCESS: google-services.json decoded successfully"
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
       - name: Decode Keystore
         run: |
+          if [[ -z "$SIGNING_KEYSTORE_BASE64" ]]; then
+            echo "ERROR: SIGNING_KEYSTORE_BASE64 secret is not set"
+            exit 1
+          fi
           mkdir -p release
           echo $SIGNING_KEYSTORE_BASE64 | base64 -d > release/my-release-key.keystore
+          echo "SUCCESS: Keystore decoded successfully"
         env:
           SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
+      - name: Validate Keystore
+        run: |
+          if [[ ! -f "release/my-release-key.keystore" ]]; then
+            echo "ERROR: Keystore file not found"
+            exit 1
+          fi
+          echo "SUCCESS: Keystore file exists"
+
       # ==== Build Release APK ====
       - name: Build Release APK
-        run: ./gradlew assembleRelease -PversionCode=$VERSION_CODE -PversionName=$VERSION_NAME
+        run: |
+          echo "Building APK version $VERSION_NAME ($VERSION_CODE)"
+          ./gradlew assembleRelease \
+            -PversionCode=$VERSION_CODE \
+            -PversionName=$VERSION_NAME \
+            --no-daemon \
+            --stacktrace
         env:
           SIGNING_KEYSTORE: release/my-release-key.keystore
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+
+      - name: Verify APK exists
+        run: |
+          APK_PATH="app/build/outputs/apk/release/app-release.apk"
+          if [[ ! -f "$APK_PATH" ]]; then
+            echo "ERROR: APK not found at $APK_PATH"
+            exit 1
+          fi
+          APK_SIZE=$(stat -c%s "$APK_PATH")
+          echo "SUCCESS: APK built successfully ($(($APK_SIZE / 1024 / 1024)) MB)"
 
       # ==== Upload to Firebase ====
       - name: Upload to Firebase App Distribution
@@ -81,3 +130,79 @@ jobs:
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: testers
           file: app/build/outputs/apk/release/app-release.apk
+          releaseNotes: |
+            New release: v${{ env.VERSION_NAME }}
+            Version Code: ${{ env.VERSION_CODE }}
+            Built from commit: ${{ github.sha }}
+            Build Date: $(date '+%Y-%m-%d %H:%M:%S UTC')
+
+      # ==== Upload to Slack ====
+      - name: Upload APK to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL: "#s_copenhagen"
+        run: |
+          APK_SIZE=$(stat -c%s "app/build/outputs/apk/release/app-release.apk")
+          APK_SIZE_MB=$(($APK_SIZE / 1024 / 1024))
+          
+          curl -F file=@app/build/outputs/apk/release/app-release.apk \
+               -F "channels=$SLACK_CHANNEL" \
+               -F "initial_comment=*New MovieApp Release*
+          Version: v$VERSION_NAME ($VERSION_CODE)
+          Size: ${APK_SIZE_MB}MB
+          Commit: \`${GITHUB_SHA:0:7}\`
+          Author: $GITHUB_ACTOR
+          Built: $(date '+%Y-%m-%d %H:%M:%S UTC')
+          
+          Ready for testing!" \
+               -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+               https://slack.com/api/files.upload
+
+      # ==== Commit version update ====
+      - name: Commit version update
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add version.properties
+          git commit -m "Bump version to $VERSION_NAME" || exit 0
+          git push || echo "Failed to push version update"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ==== Create GitHub Release ====
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.VERSION_NAME }}
+          release_name: MovieApp v${{ env.VERSION_NAME }}
+          body: |
+            ## MovieApp v${{ env.VERSION_NAME }}
+            
+            ### Release Info
+            - **Version Code:** ${{ env.VERSION_CODE }}
+            - **Build Date:** $(date '+%Y-%m-%d %H:%M:%S UTC')
+            - **Commit:** ${{ github.sha }}
+            
+            ### Download
+            - Available on Firebase App Distribution
+            - Shared in Slack channel #s_copenhagen
+
+          draft: false
+          prerelease: false
+
+      # ==== Failure notification ====
+      - name: Notify Slack on failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL: "#s_copenhagen"
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+               --data "{
+                 \"channel\":\"$SLACK_CHANNEL\",
+                 \"text\":\"*MovieApp Build Failed*\nCommit: \`${GITHUB_SHA:0:7}\`\nAuthor: $GITHUB_ACTOR\nTime: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\n[View Details]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
+               }" \
+               -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+               https://slack.com/api/chat.postMessage
