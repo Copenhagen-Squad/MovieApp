@@ -24,19 +24,17 @@ class SignUpBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Find the views in the bottom sheet layout
         val goWebsiteButton = view.findViewById<TextView>(R.id.button_go_to_website)
         val cancelButton = view.findViewById<TextView>(R.id.button_cancel)
 
-        // Set up click listeners for the buttons
         goWebsiteButton.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.TMDB_SIGNUP_URL))
             startActivity(browserIntent)
-            dismiss() // Close the bottom sheet after the action
+            dismiss()
         }
 
         cancelButton.setOnClickListener {
-            dismiss() // Close the bottom sheet
+            dismiss()
         }
     }
 
