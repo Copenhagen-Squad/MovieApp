@@ -3,7 +3,7 @@ name: Release on Firebase
 on:
   push:
     branches:
-      - develop
+      - release-app-test
 
 jobs:
   release:
