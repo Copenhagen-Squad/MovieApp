@@ -34,11 +34,11 @@
             app:destination="@id/watchHistoryFragment" />
 
         <action
-            android:id="@+id/action_homeFragment_to_myListFragment"
-            app:destination="@+id/myListFragment"/>
+            android:id="@+id/action_homeFragment_to_matchResultsFragment"
+            app:destination="@+id/matchResultsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_listDetailsFragment"
-            app:destination="@+id/listDetailsFragment"/>
+            app:destination="@+id/listDetailsFragment" />
 
 
     </fragment>
@@ -54,8 +54,8 @@
 
 
         <action
-            android:id="@+id/action_loginFragment_to_myListFragment"
-            app:destination="@id/myListFragment" />
+            android:id="@+id/action_loginFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
         <action
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -358,6 +358,11 @@
         <argument
             android:name="tvShowId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchResultsFragment"
+        android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
+        tools:layout="@layout/fragment_match_result">
     </fragment>
 
 </navigation>
