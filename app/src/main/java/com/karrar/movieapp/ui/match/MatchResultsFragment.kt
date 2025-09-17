@@ -192,20 +192,18 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result), DetailInt
     }
 
     private fun convertToMovieDetailsUIState(matchItem: MatchItemUI): MovieDetailsUIState {
-        // Convert MatchItemUI to MovieDetailsUIState for data binding compatibility
-        // Handle nullable properties from MatchItemUI safely
         return MovieDetailsUIState(
             id = matchItem.id,
-            title = matchItem.title.orEmpty(),
-            voteAverage = matchItem.voteAverage ?: 0.0,
+            image = matchItem.posterUrl.orEmpty(),
+            name = matchItem.title.orEmpty(),
+            releaseDate = matchItem.releaseDateShort.orEmpty(),
+            genres = matchItem.genres.orEmpty(),
+            review = matchItem.voteAverage?.toInt() ?: 0,
+            specialNumber = 0, // Placeholder, as runtime in minutes is not provided
             hours = extractHours(matchItem.runtimeFormatted),
             minutes = extractMinutes(matchItem.runtimeFormatted),
-            // Add other necessary fields with default values or conversions
-            genres = matchItem.genres.orEmpty(),
-            releaseDate = matchItem.releaseDateShort.orEmpty(),
-            posterUrl = matchItem.posterUrl.orEmpty(),
-            backdropUrl = matchItem.backdropUrl.orEmpty(),
-            isMovie = matchItem.isMovie
+            voteAverage = matchItem.voteAverage?.toString() ?: "0.0",
+            overview = "" // Placeholder, as overview is not provided
         )
     }
 

@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:mediaPoster="@{item.posterUrl}"
+            app:mediaPoster="@{item.image}"
             app:shapeAppearanceOverlay="@style/RoundedCorners"
             tools:src="@drawable/image" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{item.title}"
+                android:text="@{item.name}"
                 android:textAppearance="@style/Typography.title_md"
                 android:textColor="@color/shade_primary"
                 app:layout_constraintStart_toStartOf="parent"
