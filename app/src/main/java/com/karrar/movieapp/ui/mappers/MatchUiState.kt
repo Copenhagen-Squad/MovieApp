@@ -1,8 +1,11 @@
-package com.karrar.movieapp.ui.match
+package com.karrar.movieapp.ui.mappers
 
 import androidx.annotation.DrawableRes
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.QuestionType
+import com.karrar.movieapp.ui.match.ExploreScreenState
+import com.karrar.movieapp.ui.match.MatchPages
+import com.karrar.movieapp.ui.match.MovieScreenState
 
 data class MatchUiState(
     val isLoading: Boolean = false,

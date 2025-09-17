@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.karrar.movieapp.ui.match.DurationUiState
 import com.karrar.movieapp.ui.match.ExploreScreenState
-import com.karrar.movieapp.ui.match.MatchUiState
+import com.karrar.movieapp.ui.mappers.MatchUiState
 import com.karrar.movieapp.ui.match.MovieScreenState
 import java.time.LocalDate
 
