@@ -17,7 +17,18 @@ class CustomSwitch @JvmOverloads constructor(
     private val binding =
         SwitchToggleBinding.inflate(LayoutInflater.from(context), this)
 
-    private var isOn = false
+    val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    val themeMode = prefs.getString("theme_mode", null)
+
+    private var isOn =  when (themeMode) {
+        "dark" -> true
+        "light" -> false
+        else -> {
+            resources.configuration.uiMode and
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK ==
+                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+        }
+    }
     private var listener: ((Boolean) -> Unit)? = null
 
     init {
