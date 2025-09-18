@@ -114,6 +114,12 @@
     <string name="logout">Logout</string>
     <string name="history">History</string>
     <string name="my_collections">My Collections</string>
+
+    <string name="enter_your_email_or_username">Enter your email or username</string>
+    <string name="welcome_back_to_cinaverse">Welcome back to CinaVerse!</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="join_as_a_guest">Join as a Guest</string>
+    <string name="create_a_new_account">Create a New Account</string>
     <string name="match">Match</string>
     <string name="actor_placeholder">Actor placeholder</string>
     <string name="no_img">No Img</string>
@@ -148,6 +154,7 @@
     <string name="get_started">Get Started</string>
     <string name="onboarding_image_description">OnBoarding Image</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">Discover, track and rate your favorite movies and series</string>
+    <string name="logo">logo</string>
     <string name="you_gave_it" translatable="false">You gave it</string>
     <string name="view_details" translatable="false">View Details</string>
     <string name="answer_a_few_quick_questions_and_we_ll_match_you_with_the_perfect_picks" translatable="false">Answer a few quick questions and we’ll match you with the perfect picks.</string>
