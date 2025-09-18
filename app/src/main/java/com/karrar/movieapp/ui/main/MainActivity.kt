@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.exploringFragment,
-                R.id.matchResultsFragment,
+                R.id.matchFragment,
                 R.id.profileFragment,
             )
         )
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             navigateToDestination(R.id.exploringFragment, 1)
         }
         navMatch.setOnClickListener {
-            navigateToDestination(R.id.matchResultsFragment, 2)
+            navigateToDestination(R.id.matchFragment, 2)
         }
         navMe.setOnClickListener {
             navigateToDestination(R.id.profileFragment, 3)
