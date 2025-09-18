@@ -10,10 +10,23 @@
             type="com.karrar.movieapp.ui.profile.watchhistory.WatchHistoryViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_screen">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/background_screen"
+        >
+
+        <com.karrar.movieapp.ui.components.header.AppBar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:AppBarTitle="@string/history"
+            app:onClickBack="@{() -> viewModel.onClickBack()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_watch_history"
@@ -26,18 +39,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar"
             tools:listitem="@layout/item_watch_history" />
 
-        <include
-            android:id="@+id/no_history"
-            layout="@layout/no_history"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showWhenListEmpty="@{viewModel.uiState.allMedia}"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

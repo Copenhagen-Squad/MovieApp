@@ -13,4 +13,5 @@ class ListDetailsAdapter(
 }
 interface ListDetailsInteractionListener : BaseInteractionListener {
     fun onItemClick(item: SavedMediaUIState)
+    fun onClickBack()
 }

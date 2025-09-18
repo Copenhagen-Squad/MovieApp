@@ -12,4 +12,5 @@ class CreatedListAdapter(items: List<CreatedCollectionUIState>, listener: Create
 
 interface CreatedListInteractionListener : BaseInteractionListener {
     fun onListClick(item: CreatedCollectionUIState)
+    fun onClickBack()
 }
