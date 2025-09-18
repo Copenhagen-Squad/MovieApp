@@ -79,5 +79,16 @@
             app:isVisible="@{viewModel.ratedUiState.loading}"
             />
 
+        <!-- empty List -->
+        <include
+            android:id="@+id/no_ratings"
+            layout="@layout/no_ratings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:isListEmpty="@{viewModel.ratedUiState.ratedList}"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
