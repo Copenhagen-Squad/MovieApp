@@ -6,11 +6,13 @@ import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.utilities.Constants
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,12 +33,18 @@ class MyRatingsViewModel @Inject constructor(
     }
 
     override fun getData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _ratedUiState.update { it.copy(isLoading = true) }
             try {
-                val listOfRated =
-                    getRatedUseCase().map { rate -> ratedUIStateMapper.map(rate) }
-                _ratedUiState.update { it.copy(ratedList = listOfRated, isLoading = false) }
+                val listOfRatedMovies =
+                    getRatedUseCase.getRatedMovie()
+                        .map { rate -> ratedUIStateMapper.map(rate) }
+
+                val listOfRatedTvShows =
+                    getRatedUseCase.getRatedTvShow() // series
+                        .map { rate -> ratedUIStateMapper.map(rate) }
+
+                _ratedUiState.update { it.copy(rateMovies = listOfRatedMovies, ratedSeries = listOfRatedTvShows, isLoading = false) }
             } catch (e: Throwable) {
                 _ratedUiState.update { it.copy(error = listOf(Error("")), isLoading = false) }
             }
@@ -45,16 +53,16 @@ class MyRatingsViewModel @Inject constructor(
 
 
     override fun onClickMovie(movieId: Int) {
-        ratedUiState.value.ratedList.let { it ->
-            val item = it.find { it.id == movieId }
-            item?.let {
-                if (it.mediaType == Constants.MOVIE) {
-                    _myRatingUIEvent.update { Event(MyRatingUIEvent.MovieEvent(movieId)) }
-                } else {
-                    _myRatingUIEvent.update { Event(MyRatingUIEvent.TVShowEvent(movieId)) }
-                }
-            }
-        }
+//        ratedUiState.value.ratedList.let { it ->
+//            val item = it.find { it.id == movieId }
+//            item?.let {
+//                if (it.mediaType == Constants.MOVIE) {
+//                    _myRatingUIEvent.update { Event(MyRatingUIEvent.MovieEvent(movieId)) }
+//                } else {
+//                    _myRatingUIEvent.update { Event(MyRatingUIEvent.TVShowEvent(movieId)) }
+//                }
+//            }
+//        }
     }
 
     fun retryConnect() {
