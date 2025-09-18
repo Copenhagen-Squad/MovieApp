@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentMatchResultBinding
+import com.karrar.movieapp.ui.movieDetails.MovieDetailsUIEvent
+import com.karrar.movieapp.utilities.Event
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
 class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
 
@@ -15,6 +19,8 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
     private val posterAdapter = MatchPostersAdapter()
 
     private var items: List<MatchItemUI> = emptyList()
+    private val _movieDetailsUIEvent = MutableStateFlow<Event<MovieDetailsUIEvent?>>(Event(null))
+
 
     private val pageCb = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
@@ -32,14 +38,22 @@ class MatchResultsFragment : Fragment(R.layout.fragment_match_result) {
                 Toast.makeText(requireContext(), "Details: ${item.title}", Toast.LENGTH_SHORT)
                     .show()
             }
+//
+//            override fun onClickSave() {
+//                _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ClickSaveEvent) }
+//            }
+//
+//            override fun onClickPlayTrailer() {
+//                _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ClickPlayTrailerEvent) }
+//            }
 
             override fun onPlay(item: MatchItemUI) {
-                Toast.makeText(requireContext(), "Play trailer: ${item.title}", Toast.LENGTH_SHORT)
-                    .show()
+                _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ClickPlayTrailerEvent) }
+
             }
 
             override fun onSave(item: MatchItemUI) {
-                Toast.makeText(requireContext(), "Saved: ${item.title}", Toast.LENGTH_SHORT).show()
+                _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ClickSaveEvent) }
             }
 
             override fun onDetails(item: MatchItemUI) {
