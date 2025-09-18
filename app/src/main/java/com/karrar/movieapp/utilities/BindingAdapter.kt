@@ -18,6 +18,7 @@ import com.karrar.movieapp.domain.enums.MediaType
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
+import com.karrar.movieapp.ui.components.header.AppBar
 import com.karrar.movieapp.ui.components.header.SectionHeaderView
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -322,4 +323,14 @@ fun SectionHeaderView.setSectionTitle(title: String?) {
 @BindingAdapter("onSeeAllClick")
 fun SectionHeaderView.setOnSeeAllClick(listener: (() -> Unit)?) {
     listener?.let { setSeeAllClickListener(it) }
+}
+
+@BindingAdapter("onClickBack")
+fun AppBar.setOnClickBack(listener: (() -> Unit)?) {
+    listener?.let { setOnBackClickListener(it) }
+}
+
+@BindingAdapter("AppBarTitle")
+fun AppBar.bindAppBarTitle(title: String?) {
+    setTitle(title ?: "")
 }

@@ -19,7 +19,7 @@ class CollectionDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, viewModel.args.listName)
+        setTitle(false)
         binding.lists.adapter = ListDetailsAdapter(mutableListOf(), viewModel)
         collectLast(viewModel.listDetailsUIEvent) {
             it.getContentIfNotHandled()?.let { onEvent(it) }
@@ -33,6 +33,8 @@ class CollectionDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
             } else {
                 navigateToTvShowDetails(event.savedMediaUIState.mediaID)
             }
+        } else if (event is CollectionDetailsUIEvent.OnClickBack) {
+            navigateBack()
         }
     }
 
@@ -46,6 +48,10 @@ class CollectionDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
         findNavController().navigate(
             CollectionDetailsFragmentDirections.actionListDetailsFragmentToTvShowDetailsFragment(id)
         )
+    }
+
+    private fun navigateBack() {
+        findNavController().popBackStack()
     }
 
 }

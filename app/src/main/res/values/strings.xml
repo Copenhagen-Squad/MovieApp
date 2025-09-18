@@ -101,6 +101,7 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
+    <string name="bookmark">Bookmark</string>
     <string name="icon">icon</string>
     <string name="info_section">section info\n</string>
     <string name="button">Button</string>
@@ -164,4 +165,9 @@
     <string name="movie_title">Movie</string>
     <string name="add">add</string>
     <string name="discover_your_match">Discover Your Match</string>
+    <string name="let_us_choose_for_you">Let Us Choose For You!</string>
+    <string name="we_ll_help_you_skip_the_scroll_and_go_straight_to_the_good_stuff">We’ll help you skip the scroll and go straight to the good stuff.</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_collection">My Collection</string>
+    <string name="welcome">Welcome</string>
 </resources>

@@ -53,4 +53,8 @@ class WatchHistoryViewModel @Inject constructor(
         }
     }
 
+    override fun onClickBack() {
+        _watchHistoryUIEvent.update { Event(WatchHistoryUIEvent.BackEvent) }
+    }
+
 }

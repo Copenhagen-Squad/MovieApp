@@ -32,6 +32,9 @@ class CollectionDetailsViewModel @Inject constructor(
     private val _collectionDetailsUIEvent = MutableStateFlow<Event<CollectionDetailsUIEvent?>>(Event(null))
     val listDetailsUIEvent = _collectionDetailsUIEvent.asStateFlow()
 
+    val listTitle: String
+        get() = args.listName ?: "Default List Name"
+
     init {
         getData()
     }
@@ -66,6 +69,10 @@ class CollectionDetailsViewModel @Inject constructor(
 
     override fun onItemClick(item: SavedMediaUIState) {
         _collectionDetailsUIEvent.update { Event(CollectionDetailsUIEvent.OnItemSelected(item)) }
+    }
+
+    override fun onClickBack() {
+        _collectionDetailsUIEvent.update { Event(CollectionDetailsUIEvent.OnClickBack) }
     }
 
 }

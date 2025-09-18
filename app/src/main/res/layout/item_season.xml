@@ -42,7 +42,7 @@
             android:layout_width="48dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_extra_large"
+            android:layout_marginTop="12dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@id/text_season_description"
             app:layout_constraintDimensionRatio="1:1.6"

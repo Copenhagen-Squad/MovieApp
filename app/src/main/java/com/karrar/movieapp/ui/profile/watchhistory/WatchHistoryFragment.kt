@@ -17,7 +17,7 @@ class WatchHistoryFragment : BaseFragment<FragmentWatchHistoryBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getString(R.string.history))
+        setTitle(false)
         binding.recyclerViewWatchHistory.adapter = WatchHistoryAdapter(emptyList(), viewModel)
         collectEvent()
     }
@@ -29,19 +29,20 @@ class WatchHistoryFragment : BaseFragment<FragmentWatchHistoryBinding>() {
     }
 
     private fun onEvent(event: WatchHistoryUIEvent) {
-        val action = when (event) {
+        when (event) {
             is WatchHistoryUIEvent.MovieEvent -> {
-                WatchHistoryFragmentDirections.actionWatchHistoryFragmentToMovieDetailFragment(
-                    event.movieID
-                )
+                val action = WatchHistoryFragmentDirections
+                    .actionWatchHistoryFragmentToMovieDetailFragment(event.movieID)
+                findNavController().navigate(action)
             }
             is WatchHistoryUIEvent.TVShowEvent -> {
-                WatchHistoryFragmentDirections.actionWatchHistoryFragmentToTvShowDetailsFragment(
-                    event.tvShowID
-                )
+                val action = WatchHistoryFragmentDirections
+                    .actionWatchHistoryFragmentToTvShowDetailsFragment(event.tvShowID)
+                findNavController().navigate(action)
+            }
+            WatchHistoryUIEvent.BackEvent -> {
+                findNavController().popBackStack()
             }
         }
-        findNavController().navigate(action)
     }
-
 }

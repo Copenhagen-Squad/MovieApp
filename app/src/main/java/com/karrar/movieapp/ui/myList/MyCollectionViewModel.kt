@@ -89,6 +89,10 @@ class MyCollectionViewModel @Inject constructor(
         _myCollectionUIEvent.update { Event(MyCollectionUIEvent.OnSelectItem(item)) }
     }
 
+    override fun onClickBack() {
+        _myCollectionUIEvent.update { Event(MyCollectionUIEvent.OnBackClick) }
+    }
+
     private fun setError(t: Throwable) {
         _createdListUIState.update {
             val error = if (t.message == NO_LOGIN) {
