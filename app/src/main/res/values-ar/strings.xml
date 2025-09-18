@@ -148,10 +148,15 @@
     <string name="get_started">ابدأ</string>
     <string name="onboarding_image_description">صورة شاشة الترحيب</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">اكتشف وتابع وقيّم أفلامك ومسلسلاتك المفضلة</string>
+    <string name="logo">شعار</string>
+    <string name="you_gave_it">لقد أعطيته</string>
+    <string name="let_us_choose_for_you">دعنا نختار لك!</string>
+    <string name="we_ll_help_you_skip_the_scroll_and_go_straight_to_the_good_stuff">سنساعدك على تجاوز التمرير والذهاب مباشرة للبرامج الجيدة</string>
 
     <string name="enter_your_email_or_username">أدخل الايميل او اسم المستخدم</string>
     <string name="welcome_back_to_cinaverse">مرحبا بعودتك في  CinaVerse!</string>
     <string name="forget_password">نسيت كلمة المرور؟ </string>
     <string name="join_as_a_guest">الانضمام ك زائر </string>
     <string name="create_a_new_account">انشاء حساب جديد</string>
+
 </resources>
