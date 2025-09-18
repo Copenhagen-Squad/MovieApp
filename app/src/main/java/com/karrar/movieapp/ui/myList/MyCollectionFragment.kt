@@ -22,7 +22,7 @@ class MyCollectionFragment : BaseFragment<FragmentMyListsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getString(R.string.myList))
+        setTitle(false)
         binding.savedList.adapter = CreatedListAdapter(emptyList(), viewModel)
         collectEvent()
     }
@@ -47,6 +47,9 @@ class MyCollectionFragment : BaseFragment<FragmentMyListsBinding>() {
                     event.createdCollectionUIState.listID,
                     event.createdCollectionUIState.name
                 )
+            }
+            MyCollectionUIEvent.OnBackClick -> {
+                findNavController().popBackStack()
             }
             else -> {
             }
