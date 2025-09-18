@@ -4,11 +4,14 @@
     <dimen name="spacing_extra_large">32dp</dimen>
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_medium">16dp</dimen>
-    <dimen name="spacing_extra_small">12dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
     <dimen name="spacing_extra_extra_large">50dp</dimen>
+    <dimen name="spacing_61">61dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>

@@ -3,7 +3,6 @@ package com.karrar.movieapp.data
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.karrar.movieapp.ui.match.DurationUiState
-import com.karrar.movieapp.ui.match.ExploreScreenState
 import com.karrar.movieapp.ui.mappers.MatchUiState
 import com.karrar.movieapp.ui.match.MovieScreenState
 import java.time.LocalDate
@@ -67,32 +66,6 @@ object MatchMapper {
             runtimeLte = runtimeLte,
             releaseDateGte = releaseDateGte,
             releaseDateLte = releaseDateLte
-        )
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun toUiState(
-        movie: MovieEntity,
-        genres: List<ExploreScreenState.GenreUiState>
-    ): MovieScreenState.MovieDetailsUiState {
-        return MovieScreenState.MovieDetailsUiState(
-            id = movie.id,
-            title = movie.title,
-            trailerUrl = "", // Add trailer URL if available in movie object
-            posterUrl = movie.posterPath ?: "",
-            rating = movie.voteAverage?.toString() ?: "0.0",
-            genres = movie.genreIds?.mapNotNull { genreId ->
-                genres.firstOrNull { it.id == genreId }?.name
-            } ?: emptyList(),
-            releaseDate = movie.releaseDate?.let {
-                try {
-                    LocalDate.parse(it)
-                } catch (e: Exception) {
-                    null
-                }
-            },
-            duration = DurationUiState(0, 0), // Add actual duration if available
-            description = movie.overview ?: ""
         )
     }
 }

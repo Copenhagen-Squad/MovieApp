@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var labelExplore: TextView
     private lateinit var labelMatch: TextView
     private lateinit var labelMe: TextView
+
+    private lateinit var bottomNavContainer: LinearLayout
 
     private var currentTab = 0
 
@@ -82,6 +85,8 @@ class MainActivity : AppCompatActivity() {
         labelExplore = binding.labelExplore
         labelMatch = binding.labelMatch
         labelMe = binding.labelMe
+
+        bottomNavContainer = binding.customBottomNavigation
     }
 
     private fun setupCustomBottomNavigation() {
@@ -99,6 +104,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
+            if (destination.id == R.id.loginFragment) {
+                bottomNavContainer.isVisible = false
+            } else {
+                bottomNavContainer.isVisible = true
+            }
+
             updateTabSelection(destination.id)
         }
 
@@ -166,7 +178,6 @@ class MainActivity : AppCompatActivity() {
         label.setTextColor(ContextCompat.getColor(this, R.color.shade_tertiary))
         TextViewCompat.setTextAppearance(label, R.style.Typography_label_md_regular)
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
