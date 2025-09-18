@@ -158,5 +158,14 @@
     <string name="forget_password">نسيت كلمة المرور؟ </string>
     <string name="join_as_a_guest">الانضمام ك زائر </string>
     <string name="create_a_new_account">انشاء حساب جديد</string>
+    <string name="no_collections_yet">لا توجد مجموعات حتى الآن</string>
+    <string name="start_building_your_personal_library_by_saving_movies_or_series_you_want_to_remember">ابدأ ببناء مكتبتك الشخصية عن طريق حفظ الأفلام أو المسلسلات التي تريد تذكرها.</string>
+    <string name="start_collecting">ابدأ التجميع</string>
+    <string name="no_history_yet">لا يوجد تاريخ حتى الآن</string>
+    <string name="it_s_quiet_in_here_start_watching_and_we_ll_keep_track_for_you">إنه هادئ هنا... ابدأ بالمشاهدة وسنستمر في تتبع الأمر لك.</string>
+    <string name="no_ratings_yet">لا يوجد تقييمات حتى الآن</string>
+    <string name="rate_movies_and_series_you_ve_watched_to_track_what_you_love_and_what_you_don_t">قم بتقييم الأفلام والمسلسلات التي شاهدتها لتتبع ما تحبه وما لا تحبه.</string>
+    <string name="start_rating">بدء التقييم</string>
+    <string name="find_something_to_watch">ابحث عن شيء لمشاهدته</string>
 
 </resources>
