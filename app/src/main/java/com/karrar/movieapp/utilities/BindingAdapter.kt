@@ -19,6 +19,7 @@ import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.Locale
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -266,4 +267,10 @@ fun ImageView.loadHorizontalPoster(url: String?) {
         placeholder(R.drawable.horizonatal_poster_image_placeholder)
         error(R.drawable.horizonatal_poster_image_placeholder)
     }
+}
+
+@BindingAdapter("app:formattedRating")
+fun setRating(textView: TextView, voteAverage: Double) {
+    val formatted = String.format(Locale.US, "%.1f", voteAverage / 2)
+    textView.text = formatted
 }
