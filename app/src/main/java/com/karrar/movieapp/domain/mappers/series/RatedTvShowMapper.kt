@@ -16,7 +16,8 @@ class RatedTvShowMapper @Inject constructor() : Mapper<RatedTvShowDto, Rated> {
             posterPath = BuildConfig.IMAGE_BASE_PATH + input.backdropPath,
             rating = input.rating ?: 0F,
             releaseDate = "",
-            mediaType = Constants.TV_SHOWS
+            mediaType = Constants.TV_SHOWS,
+            voteAverage = input.voteAverage ?: 0.0
         )
     }
 }
