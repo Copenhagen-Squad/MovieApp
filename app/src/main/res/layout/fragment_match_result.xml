@@ -7,23 +7,12 @@
     <data>
 
         <variable
-            name="itemMatch"
+            name="item"
             type="com.karrar.movieapp.ui.match.MatchItemUI" />
-
-        <variable
-            name="itemMovie"
-            type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState" />
-
-        <variable
-            name="listener"
-            type="com.karrar.movieapp.ui.movieDetails.DetailInteractionListener" />
-
 
         <variable
             name="callbacks"
             type="com.karrar.movieapp.ui.match.MatchResultCallbacks" />
-
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,149 +61,159 @@
             app:layout_constraintTop_toBottomOf="@id/poster">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/movie_details_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:background="@drawable/card_bg"
-                android:padding="@dimen/spacing_medium"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-                <ImageButton
-                    android:id="@+id/button_play_trailer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/play_button_bg"
-                    android:onClick="@{() -> listener.onClickPlayTrailer()}"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_play_filled"
-                    app:layout_constraintBottom_toTopOf="@+id/button_save"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/button_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/save_button_bg"
-                    android:layout_marginTop="10dp"
-                    android:onClick="@{() -> listener.onClickSave()}"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_add"
-                    app:tint="@color/button_onSecondary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_play_trailer" />
+                android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/series"
+                    android:id="@+id/tvType"
+                    style="@style/Typography.label_md_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/movie"
                     android:textAllCaps="true"
-                    android:textAppearance="@style/Typography.label_md_medium"
                     android:textColor="@color/brand_primary"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/movie_name"
+                <LinearLayout
+                    android:id="@+id/actions"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@{itemMatch.title}"
-                    android:textAppearance="@style/Typography.title_md"
-                    android:textColor="@color/shade_primary"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/series"
-                    tools:text="A Star Wars Story" />
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/metaRow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvType">
+
+                    <FrameLayout
+                        android:id="@+id/btnPlayContainer"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/button_primary_background"
+                        android:clickable="true"
+                        android:elevation="2dp"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:onClick='@{() -> callbacks.onPlay(item)}'>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/play_trailer"
+                            app:srcCompat="@drawable/ic_play_duetone"
+                            app:tint="@color/button_onPrimary" />
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <FrameLayout
+                        android:id="@+id/btnSaveContainer"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/button_secondry_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:onClick='@{() -> callbacks.onSave(item)}'>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/add"
+                            app:srcCompat="@drawable/ic_bookmark_filled"
+                            app:tint="@color/shade_secondary" />
+                    </FrameLayout>
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/genres"
+                    android:id="@+id/tvName"
+                    style="@style/Typography.title_md"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@{itemMatch.genres}"
-                    android:textAppearance="@style/Typography.body_sm_medium"
-                    android:textColor="@color/shade_secondary"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/shade_primary"
+                    app:layout_constraintEnd_toStartOf="@id/actions"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/movie_name"
-                    tools:text="Adventure, Drama, Science Fiction" />
+                    app:layout_constraintTop_toBottomOf="@id/tvType"
+                    app:textSafe='@{item.title}'
+                    tools:text="Until Dawn" />
 
                 <TextView
-                    android:id="@+id/stars"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvGenres"
+                    style="@style/Typography.body_sm_medium"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="@{String.valueOf(itemMovie.voteAverage)}"
-                    android:textAppearance="@style/Typography.body_md_regular"
-                    android:textColor="@color/shade_secondary"
-                    app:layout_constraintBottom_toBottomOf="@id/star"
-                    app:layout_constraintStart_toEndOf="@+id/star"
-                    app:layout_constraintTop_toTopOf="@id/star"
-                    tools:text="8.6" />
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/shade_secondary_color"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvName"
+                    app:textSafe='@{item.genres}'
+                    tools:text="Horror, Mystery, Science Fiction" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/star"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                <LinearLayout
+                    android:id="@+id/metaRow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:src="@drawable/ic_star_filled"
-                    app:layout_constraintEnd_toStartOf="@+id/stars"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/genres" />
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvGenres">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/date"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:src="@drawable/ic_calendar"
-                    app:layout_constraintBottom_toBottomOf="@id/star"
-                    app:layout_constraintStart_toEndOf="@+id/duration"
-                    app:layout_constraintTop_toTopOf="@id/star" />
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        app:srcCompat="@drawable/ic_star_duetone"
+                        app:tint="@color/additional_primary_yellow" />
 
-                <TextView
-                    android:id="@+id/release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="@{itemMatch.releaseDateShort}"
-                    android:textAppearance="@style/Typography.label_md_regular"
-                    android:textColor="@color/shade_secondary"
-                    app:layout_constraintBottom_toBottomOf="@id/date"
-                    app:layout_constraintStart_toEndOf="@id/date"
-                    app:layout_constraintTop_toTopOf="@+id/date"
-                    tools:text="2014" />
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/time"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:src="@drawable/ic_clock"
-                    app:layout_constraintBottom_toBottomOf="@id/star"
-                    app:layout_constraintStart_toEndOf="@+id/stars"
-                    app:layout_constraintTop_toTopOf="@id/stars" />
+                    <TextView
+                        style="@style/Typography.label_md_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:textFormatted='@{item.voteAverage}'
+                        tools:text="8.5" />
 
-                <TextView
-                    android:id="@+id/duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    app:movieHours="@{itemMovie.hours}"
-                    app:movieMinutes="@{itemMovie.minutes}"
-                    android:textAppearance="@style/Typography.label_md_regular"
-                    android:textColor="@color/shade_secondary"
-                    app:layout_constraintBottom_toBottomOf="@id/time"
-                    app:layout_constraintStart_toEndOf="@id/time"
-                    app:layout_constraintTop_toTopOf="@+id/time"
-                    tools:text="2h 32m" />
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="12dp"
+                        app:srcCompat="@drawable/ic_clock_duetone"
+                        app:tint="@color/shade_secondary_color" />
+
+                    <TextView
+                        style="@style/Typography.label_md_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:textSafe='@{item.runtimeFormatted}'
+                        tools:text="2h 32m" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="12dp"
+                        app:srcCompat="@drawable/ic_calendar_duetone"
+                        app:tint="@color/shade_secondary_color" />
+
+                    <TextView
+                        style="@style/Typography.label_md_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:textSafe='@{item.releaseDateShort}'
+                        tools:text="2008, Jul 18" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -225,7 +224,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_margin="16dp"
-            android:onClick='@{() -> callbacks.onViewDetails(itemMatch)}'
+            android:onClick='@{() -> callbacks.onViewDetails(item)}'
             android:text="@string/view_details"
             android:textColor="@color/white_primary"
             app:backgroundTint="@color/button_primary"

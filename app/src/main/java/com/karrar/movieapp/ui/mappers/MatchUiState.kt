@@ -3,7 +3,6 @@ package com.karrar.movieapp.ui.mappers
 import androidx.annotation.DrawableRes
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.QuestionType
-import com.karrar.movieapp.ui.match.ExploreScreenState
 import com.karrar.movieapp.ui.match.MatchPages
 import com.karrar.movieapp.ui.match.MovieScreenState
 
@@ -25,7 +24,6 @@ data class MatchUiState(
     val movieTypeQuestions: List<QuestionUiState> = getMovieTypeQuestionAnswers(),
 
     // Results
-    val movieGenre: List<ExploreScreenState.GenreUiState> = emptyList(),
     val matchResults: List<MovieScreenState.MovieDetailsUiState> = emptyList()
 ) {
     // ========== Computed Properties ==========
