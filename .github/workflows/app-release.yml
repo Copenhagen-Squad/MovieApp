@@ -136,8 +136,8 @@ jobs:
             Built from commit: ${{ github.sha }}
             Build Date: $(date '+%Y-%m-%d %H:%M:%S UTC')
 
-      # ==== Upload to Slack ====
-      - name: Upload APK to Slack
+      # ==== Send message to Slack ====
+      - name: Send release notification to Slack
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL: "#s_copenhagen"
@@ -145,18 +145,13 @@ jobs:
           APK_SIZE=$(stat -c%s "app/build/outputs/apk/release/app-release.apk")
           APK_SIZE_MB=$(($APK_SIZE / 1024 / 1024))
           
-          curl -F file=@app/build/outputs/apk/release/app-release.apk \
-               -F "channels=$SLACK_CHANNEL" \
-               -F "initial_comment=*New MovieApp Release*
-          Version: v$VERSION_NAME ($VERSION_CODE)
-          Size: ${APK_SIZE_MB}MB
-          Commit: \`${GITHUB_SHA:0:7}\`
-          Author: $GITHUB_ACTOR
-          Built: $(date '+%Y-%m-%d %H:%M:%S UTC')
-          
-          Ready for testing!" \
+          curl -X POST -H 'Content-type: application/json' \
+               --data "{
+                 \"channel\":\"$SLACK_CHANNEL\",
+                 \"text\":\"*New MovieApp Release Available*\n\nVersion: v$VERSION_NAME ($VERSION_CODE)\nSize: ${APK_SIZE_MB}MB\nCommit: \`${GITHUB_SHA:0:7}\`\nAuthor: $GITHUB_ACTOR\nBuilt: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\nThe new release has been uploaded to Firebase App Distribution and is ready for testing!\"
+               }" \
                -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-               https://slack.com/api/files.upload
+               https://slack.com/api/chat.postMessage
 
       # ==== Commit version update ====
       - name: Commit version update
