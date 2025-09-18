@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_medium"
-        android:layout_marginVertical="@dimen/spacing_extra_small">
+        android:layout_marginVertical="4dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_season"
@@ -41,8 +41,8 @@
             android:id="@+id/image_episode"
             android:layout_width="48dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_extra_small"
-            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="12dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@id/text_season_description"
             app:layout_constraintDimensionRatio="1:1.6"
@@ -58,7 +58,7 @@
             style="@style/Typography.body_md_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_extra_small"
+            android:layout_marginStart="@dimen/spacing_too_small"
             android:ellipsize="end"
             android:text="@{item.seasonName}"
             android:textColor="@color/shade_primary"
@@ -87,7 +87,7 @@
             android:id="@+id/season_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_margin="@dimen/spacing_extra_small"
+            android:layout_margin="@dimen/spacing_too_small"
             android:background="@color/stroke_primary"
             app:layout_constraintEnd_toEndOf="@id/card_season"
             app:layout_constraintStart_toStartOf="@id/image_episode"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingVertical="@dimen/spacing_extra_small"
+            android:paddingVertical="@dimen/spacing_too_small"
             app:layout_constraintEnd_toEndOf="@id/card_season"
             app:layout_constraintStart_toStartOf="@id/card_season"
             app:layout_constraintTop_toBottomOf="@id/season_divider">

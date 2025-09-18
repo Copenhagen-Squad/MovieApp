@@ -118,6 +118,11 @@
     <string name="history">History</string>
     <string name="my_collections">My Collections</string>
 
+    <string name="enter_your_email_or_username">Enter your email or username</string>
+    <string name="welcome_back_to_cinaverse">Welcome back to CinaVerse!</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="join_as_a_guest">Join as a Guest</string>
+    <string name="create_a_new_account">Create a New Account</string>
     <string name="match">Match</string>
     <string name="actor_placeholder">Actor placeholder</string>
     <string name="no_img">No Img</string>
@@ -139,7 +144,6 @@
     <string name="what_should_i_watch">What Should I Watch?</string>
     <string name="oops_no_internet">Oops! No Internet</string>
     <string name="looks_like_you_re_offline_let_s_reconnect_so_nyou_don_t_miss_out">Looks like you\'re offline. Let\'s reconnect so\nyou don\'t miss out!</string>
-
     <string name="welcome_to_your_movie_universe">Welcome to your movie universe</string>
     <string name="discover_track_and_rate_your_favorite_movies_series">Discover, track, and rate your favorite\n movies &amp; series.</string>
     <string name="track_everything">Track everything</string>
@@ -149,7 +153,10 @@
     <string name="get_started">Get Started</string>
     <string name="onboarding_image_description">OnBoarding Image</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">Discover, track and rate your favorite movies and series</string>
+    <string name="logo">logo</string>
     <string name="you_gave_it">You gave it</string>
+    <string name="let_us_choose_for_you">Let Us Choose For You!</string>
+    <string name="we_ll_help_you_skip_the_scroll_and_go_straight_to_the_good_stuff">We’ll help you skip the scroll and go straight to the good stuff.</string>
     <string name="my_profile">My Profile</string>
     <string name="my_collection">My Collection</string>
     <string name="welcome">Welcome</string>
