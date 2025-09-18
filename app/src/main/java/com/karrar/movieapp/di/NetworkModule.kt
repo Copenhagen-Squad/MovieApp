@@ -25,12 +25,6 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideMovieApiService(retrofit: Retrofit): MovieService {
-        return retrofit.create(MovieService::class.java)
-    }
-
-    @Singleton
-    @Provides
     fun provideRetrofit(client: OkHttpClient, gsonConverterFactory: GsonConverterFactory): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)

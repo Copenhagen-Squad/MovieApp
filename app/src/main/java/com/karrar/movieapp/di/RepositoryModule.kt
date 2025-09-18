@@ -2,7 +2,6 @@ package com.karrar.movieapp.di
 
 import com.karrar.movieapp.data.repository.AccountRepository
 import com.karrar.movieapp.data.repository.AccountRepositoryImp
-import com.karrar.movieapp.data.repository.MovieRepository
 import com.karrar.movieapp.data.repository.MovieRepositoryImp
 import com.karrar.movieapp.data.repository.SeriesRepository
 import com.karrar.movieapp.data.repository.SeriesRepositoryImp
@@ -16,7 +15,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
-    // Keep your existing repositories for the main app
     @Binds
     @Singleton
     abstract fun bindMovieRepositoryImp(
@@ -34,10 +32,4 @@ abstract class RepositoryModule {
     abstract fun bindAccountRepository(
         accountRepositoryImp: AccountRepositoryImp
     ): AccountRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindMatchMovieRepository(
-        movieRepositoryImpl: MovieRepositoryImp
-    ): MovieRepository
 }
