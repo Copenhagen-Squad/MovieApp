@@ -24,13 +24,13 @@
             android:paddingVertical="@dimen/spacing_small"
             android:paddingBottom="@dimen/spacing_medium"
             android:scrollbars="none"
-            app:items="@{viewModel.ratedUiState.ratedList}"
+            app:items="@{viewModel.ratedUiState.rateMovies}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showWhenListNotEmpty="@{viewModel.ratedUiState.ratedList}"
+            app:showWhenListNotEmpty="@{viewModel.ratedUiState.rateMovies}"
             tools:listitem="@layout/item_rated_movie" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:text="@string/this_list_has_no_movies"
             android:visibility="gone"
             app:doneLoad="@{viewModel.ratedUiState.loading}"
-            app:emptyData="@{viewModel.ratedUiState.ratedList}"
+            app:emptyData="@{viewModel.ratedUiState.rateMovies}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
