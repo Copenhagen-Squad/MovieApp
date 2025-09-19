@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
@@ -17,6 +18,7 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.widget.TextViewCompat
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private var currentTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyAppLocale()
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
         setTheme(R.style.Theme_MovieApp)
@@ -52,6 +55,38 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initializeCustomNavigation()
+
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val themeMode = prefs.getString("theme_mode", null)
+
+        if (themeMode != null) {
+            when (themeMode) {
+                "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+    }
+
+    private fun applyAppLocale() {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val lang = prefs.getString("app_lang", null) ?: getSystemDefaultLanguage()
+
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        applicationContext.createConfigurationContext(config)
+    }
+
+    private fun getSystemDefaultLanguage(): String {
+        return Locale.getDefault().language
     }
 
     override fun onResume() {

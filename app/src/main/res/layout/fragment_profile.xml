@@ -294,6 +294,16 @@
                             android:layout_marginStart="8dp"
                             />
 
+                        <com.karrar.movieapp.ui.components.CustomSwitch
+                            android:id="@+id/dark_mode_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="16dp"
+                            />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -307,7 +317,7 @@
                         android:id="@+id/language_section"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:onClick="@{() -> viewModel.onClickChangeLanguage()}"
                         >
 
                         <ImageView
