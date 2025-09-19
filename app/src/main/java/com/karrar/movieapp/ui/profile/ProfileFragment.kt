@@ -78,6 +78,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             ProfileUIEvent.OnClickChangeLanguage -> {
                 ProfileFragmentDirections.actionProfileFragmentToLanguageDialog()
             }
+            ProfileUIEvent.OnClickContentPreferences -> {
+                ProfileFragmentDirections.actionProfileFragmentToContentPreferencesDialog()
+            }
         }
         findNavController().navigate(action)
     }
