@@ -7,4 +7,5 @@ sealed interface ProfileUIEvent {
     object WatchHistoryEvent : ProfileUIEvent
     object MyCollectionEvent : ProfileUIEvent
     object OnClickChangeLanguage : ProfileUIEvent
+    object OnClickContentPreferences : ProfileUIEvent
 }

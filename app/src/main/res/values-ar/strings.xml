@@ -171,5 +171,12 @@
     <string name="exit">خروج</string>
     <string name="english">الأنجليزية</string>
     <string name="arabic">العربية</string>
+    <string name="choose_how_you_d_like_to_handle_sensitive_or_revealing_images_in_the_app">اختر الطريقة التي تريد التعامل بها مع الصور الحساسة أو الكاشفة في التطبيق.</string>
+    <string name="hide_explicit_content">إخفاء المحتوى الصريح</string>
+    <string name="hides_revealing_or_inappropriate_posters_e_g_nudity_strong_sexual_content">يخفي الملصقات الكاشفة أو غير المناسبة (على سبيل المثال العري، والمحتوى الجنسي القوي).</string>
+    <string name="strict_filtering">التصفية الصارمة</string>
+    <string name="hides_all_content_that_includes_immodest_clothing_or_behavior">يخفي كل المحتوى الذي يتضمن ملابس أو سلوكيات غير محتشمة</string>
+    <string name="show_all_content">عرض كل المحتوى</string>
+    <string name="no_filtering_all_images_and_posters_will_be_displayed">لا يوجد تصفية. سيتم عرض جميع الصور والملصقات.</string>
 
 </resources>
