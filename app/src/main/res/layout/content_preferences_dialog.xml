@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="viewModel"
-            type="com.karrar.movieapp.ui.profile.language.LanguageViewModel" />
+            type="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/language_bottom_sheet"
+        android:id="@+id/content_preferences_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_sheet_body"
@@ -27,7 +26,7 @@
             android:layout_marginTop="12dp"
             />
         <TextView
-            android:id="@+id/change_language_title"
+            android:id="@+id/content_preferences_title"
             style="@style/Typography.title_sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,6 +36,20 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="16dp"
             />
+        <TextView
+            android:id="@+id/description_title"
+            style="@style/Typography.body_sm_regular"
+            android:textColor="@color/shade_secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_how_you_d_like_to_handle_sensitive_or_revealing_images_in_the_app"
+            app:layout_constraintTop_toBottomOf="@id/content_preferences_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:paddingEnd="16dp"
+            />
+
         <ImageView
             android:id="@+id/close_dialog"
             android:layout_width="20dp"
@@ -53,6 +66,15 @@
             android:onClick="@{() -> viewModel.onCloseDialog()}"
             />
 
+        <com.karrar.movieapp.ui.components.ContentPreferences
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/description_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="16dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
