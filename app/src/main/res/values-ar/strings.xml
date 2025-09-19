@@ -158,5 +158,9 @@
     <string name="forget_password">نسيت كلمة المرور؟ </string>
     <string name="join_as_a_guest">الانضمام ك زائر </string>
     <string name="create_a_new_account">انشاء حساب جديد</string>
+    <string name="change_language">Change Language</string>
+    <string name="exit">خروج</string>
+    <string name="english">الأنجليزية</string>
+    <string name="arabic">العربية</string>
 
 </resources>

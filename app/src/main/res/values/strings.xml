@@ -160,4 +160,8 @@
     <string name="my_profile">My Profile</string>
     <string name="my_collection">My Collection</string>
     <string name="welcome">Welcome</string>
+    <string name="change_language">Change Language</string>
+    <string name="exit">exit</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
 </resources>
