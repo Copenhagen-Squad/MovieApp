@@ -136,7 +136,7 @@
 
         <action
             android:id="@+id/action_profileFragment_to_contentPreferencesDialog"
-            app:destination="@id/languageDialog"
+            app:destination="@id/contentPreferencesDialog"
             />
 
         <action
@@ -243,8 +243,8 @@
 
     <dialog
         android:id="@+id/contentPreferencesDialog"
-        android:name="com.karrar.movieapp.ui.profile.language.LanguageDialog"
-        tools:layout="@layout/dialog_change_language">
+        android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
+        tools:layout="@layout/content_preferences_dialog">
     </dialog>
 
     <dialog
