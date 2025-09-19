@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <!-- English -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/english_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/select_language_select"
+        android:layout_marginEnd="12dp"
+        >
+        
+        <ImageView
+            android:id="@+id/icon_uk_flag"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_uk_flag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="77dp"
+            />
+
+        <TextView
+            android:id="@+id/textEnglish"
+            style="@style/Typography.body_md_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english"
+            android:textColor="@color/brand_primary"
+            app:layout_constraintTop_toBottomOf="@id/icon_uk_flag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="16dp"
+            android:paddingTop="4dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Arabic -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/arabic_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/select_language_select"
+        >
+
+        <ImageView
+            android:id="@+id/icon_iraq_flag"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_iraq_flag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="77dp"
+            />
+
+        <TextView
+            android:id="@+id/textArabic"
+            style="@style/Typography.body_md_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arabic"
+            android:textColor="@color/shade_primary"
+            app:layout_constraintTop_toBottomOf="@id/icon_iraq_flag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="16dp"
+            android:paddingTop="4dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
