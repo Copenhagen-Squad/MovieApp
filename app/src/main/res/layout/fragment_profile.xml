@@ -491,18 +491,16 @@
                 android:layout_marginTop="24dp"
                 />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                app:isVisible="@{viewModel.profileDetailsUIState.isLoading}"
+            <!--loading-->
+            <include
+                android:id="@+id/loading"
+                layout="@layout/loading2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/loading_animation"
-                tools:visibility="gone" />
+                app:isVisible="@{viewModel.profileDetailsUIState.isLoading}"
+                />
 
             <ImageView
                 android:id="@+id/vector_image"
