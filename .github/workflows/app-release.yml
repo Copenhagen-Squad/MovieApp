@@ -41,7 +41,6 @@ jobs:
           fi
           
           PATCH=$(grep PATCH version.properties | cut -d'=' -f2)
-          PATCH=$((PATCH+1))
           MAJOR=$(grep MAJOR version.properties | cut -d'=' -f2)
           MINOR=$(grep MINOR version.properties | cut -d'=' -f2)
           
