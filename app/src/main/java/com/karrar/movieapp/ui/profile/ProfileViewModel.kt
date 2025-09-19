@@ -82,4 +82,9 @@ class ProfileViewModel @Inject constructor(
     fun onClickLogin() {
         _profileUIEvent.update { Event(ProfileUIEvent.LoginEvent) }
     }
+
+    fun onClickChangeLanguage() {
+        _profileUIEvent.update { Event(ProfileUIEvent.OnClickChangeLanguage) }
+
+    }
 }

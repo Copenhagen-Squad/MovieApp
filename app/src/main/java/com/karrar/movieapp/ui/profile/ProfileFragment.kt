@@ -3,6 +3,7 @@ package com.karrar.movieapp.ui.profile
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -73,6 +74,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
             ProfileUIEvent.MyCollectionEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToMyCollectionFragment()
+            }
+            ProfileUIEvent.OnClickChangeLanguage -> {
+                ProfileFragmentDirections.actionProfileFragmentToLanguageDialog()
             }
         }
         findNavController().navigate(action)
