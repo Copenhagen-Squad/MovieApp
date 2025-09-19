@@ -18,6 +18,7 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.widget.TextViewCompat
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private var currentTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyAppLocale()
         super.onCreate(savedInstanceState)
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
         setTheme(R.style.Theme_MovieApp)
@@ -65,6 +67,26 @@ class MainActivity : AppCompatActivity() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
+    }
+
+    private fun applyAppLocale() {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val lang = prefs.getString("app_lang", null) ?: getSystemDefaultLanguage()
+
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        applicationContext.createConfigurationContext(config)
+    }
+
+    private fun getSystemDefaultLanguage(): String {
+        return Locale.getDefault().language
     }
 
     override fun onResume() {
