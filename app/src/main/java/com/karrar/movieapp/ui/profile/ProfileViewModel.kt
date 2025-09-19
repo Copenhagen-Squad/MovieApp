@@ -89,7 +89,7 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun onClickContentPreferences() {
-//        _profileUIEvent.update { Event(ProfileUIEvent.OnClickChangeLanguage) }
+        _profileUIEvent.update { Event(ProfileUIEvent.OnClickContentPreferences) }
     }
 
 }
