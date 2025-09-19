@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.profile.language.LanguageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/language_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_body"
+        >
+
+        <View
+            android:id="@+id/bottom_sheet_view"
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:background="@drawable/bottom_sheet_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            />
+        <TextView
+            android:id="@+id/change_language_title"
+            style="@style/Typography.title_sm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_language"
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            />
+        <ImageView
+            android:id="@+id/close_dialog"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/exit"
+            android:src="@drawable/ic_x"
+            app:tint="@color/shade_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.onCloseDialog()}"
+            />
+
+        <com.karrar.movieapp.ui.components.LanguageChip
+            android:id="@+id/language_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/change_language_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="16dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

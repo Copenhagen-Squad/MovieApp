@@ -6,4 +6,5 @@ sealed interface ProfileUIEvent {
     object DialogLogoutEvent : ProfileUIEvent
     object WatchHistoryEvent : ProfileUIEvent
     object MyCollectionEvent : ProfileUIEvent
+    object OnClickChangeLanguage : ProfileUIEvent
 }
