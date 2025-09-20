@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.exploringFragment,
-                R.id.myListFragment,
+                R.id.matchFragment,
                 R.id.profileFragment,
             )
         )
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             navigateToDestination(R.id.exploringFragment, 1)
         }
         navMatch.setOnClickListener {
-            navigateToDestination(R.id.myListFragment, 2)
+            navigateToDestination(R.id.matchFragment, 2)
         }
         navMe.setOnClickListener {
             navigateToDestination(R.id.profileFragment, 3)
@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
                 setTabSelected(iconExplore, labelExplore, R.drawable.ic_search_duetone)
             }
 
-            R.id.myListFragment -> {
+            R.id.matchResultsFragment -> {
                 currentTab = 2
                 setTabSelected(iconMatch, labelMatch, R.drawable.ic_magic_stick_duetone)
             }
@@ -191,6 +191,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun resetAllTabs() {
         setTabUnselected(iconHome, labelHome, R.drawable.ic_home)

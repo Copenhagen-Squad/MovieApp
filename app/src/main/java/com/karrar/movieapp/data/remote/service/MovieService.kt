@@ -1,5 +1,6 @@
 package com.karrar.movieapp.data.remote.service
 
+import com.karrar.movieapp.data.MovieEntity
 import com.karrar.movieapp.data.remote.response.*
 import com.karrar.movieapp.data.remote.response.account.AccountDto
 import com.karrar.movieapp.data.remote.response.actor.ActorDto
@@ -185,6 +186,17 @@ interface MovieService {
     @DELETE("authentication/session")
     suspend fun logout(@Query("session_id") sessionId: String): Response<LogoutResponse>
 
+    @GET("discover/movie")
+    suspend fun getMovieRecommendations(
+        @Query("with_genres") genres: String?,
+        @Query("with_runtime.gte") runtimeGte: Int?,
+        @Query("with_runtime.lte") runtimeLte: Int?,
+        @Query("primary_release_date.gte") releaseDateGte: String?,
+        @Query("primary_release_date.lte") releaseDateLte: String?,
+        @Query("sort_by") sortBy: String = "popularity.desc",
+        @Query("page") page: Int = 1
+    ): MovieResponse
+
 
     @FormUrlEncoded
     @POST("list")
@@ -228,3 +240,29 @@ interface MovieService {
     ): Response<RatingDto>
 
 }
+
+
+data class MovieResponse(
+    val results: List<MovieEntity>,
+    val page: Int,
+    val totalResults: Int,
+    val totalPages: Int
+)
+
+data class VideoResponse(
+    val results: List<VideoEntity>
+)
+
+data class VideoEntity(
+    val key: String,
+    val type: String,
+    val site: String,
+    val name: String,
+    val official: Boolean
+)
+
+data class WatchlistRequest(
+    val mediaType: String = "movie",
+    val mediaId: Int,
+    val watchlist: Boolean = true
+)

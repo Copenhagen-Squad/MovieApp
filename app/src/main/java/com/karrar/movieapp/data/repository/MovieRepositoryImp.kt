@@ -2,6 +2,8 @@ package com.karrar.movieapp.data.repository
 
 import androidx.paging.Pager
 import com.karrar.movieapp.data.Constants
+import com.karrar.movieapp.data.MatchParams
+import com.karrar.movieapp.data.MovieEntity
 import com.karrar.movieapp.data.local.AppConfiguration
 import com.karrar.movieapp.data.local.database.daos.ActorDao
 import com.karrar.movieapp.data.local.database.daos.MovieDao
@@ -212,6 +214,17 @@ class MovieRepositoryImp @Inject constructor(
         return Pager(config = config,
             pagingSourceFactory = { movieMovieDataSource.trendingMovieDataSource })
     }
+
+    override suspend fun getMatchRecommendations(params: MatchParams): List<MovieEntity> {
+        return movieService.getMovieRecommendations(
+            genres = params.genres,
+            runtimeGte = params.runtimeGte,
+            runtimeLte = params.runtimeLte,
+            releaseDateGte = params.releaseDateGte,
+            releaseDateLte = params.releaseDateLte
+        ).results
+    }
+
 
     override suspend fun getNowPlayingMoviesPager(): Pager<Int, MovieDto> {
         return Pager(config = config,

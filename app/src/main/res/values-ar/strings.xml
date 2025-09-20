@@ -148,8 +148,18 @@
     <string name="get_started">ابدأ</string>
     <string name="onboarding_image_description">صورة شاشة الترحيب</string>
     <string name="discover_track_and_rate_your_favorite_movies_and_series">اكتشف وتابع وقيّم أفلامك ومسلسلاتك المفضلة</string>
-    <string name="logo">شعار</string>
+    <string name="what_mood_are_you_in">ما هو مزاجك الآن؟</string>
+    <string name="next">التالي</string>
+    <string name="start_matching">ابدأ المطابقة</string>
+    <string name="loading_recommendations_you_ll_love">جارٍ تحميل توصيات ستحبها...</string>
     <string name="you_gave_it">لقد أعطيته</string>
+    <string name="view_details">عرض التفاصيل</string>
+    <string name="answer_a_few_quick_questions_and_we_ll_match_you_with_the_perfect_picks">أجب عن بعض الأسئلة السريعة وسنطابقك مع الاختيارات المثالية.</string>
+    <string name="not_sure_what_to_watch">لست متأكدًا مما تشاهده؟</string>
+    <string name="movie_title">فيلم</string>
+    <string name="add">إضافة</string>
+    <string name="discover_your_match">اكتشف تطابقك</string>
+    <string name="logo">شعار</string>
     <string name="let_us_choose_for_you">دعنا نختار لك!</string>
     <string name="we_ll_help_you_skip_the_scroll_and_go_straight_to_the_good_stuff">سنساعدك على تجاوز التمرير والذهاب مباشرة للبرامج الجيدة</string>
 
