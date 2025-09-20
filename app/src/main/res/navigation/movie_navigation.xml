@@ -130,6 +130,11 @@
             app:destination="@id/myListFragment" />
 
         <action
+            android:id="@+id/action_profileFragment_to_languageDialog"
+            app:destination="@id/languageDialog"
+            />
+
+        <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/profileFragment"
@@ -230,6 +235,12 @@
             android:name="type"
             app:argType="com.karrar.movieapp.domain.enums.MediaType" />
     </fragment>
+
+    <dialog
+        android:id="@+id/languageDialog"
+        android:name="com.karrar.movieapp.ui.profile.language.LanguageDialog"
+        tools:layout="@layout/dialog_change_language">
+    </dialog>
 
     <dialog
         android:id="@+id/saveMovieDialog"
