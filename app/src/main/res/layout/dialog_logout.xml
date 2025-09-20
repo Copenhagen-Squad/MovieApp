@@ -13,7 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_sheet_body"
-        android:layout_marginHorizontal="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         >
 
         <View
@@ -84,6 +89,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp"
+            android:paddingBottom="16dp"
             >
 
             <FrameLayout
@@ -120,7 +126,7 @@
                     android:id="@+id/logout_text"
                     style="@style/Typography.body_md_medium"
                     android:textColor="@color/button_onPrimary"
-                    android:text="@string/cancel"
+                    android:text="@string/logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="50dp"
