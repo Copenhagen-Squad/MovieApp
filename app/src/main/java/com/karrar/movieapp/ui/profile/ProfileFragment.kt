@@ -30,8 +30,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         val versionName = BuildConfig.VERSION_NAME
         binding.appVersion.text = "Version $versionName"
-
-        val versionNameLogout = BuildConfig.VERSION_NAME
         binding.appVersionLogout.text = "Version $versionName"
 
         val prefs = requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
