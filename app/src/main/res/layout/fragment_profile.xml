@@ -44,6 +44,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:background="@drawable/collection_item"
+                android:onClick="@{() -> viewModel.onClickEditProfile()}"
                 >
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/image_actor"
