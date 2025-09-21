@@ -67,6 +67,10 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.RatedMoviesEvent) }
     }
 
+    fun onClickMyCollection() {
+        _profileUIEvent.update { Event(ProfileUIEvent.MyCollectionEvent) }
+    }
+
     fun onClickLogout() {
         _profileUIEvent.update { Event(ProfileUIEvent.DialogLogoutEvent) }
     }
@@ -78,4 +82,14 @@ class ProfileViewModel @Inject constructor(
     fun onClickLogin() {
         _profileUIEvent.update { Event(ProfileUIEvent.LoginEvent) }
     }
+
+    fun onClickChangeLanguage() {
+        _profileUIEvent.update { Event(ProfileUIEvent.OnClickChangeLanguage) }
+
+    }
+
+    fun onClickContentPreferences() {
+        _profileUIEvent.update { Event(ProfileUIEvent.OnClickContentPreferences) }
+    }
+
 }

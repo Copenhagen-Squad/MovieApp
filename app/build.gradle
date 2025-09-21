@@ -37,11 +37,33 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnitPlatformBuilder"
+
+        versionCode project.hasProperty("versionCode") ? project.versionCode.toInteger() : 1
+        versionName project.hasProperty("versionName") ? project.versionName : "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            // Use project root-relative path for keystore
+            def keystorePath = System.getenv("SIGNING_KEYSTORE") ?: localProperties.getProperty("SIGNING_KEYSTORE")
+            if (keystorePath) {
+                // If path is relative, make it relative to project root
+                if (!keystorePath.startsWith('/')) {
+                    keystorePath = rootProject.file(keystorePath).absolutePath
+                }
+                storeFile file(keystorePath)
+            }
+            storePassword System.getenv("SIGNING_STORE_PASSWORD") ?: localProperties.getProperty("SIGNING_STORE_PASSWORD")
+            keyAlias System.getenv("SIGNING_KEY_ALIAS") ?: localProperties.getProperty("SIGNING_KEY_ALIAS")
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD") ?: localProperties.getProperty("SIGNING_KEY_PASSWORD")
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -135,6 +157,9 @@ dependencies {
 
     // YouTube Player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
+
+    // Flexbox
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:33.1.2')

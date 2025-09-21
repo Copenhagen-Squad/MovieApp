@@ -9,43 +9,65 @@
             type="com.karrar.movieapp.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:orientation="vertical"
+        >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <com.karrar.movieapp.ui.components.header.AppBar
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            app:AppBarTitle="Name"
+            app:AppBarCaption="@string/welcome"
+            app:showIcon="false"
+            app:showAppIcon="true"
             app:layout_constraintTop_toTopOf="parent"
-            app:hideIfTrue="@{viewModel.homeUiState.loading || viewModel.homeUiState.error.size() &gt;5}"
-            app:spanCount="1" />
-
-        <include
-            android:id="@+id/loading"
-            layout="@layout/loading2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:isLoading="@{viewModel.homeUiState.loading}"
             />
 
-        <include
-            android:id="@+id/error"
-            layout="@layout/error2"
-            app:isError="@{viewModel.homeUiState.error.size() &gt;5 &amp;&amp; !viewModel.homeUiState.loading}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:viewModel="@{viewModel}" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_screen">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:hideIfTrue="@{viewModel.homeUiState.loading || viewModel.homeUiState.error.size() &gt;5}"
+                app:spanCount="1" />
+
+            <include
+                android:id="@+id/loading"
+                layout="@layout/loading2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:isLoading="@{viewModel.homeUiState.loading}"
+                />
+
+            <include
+                android:id="@+id/error"
+                layout="@layout/error2"
+                app:isError="@{viewModel.homeUiState.error.size() &gt;5 &amp;&amp; !viewModel.homeUiState.loading}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:viewModel="@{viewModel}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 
 </layout>

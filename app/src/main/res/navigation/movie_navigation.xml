@@ -25,6 +25,22 @@
             android:id="@+id/action_homeFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
 
+        <action
+            android:id="@+id/action_homeFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_watchHistoryFragment"
+            app:destination="@id/watchHistoryFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_matchResultsFragment"
+            app:destination="@+id/matchResultsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listDetailsFragment"
+            app:destination="@+id/listDetailsFragment" />
+
+
     </fragment>
 
     <fragment
@@ -38,8 +54,8 @@
 
 
         <action
-            android:id="@+id/action_loginFragment_to_myListFragment"
-            app:destination="@id/myListFragment" />
+            android:id="@+id/action_loginFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
         <action
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -109,6 +125,19 @@
         <action
             android:id="@+id/action_profileFragment_to_watchHistoryFragment"
             app:destination="@id/watchHistoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_MyCollectionFragment"
+            app:destination="@id/myListFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_languageDialog"
+            app:destination="@id/languageDialog"
+            />
+
+        <action
+            android:id="@+id/action_profileFragment_to_contentPreferencesDialog"
+            app:destination="@id/contentPreferencesDialog"
+            />
 
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
@@ -121,7 +150,7 @@
 
     <fragment
         android:id="@+id/myListFragment"
-        android:name="com.karrar.movieapp.ui.myList.MyListsFragment"
+        android:name="com.karrar.movieapp.ui.myList.MyCollectionFragment"
         tools:layout="@layout/fragment_my_lists">
         <action
             android:id="@+id/action_myListFragment_to_createSavedList"
@@ -213,6 +242,18 @@
     </fragment>
 
     <dialog
+        android:id="@+id/contentPreferencesDialog"
+        android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
+        tools:layout="@layout/content_preferences_dialog">
+    </dialog>
+
+    <dialog
+        android:id="@+id/languageDialog"
+        android:name="com.karrar.movieapp.ui.profile.language.LanguageDialog"
+        tools:layout="@layout/dialog_change_language">
+    </dialog>
+
+    <dialog
         android:id="@+id/saveMovieDialog"
         android:name="com.karrar.movieapp.ui.movieDetails.saveMovie.SaveMovieDialog"
         tools:layout="@layout/dialog_save_movie">
@@ -233,7 +274,7 @@
     </dialog>
     <dialog
         android:id="@+id/createSavedList"
-        android:name="com.karrar.movieapp.ui.myList.CreateListDialog"
+        android:name="com.karrar.movieapp.ui.myList.CreateCollectionDialog"
         tools:layout="@layout/fragment_create_list_dialog">
 
     </dialog>
@@ -275,7 +316,7 @@
     </activity>
     <fragment
         android:id="@+id/listDetailsFragment"
-        android:name="com.karrar.movieapp.ui.myList.listDetails.ListDetailsFragment"
+        android:name="com.karrar.movieapp.ui.myList.collectionDetails.CollectionDetailsFragment"
         tools:layout="@layout/fragment_list_details">
         <argument
             android:name="id"
@@ -339,6 +380,26 @@
         <argument
             android:name="tvShowId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchQuestionsFragment"
+        android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
+        android:label="MatchQuestionsFragment" />
+  
+    <fragment
+        android:id="@+id/matchResultsFragment"
+        android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
+        tools:layout="@layout/fragment_match_result">
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.karrar.movieapp.ui.match.MatchScreenFragment"
+        android:label="fragment_match"
+        tools:layout="@layout/fragment_match_screen">
+        <action
+            android:id="@+id/action_matchFragment_to_matchQuestionFragment"
+            app:destination="@id/matchQuestionsFragment" />
     </fragment>
 
 </navigation>

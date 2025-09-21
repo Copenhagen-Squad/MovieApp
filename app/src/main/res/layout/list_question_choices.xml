@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="adapterRecycler"
+            type="com.karrar.movieapp.ui.match.questions.adapter.ChoicesAdapter" />
+
+        <variable
+            name="question"
+            type="String" />
+
+        <variable
+            name="layoutManager"
+            type="androidx.recyclerview.widget.RecyclerView.LayoutManager" />
+
+        <variable
+            name="isCurrent"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{question}"
+            tools:text="@string/what_mood_are_you_in"
+            android:alpha="@{isCurrent ? 1f : 0.2f}"
+            style="@style/Typography.title_sm"
+            android:layout_marginStart="@dimen/radius_xl"
+            android:layout_marginEnd="@dimen/radius_xs"
+            android:textColor="@color/shade_primary"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_actors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/radius_xl"
+            android:layout_marginBottom="@dimen/radius_2xl"
+            android:alpha="@{isCurrent ? 1f : 0.2f}"
+            android:adapter="@{adapterRecycler}"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="@{layoutManager}"
+            app:layout_constraintEnd_toEndOf="@id/question"
+            app:layout_constraintStart_toStartOf="@id/question"
+            app:layout_constraintTop_toBottomOf="@id/question"
+            tools:listitem="@layout/item_question_choice" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
