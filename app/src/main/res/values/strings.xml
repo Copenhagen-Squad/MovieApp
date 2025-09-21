@@ -190,4 +190,6 @@
     <string name="hides_all_content_that_includes_immodest_clothing_or_behavior">Hides all content that includes immodest clothing or behavior</string>
     <string name="show_all_content">Show All Content</string>
     <string name="no_filtering_all_images_and_posters_will_be_displayed">No filtering. All images and posters will be displayed.</string>
+    <string name="login_or_sign_up">Login or Sign Up</string>
+    <string name="to_personalize_your_experience">to personalize your experience!</string>
 </resources>

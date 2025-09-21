@@ -1,12 +1,13 @@
 package com.karrar.movieapp.ui.profile
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentProfileBinding
 import com.karrar.movieapp.ui.base.BaseFragment
@@ -27,7 +28,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             it.getContentIfNotHandled()?.let { onEvent(it) }
         }
 
-        val darkModeSwitch = binding.darkModeSwitch
+        val versionName = BuildConfig.VERSION_NAME
+        binding.appVersion.text = "Version $versionName"
+        binding.appVersionLogout.text = "Version $versionName"
 
         val prefs = requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
@@ -41,9 +44,24 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                         android.content.res.Configuration.UI_MODE_NIGHT_YES
             }
         }
-        darkModeSwitch.setChecked(isDark)
 
-        darkModeSwitch.setOnCheckedChangeListener { isOn ->
+        setupDarkModeSwitch(binding.darkModeSwitch, prefs, isDark, enabled = true)
+        setupDarkModeSwitch(binding.darkModeSwitchPlaceholder, prefs, isDark, enabled = false)
+
+        collectLast(viewModel.profileUIEvent) {
+            it.getContentIfNotHandled()?.let { onEvent(it) }
+        }
+    }
+
+    private fun setupDarkModeSwitch(
+        switch: CustomSwitch,
+        prefs: SharedPreferences,
+        isDark: Boolean,
+        enabled: Boolean
+    ) {
+        switch.setChecked(isDark)
+        switch.isEnabled = enabled
+        switch.setOnCheckedChangeListener { isOn ->
             if (isOn) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 prefs.edit().putString("theme_mode", "dark").apply()
@@ -51,10 +69,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 prefs.edit().putString("theme_mode", "light").apply()
             }
-        }
-
-        collectLast(viewModel.profileUIEvent) {
-            it.getContentIfNotHandled()?.let { onEvent(it) }
         }
     }
 

@@ -188,5 +188,11 @@
     <string name="hides_all_content_that_includes_immodest_clothing_or_behavior">يخفي كل المحتوى الذي يتضمن ملابس أو سلوكيات غير محتشمة</string>
     <string name="show_all_content">عرض كل المحتوى</string>
     <string name="no_filtering_all_images_and_posters_will_be_displayed">لا يوجد تصفية. سيتم عرض جميع الصور والملصقات.</string>
+    <string name="login_or_sign_up">تسجيل الدخول أو التسجيل</string>
+    <string name="to_personalize_your_experience">لتخصيص تجربتك!</string>
+    <string name="my_profile">ملفي الشخصي</string>
+    <string name="my_collection">مجموعتي</string>
+    <string name="welcome">مرحباً</string>
+    <string name="bookmark">إشارة مرجعية</string>
 
 </resources>
