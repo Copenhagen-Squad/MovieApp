@@ -95,6 +95,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             ProfileUIEvent.OnClickContentPreferences -> {
                 ProfileFragmentDirections.actionProfileFragmentToContentPreferencesDialog()
             }
+            ProfileUIEvent.OnClickEditProfile -> {
+                ProfileFragmentDirections.actionProfileFragmentToEditProfileDialog()
+            }
         }
         findNavController().navigate(action)
     }
