@@ -6,15 +6,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.karrar.movieapp.R
+import com.karrar.movieapp.data.MatchMapper
 import com.karrar.movieapp.databinding.FragmentMatchQuestionsBinding
 import com.karrar.movieapp.ui.base.BaseFragment
 import com.karrar.movieapp.ui.match.questions.adapter.QuestionAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import dagger.hilt.android.AndroidEntryPoint
-import com.karrar.movieapp.ui.match.questions.QuestionType
 
-@AndroidEntryPoint
 class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
     override val layoutIdFragment: Int = R.layout.fragment_match_questions
     override val viewModel: MatchQuestionsViewModel by viewModels()
@@ -58,9 +56,22 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
         lifecycleScope.launch {
             viewModel.uiState.collect { state ->
                 if (state.isLoading && currentQuestionType == QuestionType.TIME_PERIOD) {
-                    // Simulate loading time and navigate to results
-                    kotlinx.coroutines.delay(2000)
-                    findNavController().navigate(R.id.action_matchQuestionsFragment_to_matchResultsFragment)
+                    // Build params from current selections and navigate
+                    val params = MatchMapper.toMatchParamsFromChoice(
+                        moodNames = state.moodSelected.map { it.name },
+                        genreNames = state.genreSelected.map { it.name },
+                        timeNames = state.mediaRuntimeSelected.map { it.name },
+                        periodNames = state.timePeriodSelected.map { it.name },
+                    )
+                    val action = MatchQuestionsFragmentDirections
+                        .actionMatchQuestionsFragmentToMatchResultsFragment(
+                            genres = params.genres.orEmpty(),
+                            runtimeGte = params.runtimeGte ?: -1,
+                            runtimeLte = params.runtimeLte ?: -1,
+                            releaseDateGte = params.releaseDateGte.orEmpty(),
+                            releaseDateLte = params.releaseDateLte.orEmpty(),
+                        )
+                    findNavController().navigate(action)
                 }
             }
         }

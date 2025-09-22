@@ -12,7 +12,9 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentMatchResultBinding
 import com.karrar.movieapp.ui.base.BaseFragment
 import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MatchResultsFragment : BaseFragment<FragmentMatchResultBinding>() {
 
     override val layoutIdFragment: Int = R.layout.fragment_match_result
@@ -37,9 +39,7 @@ class MatchResultsFragment : BaseFragment<FragmentMatchResultBinding>() {
         setupCallbacks()
         setupViewPager()
         collectData()
-
-        // Load match results
-        viewModel.loadMatchResults()
+        // Data will load automatically from ViewModel init with args
     }
 
     private fun setupCallbacks() {

@@ -394,6 +394,26 @@
         android:id="@+id/matchResultsFragment"
         android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
         tools:layout="@layout/fragment_match_result">
+        <argument
+            android:name="genres"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="runtimeGte"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="runtimeLte"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="releaseDateGte"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="releaseDateLte"
+            app:argType="string"
+            android:defaultValue="" />
         <action
             android:id="@+id/action_matchResultsFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
