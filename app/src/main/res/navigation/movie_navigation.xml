@@ -384,12 +384,28 @@
     <fragment
         android:id="@+id/matchQuestionsFragment"
         android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
-        android:label="MatchQuestionsFragment" />
-  
+        android:label="MatchQuestionsFragment">
+        <action
+            android:id="@+id/action_matchQuestionsFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/matchResultsFragment"
         android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
         tools:layout="@layout/fragment_match_result">
+        <action
+            android:id="@+id/action_matchResultsFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_youtubePlayerActivity"
+            app:destination="@id/youtubePlayerActivity" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_saveMovieDialog"
+            app:destination="@id/saveMovieDialog" />
     </fragment>
 
     <fragment
