@@ -40,7 +40,7 @@ class MatchResultsViewModel @Inject constructor(
     private fun fetch() {
         _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
-            val result = getMatchRecommendations(args)
+            val result = getMatchRecommendations.getEnrichedRecommendations(args)
             result.onSuccess { list ->
                 val mapped = list.map { m ->
                     MatchItemUI(
@@ -57,8 +57,9 @@ class MatchResultsViewModel @Inject constructor(
                 }
                 _items.value = mapped
                 _uiState.update { it.copy(isLoading = false) }
-            }.onFailure {
-                _uiState.update { it.copy(isLoading = false) }
+            }.onFailure { exception ->
+                android.util.Log.e("MatchResultsViewModel", "Failed to fetch recommendations: ${exception.message}")
+                _uiState.update { it.copy(isLoading = false, error = exception.message) }
             }
         }
     }
@@ -78,5 +79,6 @@ class MatchResultsViewModel @Inject constructor(
 
 data class MatchResultsUiState(
     val isLoading: Boolean = true,
-    val selectedItem: MatchItemUI? = null
+    val selectedItem: MatchItemUI? = null,
+    val error: String? = null
 )
