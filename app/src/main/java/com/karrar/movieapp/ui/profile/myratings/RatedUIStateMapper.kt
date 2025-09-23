@@ -10,11 +10,13 @@ class RatedUIStateMapper @Inject constructor() :Mapper<Rated,RatedUIState>  {
         return RatedUIState(
             id = input.id,
             title = input.title,
-            posterPath = BuildConfig.IMAGE_BASE_PATH + input.posterPath,
             rating = input.rating,
+            posterPath = BuildConfig.IMAGE_BASE_PATH + input.posterPath,
             mediaType = input.mediaType,
             releaseDate = input.releaseDate,
-            voteAverage = input.voteAverage
+            voteAverage = input.voteAverage,
+            genres =  emptyList(),
+            duration = input.duration
         )
     }
 }
