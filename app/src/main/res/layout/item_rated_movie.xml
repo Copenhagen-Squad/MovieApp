@@ -20,40 +20,37 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_height="32dp"
+            android:gravity="top"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You gave it"
+                android:text="@string/you_gave_it"
                 style="@style/Typography.body_sm_medium"
                 android:textColor="@color/shade_primary"
-                android:layout_marginEnd="8dp"
-                />
+                android:layout_marginEnd="8dp" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
                 android:isIndicator="true"
                 android:numStars="5"
-                android:progressDrawable="@drawable/custom_ratingbar"
-                android:rating="@{item.rating/2}"
-
-                android:scaleX="0.3"
-                android:scaleY="0.3"
+                android:layout_marginTop="4dp"
+                android:progressDrawable="@drawable/rating_custom"
+                android:rating="@{item.rating}"
+                android:scaleX="0.4"
+                android:scaleY="0.4"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
                 android:stepSize="1.0" />
         </LinearLayout>
 
         <include
             android:id="@+id/poster"
             layout="@layout/horizontal_poster"
-            app:date="@{item.releaseDate}"
-            app:imageUrl="@{item.posterPath}"
-            app:rating="@{item.voteAverage}"
-            app:title="@{item.title}" />
+            app:item ="@{item}"/>
     </LinearLayout>
 </layout>
