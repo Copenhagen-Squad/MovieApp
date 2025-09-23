@@ -1,11 +1,11 @@
 package com.karrar.movieapp.domain.mappers.series
 
 import com.karrar.movieapp.BuildConfig
-import com.karrar.movieapp.data.remote.response.RatedMoviesDto
 import com.karrar.movieapp.data.remote.response.RatedTvShowDto
 import com.karrar.movieapp.domain.mappers.Mapper
 import com.karrar.movieapp.domain.models.Rated
 import com.karrar.movieapp.utilities.Constants
+import com.karrar.movieapp.utilities.convertToFormat
 import javax.inject.Inject
 
 class RatedTvShowMapper @Inject constructor() : Mapper<RatedTvShowDto, Rated> {
@@ -15,9 +15,11 @@ class RatedTvShowMapper @Inject constructor() : Mapper<RatedTvShowDto, Rated> {
             title = input.title ?: "",
             posterPath = BuildConfig.IMAGE_BASE_PATH + input.backdropPath,
             rating = input.rating ?: 0F,
-            releaseDate = "",
+            releaseDate = input.firstAirDate?.convertToFormat() ?: "",
             mediaType = Constants.TV_SHOWS,
-            voteAverage = input.voteAverage ?: 0.0
+            voteAverage = input.voteAverage ?: 0.0,
+            genres = input.genreIds?.filterNotNull() ?: emptyList(),
+            duration = "",
         )
     }
 }
