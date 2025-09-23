@@ -88,18 +88,18 @@ class MyRatingsViewModel @Inject constructor(
         _ratedUiState.update { it.copy(ratedList = filtered) }
     }
 
-    override fun onClickMovie(movieId: Int) {
-        ratedUiState.value.ratedList.let { it ->
-            val item = it.find { it.id == movieId }
-            item?.let {
-                if (it.mediaType == Constants .MOVIE) {
-                    _myRatingUIEvent.update { Event(MyRatingUIEvent.MovieEvent(movieId)) }
-                } else {
-                    _myRatingUIEvent.update { Event(MyRatingUIEvent.TVShowEvent(movieId)) }
-                }
-            }
+    override fun onClickMovie(item:RatedUIState) {
+        if (item.mediaType.equals(Constants.MOVIE, true)) {
+            _myRatingUIEvent.update { Event(MyRatingUIEvent.MovieEvent(item.id)) }
+        } else {
+            _myRatingUIEvent.update { Event(MyRatingUIEvent.TVShowEvent(item.id)) }
         }
     }
+
+    override fun onClickBack() {
+        _myRatingUIEvent.update { Event(MyRatingUIEvent.BackEvent) }
+    }
+
 
     private suspend fun addMovieDetailsData(ratedItems: List<Rated>): List<Rated> {
         return ratedItems.map { rate ->
