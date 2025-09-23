@@ -37,9 +37,6 @@ class MyRatingsFragment : BaseFragment<FragmentMyRatingsBinding>() {
     private fun setupAdapter() {
         adapter = RatedMoviesAdapter(emptyList(), viewModel)
         binding.recyclerViewRatedMovies.adapter = adapter
-        collectLast(viewModel.myRatingUIEvent) {
-            it.getContentIfNotHandled()?.let { onEvent(it) }
-        }
     }
 
     private fun setupTabLayout() {
@@ -58,8 +55,14 @@ class MyRatingsFragment : BaseFragment<FragmentMyRatingsBinding>() {
         })
     }
 
+    private fun collectEvents() {
+        collectLast(viewModel.myRatingUIEvent) { event ->
+            event.getContentIfNotHandled()?.let { onEvent(it) }
+        }
+    }
+
     private fun onEvent(event: MyRatingUIEvent) {
-        val action = when (event) {
+        when (event) {
             is MyRatingUIEvent.MovieEvent -> {
                 MyRatingsFragmentDirections.actionRatedMoviesFragmentToMovieDetailFragment(event.movieID)
             }
@@ -67,13 +70,10 @@ class MyRatingsFragment : BaseFragment<FragmentMyRatingsBinding>() {
             is MyRatingUIEvent.TVShowEvent -> {
                 MyRatingsFragmentDirections.actionRatedMoviesFragmentToTvShowDetailsFragment(event.tvShowID)
             }
-        }
-        findNavController().navigate(action)
-    }
 
-    private fun collectEvents() {
-        collectLast(viewModel.myRatingUIEvent) { event ->
-            event.getContentIfNotHandled()?.let { onEvent(it) }
+            MyRatingUIEvent.BackEvent -> {
+                findNavController().popBackStack()
+            }
         }
     }
 
