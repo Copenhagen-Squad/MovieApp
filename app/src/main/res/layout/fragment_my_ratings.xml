@@ -13,39 +13,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/background_screen">
+
+        <com.karrar.movieapp.ui.components.header.AppBar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:AppBarTitle="@string/my_ratings"
+            app:onClickBack="@{() -> viewModel.onClickBack()}"
+            app:showBottomBorder="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <include
+            android:id="@+id/tab_layout"
+            layout="@layout/tabs"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/app_bar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_rated_movies"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingVertical="@dimen/spacing_small"
             android:paddingBottom="@dimen/spacing_medium"
             android:scrollbars="none"
-            app:items="@{viewModel.ratedUiState.rateMovies}"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            app:items="@{viewModel.ratedUiState.ratedList}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showWhenListNotEmpty="@{viewModel.ratedUiState.rateMovies}"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
+            app:showWhenListNotEmpty="@{viewModel.ratedUiState.ratedList}"
             tools:listitem="@layout/item_rated_movie" />
-
-        <TextView
-            style="@style/SemiBold.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/this_list_has_no_movies"
-            android:visibility="gone"
-            app:doneLoad="@{viewModel.ratedUiState.loading}"
-            app:emptyData="@{viewModel.ratedUiState.rateMovies}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:noError="@{viewModel.ratedUiState.error}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -87,8 +95,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:isListEmpty="@{viewModel.ratedUiState.ratedList.isEmpty()}"
-            />
+            android:visibility="gone"
+            app:showWhenListEmpty="@{viewModel.ratedUiState.ratedList}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
