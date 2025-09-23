@@ -248,6 +248,11 @@ fun setAllGenre(textView: TextView, genreList: List<String>?) {
     }
 }
 
+@BindingAdapter("genresText")
+fun TextView.setGenres(genres: List<String>?) {
+    text = genres?.joinToString(", ") ?: ""
+}
+
 @BindingAdapter("app:hideIfNotTypeOfMovie")
 fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
     if (mediaType != MediaType.MOVIE) view.isVisible = false
