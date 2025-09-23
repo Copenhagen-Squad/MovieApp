@@ -208,4 +208,8 @@
     <style name="small_button.enabled" parent="TextAppearance.AppCompat.Button">
         <item name="backgroundTint">@color/button_onTertiary</item>
     </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>
