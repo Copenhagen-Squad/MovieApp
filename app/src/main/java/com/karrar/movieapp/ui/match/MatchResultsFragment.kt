@@ -31,7 +31,7 @@ class MatchResultsFragment : BaseFragment<FragmentMatchResultBinding>() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getString(R.string.your_match_results))
+        setTitle(false)
 
         setupCallbacks()
         setupViewPager()

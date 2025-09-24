@@ -24,7 +24,7 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getString(R.string.discover_your_match))
+        setTitle(false)
         viewModel.getData()
         questionAdapter =
             QuestionAdapter(

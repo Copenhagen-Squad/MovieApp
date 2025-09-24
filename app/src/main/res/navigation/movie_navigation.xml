@@ -140,6 +140,11 @@
             />
 
         <action
+            android:id="@+id/action_profileFragment_to_editProfileDialog"
+            app:destination="@id/editProfileDialog"
+            />
+
+        <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/profileFragment"
@@ -245,6 +250,12 @@
         android:id="@+id/contentPreferencesDialog"
         android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
         tools:layout="@layout/content_preferences_dialog">
+    </dialog>
+
+    <dialog
+        android:id="@+id/editProfileDialog"
+        android:name="com.karrar.movieapp.ui.profile.editProfile.EditProfileDialog"
+        tools:layout="@layout/edit_profile_dialog">
     </dialog>
 
     <dialog

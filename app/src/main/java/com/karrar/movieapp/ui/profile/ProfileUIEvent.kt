@@ -8,4 +8,5 @@ sealed interface ProfileUIEvent {
     object MyCollectionEvent : ProfileUIEvent
     object OnClickChangeLanguage : ProfileUIEvent
     object OnClickContentPreferences : ProfileUIEvent
+    object OnClickEditProfile : ProfileUIEvent
 }
