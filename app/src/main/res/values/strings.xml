@@ -200,4 +200,5 @@
     <string name="collection_name">Collection Name</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">You’ll be taken to the website to update your name, username, or profile picture.</string>
+    <string name="here_s_your_match_list">Here’s Your Match List</string>
 </resources>
