@@ -18,6 +18,19 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def versionPropsFile = rootProject.file("version.properties")
+def versionProps = new Properties()
+if (versionPropsFile.exists()) {
+    versionProps.load(new FileInputStream(versionPropsFile))
+}
+
+def major = versionProps["MAJOR"]?.toInteger() ?: 1
+def minor = versionProps["MINOR"]?.toInteger() ?: 0
+def patch = versionProps["PATCH"]?.toInteger() ?: 0
+
+def versionCodeCalc = major * 10000 + minor * 100 + patch
+def versionNameCalc = "${major}.${minor}.${patch}"
+
 android {
     namespace 'com.karrar.movieapp'
     compileSdk 34
@@ -29,6 +42,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        versionCode versionCodeCalc
+        versionName versionNameCalc
+
         // Build config fields with safe property access
         buildConfigField "String", "API_KEY", "\"${localProperties.getProperty('apiKey', '')}\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
@@ -37,11 +53,31 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnitPlatformBuilder"
+
+    }
+
+    signingConfigs {
+        release {
+            // Use project root-relative path for keystore
+            def keystorePath = System.getenv("SIGNING_KEYSTORE") ?: localProperties.getProperty("SIGNING_KEYSTORE")
+            if (keystorePath) {
+                // If path is relative, make it relative to project root
+                if (!keystorePath.startsWith('/')) {
+                    keystorePath = rootProject.file(keystorePath).absolutePath
+                }
+                storeFile file(keystorePath)
+            }
+            storePassword System.getenv("SIGNING_STORE_PASSWORD") ?: localProperties.getProperty("SIGNING_STORE_PASSWORD")
+            keyAlias System.getenv("SIGNING_KEY_ALIAS") ?: localProperties.getProperty("SIGNING_KEY_ALIAS")
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD") ?: localProperties.getProperty("SIGNING_KEY_PASSWORD")
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -135,6 +171,9 @@ dependencies {
 
     // YouTube Player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
+
+    // Flexbox
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:33.1.2')

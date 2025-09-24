@@ -14,8 +14,8 @@ import com.karrar.movieapp.ui.home.adapter.YourCollectionsInteractionListener
 import com.karrar.movieapp.ui.home.homeUiState.HomeUIEvent
 import com.karrar.movieapp.ui.home.homeUiState.HomeUiState
 import com.karrar.movieapp.ui.mappers.MediaUiMapper
-import com.karrar.movieapp.ui.myList.CreatedListUIMapper
-import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
+import com.karrar.movieapp.ui.myList.CreatedCollectionUIMapper
+import com.karrar.movieapp.ui.myList.myCollectionUIState.CreatedCollectionUIState
 import com.karrar.movieapp.ui.profile.watchhistory.MediaHistoryUiState
 import com.karrar.movieapp.utilities.Constants
 import com.karrar.movieapp.utilities.Event
@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
     private val mediaUiMapper: MediaUiMapper,
     private val popularUiMapper: PopularUiMapper,
     private val watchHistoryMapper: WatchHistoryMapper,
-    private val createdListUIMapper: CreatedListUIMapper,
+    private val createdCollectionUIMapper: CreatedCollectionUIMapper,
 ) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener,
     MediaInteractionListener, TVShowInteractionListener, RecentlyViewedInteractionListener,
     YourCollectionsInteractionListener {
@@ -61,7 +61,7 @@ class HomeViewModel @Inject constructor(
     private fun getMyCollections() {
         viewModelScope.launch {
             try {
-                val items = homeUseCasesContainer.getMyListUseCase().map { createdListUIMapper.map(it) }
+                val items = homeUseCasesContainer.getMyListUseCase().map { createdCollectionUIMapper.map(it) }
                 _homeUiState.update {
                     it.copy(isLoading = false, collections = HomeItem.CollectionsList(items))
                 }
@@ -253,7 +253,7 @@ class HomeViewModel @Inject constructor(
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllRecentlyViewedEvent) }
     }
 
-    override fun onClickCollection(collection: CreatedListUIState) {
+    override fun onClickCollection(collection: CreatedCollectionUIState) {
         _homeUIEvent.update { Event(HomeUIEvent.ClickCollectionList(collection)) }
     }
 

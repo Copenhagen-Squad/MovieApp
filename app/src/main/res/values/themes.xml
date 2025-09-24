@@ -97,7 +97,7 @@
     </style>
 
     <style name="CardCorners.Medium">
-        <item name="cornerSize">@dimen/radius_medium</item>
+        <item name="cornerSize">@dimen/radius_md</item>
     </style>
 
     <style name="ArchImageShape">
@@ -205,5 +205,8 @@
 
     <style name="CardCorners.radiusLarge">
         <item name="cornerSize">@dimen/radius_lg</item>
+    </style>
+    <style name="small_button.enabled" parent="TextAppearance.AppCompat.Button">
+        <item name="backgroundTint">@color/button_onTertiary</item>
     </style>
 </resources>

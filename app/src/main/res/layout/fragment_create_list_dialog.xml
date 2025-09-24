@@ -6,84 +6,136 @@
 
         <variable
             name="viewModel"
-            type="com.karrar.movieapp.ui.myList.MyListsViewModel" />
+            type="com.karrar.movieapp.ui.myList.MyCollectionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/create_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_sheet_corners"
-        android:paddingVertical="@dimen/spacing_large">
+        android:background="@drawable/bottom_sheet_body"
+        >
+
+        <View
+            android:id="@+id/bottom_sheet_view"
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:background="@drawable/bottom_sheet_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            />
 
         <TextView
-            android:id="@+id/primary_text"
-            style="@style/SemiBold.Large"
+            android:id="@+id/create_title"
+            style="@style/Typography.title_sm"
+            android:textColor="@color/shade_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plus_jakarta_sans_semibold"
-            android:text="@string/create_a_new_list"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/create_new_collection"
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            />
+
+        <ImageView
+            android:id="@+id/close_dialog"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/exit"
+            android:src="@drawable/ic_x"
+            app:tint="@color/shade_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.onClickBack()}"
+            />
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="300dp"
+            android:id="@+id/text_field_title"
+            style="@style/Typography.body_md_regular"
+            android:textColor="@color/shade_secondary"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:fontFamily="@font/plus_jakarta_sans_regular"
-            android:text="@string/explore_some_movies_on_home_or_search_and_then_create_your_movie_list"
-            android:textAlignment="center"
-            android:textColor="@color/shade_secondary_color"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/collection_name"
+            app:layout_constraintTop_toBottomOf="@id/create_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/primary_text" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/list_name"
+        <com.karrar.movieapp.ui.components.TextField
+            android:id="@+id/collection_name_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:hint="@string/list_name"
-            android:textColorHint="@color/shade_secondary_color"
-            app:hintTextColor="@color/shade_secondary_color"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_field_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/buttons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/collection_name_field"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="16dp"
+            >
+
+            <FrameLayout
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:afterTextChanged="@{(text) -> viewModel.onListNameInputChange(text)}"
-                android:fontFamily="@font/plus_jakarta_sans_regular"
-                android:inputType="textPersonName"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:textColor="@color/shade_primary_color"
-                android:textCursorDrawable="@drawable/color_cursor" />
+                android:background="@drawable/button_bg"
+                android:onClick="@{() -> viewModel.onClickBack()}"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/cancel_text"
+                    style="@style/Typography.body_md_medium"
+                    android:textColor="@color/button_onSecondary"
+                    android:text="@string/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:layout_marginVertical="16dp"
+                    />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_marginBottom="24dp"
-            android:enabled="@{!viewModel.createListDialogUIState.mediaListName.empty}"
-            android:fontFamily="@font/plus_jakarta_sans_semibold"
-            android:onClick="@{()->viewModel.onClickAddList()}"
-            android:paddingVertical="@dimen/spacing_medium"
-            android:text="@string/create"
-            android:textAllCaps="false"
-            android:textColor="@color/white_primary"
-            app:backgroundTint="@color/color_states_material_button"
-            app:cornerRadius="@dimen/spacing_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_name" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_primary"
+                android:layout_marginStart="12dp"
+                android:onClick="@{() -> viewModel.onClickAddList()}"
+                >
+
+                <TextView
+                    android:id="@+id/logout_text"
+                    style="@style/Typography.body_md_medium"
+                    android:textColor="@color/button_onPrimary"
+                    android:text="@string/create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:layout_marginVertical="16dp"
+                    />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
