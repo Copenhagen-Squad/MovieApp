@@ -48,9 +48,9 @@ class MatchResultsViewModel @Inject constructor(
                         title = m.title,
                         posterUrl = m.posterPath?.let { path -> "https://image.tmdb.org/t/p/w500$path" },
                         backdropUrl = m.backdropPath?.let { path -> "${Constants.IMAGE_BASE_PATH}$path" },
-                        genres = null,
+                        genres = m.genreIds,
                         voteAverage = m.voteAverage,
-                        runtimeFormatted = null,
+                        runtimeFormatted = m.runtime,
                         releaseDateShort = m.releaseDate,
                         isMovie = true
                     )
@@ -62,18 +62,6 @@ class MatchResultsViewModel @Inject constructor(
                 _uiState.update { it.copy(isLoading = false, error = exception.message) }
             }
         }
-    }
-
-    fun onPlayClicked(item: MatchItemUI) {
-        _uiState.update { it.copy(selectedItem = item) }
-    }
-
-    fun onSaveClicked(item: MatchItemUI) {
-        _uiState.update { it.copy(selectedItem = item) }
-    }
-
-    fun onViewDetailsClicked(item: MatchItemUI) {
-        _uiState.update { it.copy(selectedItem = item) }
     }
 }
 

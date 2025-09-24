@@ -122,9 +122,10 @@ data class MovieEntity(
     val title: String,
     val posterPath: String?,
     val backdropPath: String?,
+    val runtime: String?,
     val voteAverage: Double?,
     val releaseDate: String?,
     val overview: String?,
-    val genreIds: List<Int>?,
+    val genreIds: String?,
     val adult: Boolean = false
 )
