@@ -92,4 +92,8 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.OnClickContentPreferences) }
     }
 
+    fun onClickEditProfile() {
+        _profileUIEvent.update { Event(ProfileUIEvent.OnClickEditProfile) }
+    }
+
 }

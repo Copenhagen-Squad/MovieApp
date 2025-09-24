@@ -8,9 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karrar.movieapp.BR
 
-abstract class BaseDialog<VDB : ViewDataBinding> : DialogFragment(){
+abstract class BaseDialog<VDB : ViewDataBinding> : BottomSheetDialogFragment(){
     abstract val layoutIdFragment: Int
     abstract val viewModel: ViewModel
 
