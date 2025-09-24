@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_primary"
                 android:layout_marginStart="12dp"
-                android:onClick="@{() -> viewModel.onCreateList()}"
+                android:onClick="@{() -> viewModel.onClickAddList()}"
                 >
 
                 <TextView
