@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.karrar.movieapp.ui.match.MatchItemUI" />
+            type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState" />
 
         <variable
             name="callbacks"
@@ -143,7 +143,7 @@
                     app:layout_constraintEnd_toStartOf="@id/actions"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvType"
-                    app:textSafe='@{item.title}'
+                    app:textSafe='@{item.name}'
                     tools:text="Until Dawn" />
 
                 <TextView
@@ -181,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        app:textFormatted='@{item.voteAverage}'
+                        android:text='@{item.voteAverageFormatted}'
                         tools:text="8.5" />
 
                     <ImageView
@@ -196,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        app:textSafe='@{item.runtimeFormatted}'
+                        android:text='@{item.runtimeFormatted}'
                         tools:text="2h 32m" />
 
                     <ImageView
@@ -211,7 +211,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        app:textSafe='@{item.releaseDateShort}'
+                        android:text='@{item.releaseDate}'
                         tools:text="2008, Jul 18" />
                 </LinearLayout>
 
