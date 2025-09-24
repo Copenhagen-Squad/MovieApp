@@ -193,4 +193,11 @@
     <string name="login_or_sign_up">Login or Sign Up</string>
     <string name="to_personalize_your_experience">to personalize your experience!</string>
     <string name="your_match_results">Your Match Results</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
+    <string name="you_can_always_sign_back_in_with_your_account">You can always sign back in with your account.</string>
+    <string name="create_new_collection">Create New Collection</string>
+    <string name="e_g_my_watchlist">e.g. My Watchlist</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">You’ll be taken to the website to update your name, username, or profile picture.</string>
 </resources>
