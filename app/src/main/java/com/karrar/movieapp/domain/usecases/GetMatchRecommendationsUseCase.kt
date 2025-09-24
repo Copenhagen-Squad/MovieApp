@@ -2,10 +2,10 @@ package com.karrar.movieapp.domain.usecases
 
 import android.util.Log
 import com.karrar.movieapp.data.MatchParams
-import com.karrar.movieapp.data.MovieEntity
 import com.karrar.movieapp.data.repository.MovieRepository
 import com.karrar.movieapp.domain.mappers.movie.MovieDetailsMapper
 import com.karrar.movieapp.domain.models.MovieDetails
+import com.karrar.movieapp.ui.match.MatchItemUI
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -15,7 +15,7 @@ class GetMatchRecommendationsUseCase @Inject constructor(
     private val repository: MovieRepository,
     private val movieDetailsMapper: MovieDetailsMapper
 ) {
-    suspend operator fun invoke(params: MatchParams): Result<List<MovieEntity>> {
+    suspend operator fun invoke(params: MatchParams): Result<List<MatchItemUI>> {
         return try {
             Log.d("GetMatchRecommendations", "Fetching basic recommendations...")
             val movies = repository.getMatchRecommendations(params)
@@ -35,24 +35,36 @@ class GetMatchRecommendationsUseCase @Inject constructor(
         return try {
             Log.d("GetMatchRecommendations", "Fetching basic recommendations first...")
             val basicMovies = repository.getMatchRecommendations(params)
-            Log.d("GetMatchRecommendations", "Received ${basicMovies.size} basic recommendations, now fetching details...")
+            Log.d(
+                "GetMatchRecommendations",
+                "Received ${basicMovies.size} basic recommendations, now fetching details..."
+            )
 
             // Fetch details for all movies in parallel
             val detailedMovies = coroutineScope {
                 basicMovies.map { movie ->
                     async {
                         try {
-                            Log.d("GetMatchRecommendations", "Fetching details for movie ID: ${movie.id}")
+                            Log.d(
+                                "GetMatchRecommendations",
+                                "Fetching details for movie ID: ${movie.id}"
+                            )
                             getMovieDetails(movie.id)
                         } catch (e: Exception) {
-                            Log.w("GetMatchRecommendations", "Failed to fetch details for movie ${movie.id}: ${e.message}")
+                            Log.w(
+                                "GetMatchRecommendations",
+                                "Failed to fetch details for movie ${movie.id}: ${e.message}"
+                            )
                             null // Return null for failed requests
                         }
                     }
                 }.awaitAll().filterNotNull() // Remove any null results from failed requests
             }
 
-            Log.d("GetMatchRecommendations", "Successfully fetched details for ${detailedMovies.size} out of ${basicMovies.size} movies")
+            Log.d(
+                "GetMatchRecommendations",
+                "Successfully fetched details for ${detailedMovies.size} out of ${basicMovies.size} movies"
+            )
             Result.success(detailedMovies)
         } catch (e: Exception) {
             Log.e("GetMatchRecommendations", "Error fetching detailed recommendations", e)
@@ -64,36 +76,48 @@ class GetMatchRecommendationsUseCase @Inject constructor(
      * Alternative method that enriches the basic MovieEntity objects with available details
      * This might be more efficient if you don't need all the MovieDetails fields
      */
-    suspend fun getEnrichedRecommendations(params: MatchParams): Result<List<MovieEntity>> {
+    suspend fun getEnrichedRecommendations(params: MatchParams): Result<List<MatchItemUI>> {
         return try {
             Log.d("GetMatchRecommendations", "Fetching basic recommendations...")
             val basicMovies = repository.getMatchRecommendations(params)
 
-            Log.d("GetMatchRecommendations", "Enriching ${basicMovies.size} movies with additional details...")
+            Log.d(
+                "GetMatchRecommendations",
+                "Enriching ${basicMovies.size} movies with additional details..."
+            )
 
             val enrichedMovies = coroutineScope {
                 basicMovies.map { movie ->
                     async {
                         try {
-                            Log.d("GetMatchRecommendations", "Fetching details for movie: ${movie.title} (ID: ${movie.id})")
+                            Log.d(
+                                "GetMatchRecommendations",
+                                "Fetching details for movie: ${movie.title} (ID: ${movie.id})"
+                            )
                             val details = repository.getMovieDetails(movie.id)
                             val enrichedMovie = movie.copy(
-                                posterPath = details?.posterPath,
-                                backdropPath = details?.backdropPath,
-                                voteAverage = details?.voteAverage?.toDouble(),
-                                releaseDate = details?.releaseDate.toString()
+                                posterUrl = details?.posterPath,
+                                backdropUrl = details?.backdropPath,
+                                voteAverage = details?.voteAverage,
+                                releaseDateShort = details?.releaseDate.toString()
                             )
                             Log.d("GetMatchRecommendations", "Successfully enriched ${movie.title}")
                             enrichedMovie
                         } catch (e: Exception) {
-                            Log.w("GetMatchRecommendations", "Failed to enrich movie ${movie.title} (${movie.id}): ${e.message}")
+                            Log.w(
+                                "GetMatchRecommendations",
+                                "Failed to enrich movie ${movie.title} (${movie.id}): ${e.message}"
+                            )
                             movie
                         }
                     }
                 }.awaitAll()
             }
 
-            Log.d("GetMatchRecommendations", "Successfully enriched ${enrichedMovies.size} movie recommendations")
+            Log.d(
+                "GetMatchRecommendations",
+                "Successfully enriched ${enrichedMovies.size} movie recommendations"
+            )
             Result.success(enrichedMovies)
         } catch (e: Exception) {
             Log.e("GetMatchRecommendations", "Error enriching recommendations", e)

@@ -26,11 +26,11 @@ class MatchResultsViewModel @Inject constructor(
     val items = _items.asStateFlow()
 
     private val args = MatchParams(
-        genres = savedStateHandle.get<String>("genres").orEmpty().ifBlank { null },
+        genres = savedStateHandle.get<String>("genres")?.takeIf { it.isNotBlank() },
         runtimeGte = savedStateHandle.get<Int>("runtimeGte")?.takeIf { it >= 0 },
         runtimeLte = savedStateHandle.get<Int>("runtimeLte")?.takeIf { it >= 0 },
-        releaseDateGte = savedStateHandle.get<String>("releaseDateGte").orEmpty().ifBlank { null },
-        releaseDateLte = savedStateHandle.get<String>("releaseDateLte").orEmpty().ifBlank { null },
+        releaseDateGte = savedStateHandle.get<String>("releaseDateGte")?.takeIf { it.isNotBlank() },
+        releaseDateLte = savedStateHandle.get<String>("releaseDateLte")?.takeIf { it.isNotBlank() },
     )
 
     init {
@@ -40,27 +40,64 @@ class MatchResultsViewModel @Inject constructor(
     private fun fetch() {
         _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
-            val result = getMatchRecommendations.getEnrichedRecommendations(args)
-            result.onSuccess { list ->
-                val mapped = list.map { m ->
-                    MatchItemUI(
-                        id = m.id,
-                        title = m.title,
-                        posterUrl = m.posterPath?.let { path -> "https://image.tmdb.org/t/p/w500$path" },
-                        backdropUrl = m.backdropPath?.let { path -> "${Constants.IMAGE_BASE_PATH}$path" },
-                        genres = m.genreIds,
-                        voteAverage = m.voteAverage,
-                        runtimeFormatted = m.runtime,
-                        releaseDateShort = m.releaseDate,
-                        isMovie = true
+            try {
+                val result = getMatchRecommendations.getEnrichedRecommendations(args)
+                result.onSuccess { movieList ->
+                    val mapped = movieList.map { movie ->
+                        MatchItemUI(
+                            id = movie.id?.toString()?.toIntOrNull() ?: 0,
+                            title = movie.title?.toString() ?: "",
+                            posterUrl = movie.posterUrl?.toString()?.let { path ->
+                                if (path.startsWith("http")) path
+                                else "https://image.tmdb.org/t/p/w500$path"
+                            },
+                            backdropUrl = movie.backdropUrl?.toString()?.let { path ->
+                                if (path.startsWith("http")) path
+                                else "${Constants.IMAGE_BASE_PATH}$path"
+                            },
+                            genres = movie.genres?.let { genresList ->
+                                when (genresList) {
+                                    is String -> genresList
+                                    else -> genresList.toString()
+                                }
+                            },
+                            voteAverage = movie.voteAverage?.toString()?.toDoubleOrNull(),
+                            runtimeFormatted = movie.runtimeFormatted.let { runtimeStr ->
+                                    runtimeStr
+                            },
+                            releaseDateShort = movie.releaseDateShort?.toString()?.let { dateStr ->
+                                formatReleaseDate(dateStr)
+                            },
+                            isMovie = true
+                        )
+                    }
+                    _items.value = mapped
+                    _uiState.update { it.copy(isLoading = false, error = null) }
+                }.onFailure { exception ->
+                    android.util.Log.e("MatchResultsViewModel", "Failed to fetch recommendations", exception)
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = exception.message ?: "Unknown error occurred"
+                        )
+                    }
+                }
+            } catch (exception: Exception) {
+                android.util.Log.e("MatchResultsViewModel", "Error in fetch", exception)
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = exception.message ?: "Unknown error occurred"
                     )
                 }
-                _items.value = mapped
-                _uiState.update { it.copy(isLoading = false) }
-            }.onFailure { exception ->
-                android.util.Log.e("MatchResultsViewModel", "Failed to fetch recommendations: ${exception.message}")
-                _uiState.update { it.copy(isLoading = false, error = exception.message) }
             }
+        }
+    }
+    private fun formatReleaseDate(dateString: String): String {
+        return try {
+            dateString.split("-").firstOrNull() ?: dateString
+        } catch (e: Exception) {
+            dateString
         }
     }
 }

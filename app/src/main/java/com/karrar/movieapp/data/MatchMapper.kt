@@ -116,16 +116,3 @@ data class MatchParams(
     val releaseDateGte: String?,
     val releaseDateLte: String?
 )
-
-data class MovieEntity(
-    val id: Int,
-    val title: String,
-    val posterPath: String?,
-    val backdropPath: String?,
-    val runtime: String?,
-    val voteAverage: Double?,
-    val releaseDate: String?,
-    val overview: String?,
-    val genreIds: String?,
-    val adult: Boolean = false
-)
