@@ -8,6 +8,7 @@
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
     <dimen name="spacing_extra_extra_large">50dp</dimen>
+    <dimen name="spacing_56">56dp</dimen>
     <dimen name="spacing_61">61dp</dimen>
     <dimen name="spacing_48">48dp</dimen>
     <dimen name="spacing_20">20dp</dimen>
