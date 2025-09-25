@@ -30,6 +30,24 @@ class TextField @JvmOverloads constructor(
 
         orientation = HORIZONTAL
 
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(it, R.styleable.TextField)
+            val hint = typedArray.getString(R.styleable.TextField_hintText)
+            val iconRes = typedArray.getResourceId(R.styleable.TextField_startIcon, 0)
+
+            if (!hint.isNullOrEmpty()) {
+                setHint(hint)
+            }
+
+            if (iconRes != 0) {
+                setLeadingIcon(iconRes)
+            } else {
+                hideLeadingIcon()
+            }
+
+            typedArray.recycle()
+        }
+
         editText.addTextChangedListener {
             onTextChanged?.invoke(it.toString())
         }
@@ -45,6 +63,10 @@ class TextField @JvmOverloads constructor(
     fun setLeadingIcon(@DrawableRes resId: Int) {
         startIcon.setImageResource(resId)
         startIcon.visibility = View.VISIBLE
+    }
+
+    fun hideLeadingIcon() {
+        startIcon.visibility = View.GONE
     }
 
     fun getText(): String = editText.text.toString()
