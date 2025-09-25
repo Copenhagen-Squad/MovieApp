@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:AppBarTitle="@string/history"
+                app:showBottomBorder="false"
                 app:onClickBack="@{() -> viewModel.onClickBack()}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

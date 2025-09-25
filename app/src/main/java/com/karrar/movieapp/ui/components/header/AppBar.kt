@@ -32,6 +32,7 @@ class AppBar @JvmOverloads constructor(
                 val showEndIcon = getBoolean(R.styleable.AppBar_showEndIcon, false)
                 val showAppIcon = getBoolean(R.styleable.AppBar_showAppIcon, false)
                 val showBack = getBoolean(R.styleable.AppBar_showIcon, true)
+                val showBottomBorder = getBoolean(R.styleable.AppBar_showBottomBorder, true)
 
 
                 setTitle(title ?: "")
@@ -42,6 +43,7 @@ class AppBar @JvmOverloads constructor(
                 binding.icBack.isVisible = showBack
                 binding.icEndAction.isVisible = showEndIcon
                 binding.icPlanet.isVisible = showAppIcon
+                binding.bottomBorder.isVisible = showBottomBorder
 
             } finally {
                 recycle()
