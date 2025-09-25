@@ -68,6 +68,45 @@ object MatchMapper {
             releaseDateLte = releaseDateLte
         )
     }
+
+    fun toMatchParamsFromChoice(
+        moodNames: List<String>,
+        genreNames: List<String>,
+        timeNames: List<String>,
+        periodNames: List<String>,
+    ): MatchParams {
+        val moodGenres = moodNames.flatMap { moodToMovieGenres[it] ?: emptyList() }
+        val selectedGenres = genreNames.mapNotNull { genreToMovieGenres[it] }
+        val allGenres = (moodGenres + selectedGenres).distinct().joinToString("|")
+
+        var runtimeGte: Int? = null
+        var runtimeLte: Int? = null
+        timeNames.firstOrNull()?.let { time ->
+            when (time) {
+                "Short" -> runtimeLte = 90
+                "Medium" -> { runtimeGte = 90; runtimeLte = 120 }
+                "Long" -> runtimeGte = 120
+            }
+        }
+
+        var releaseDateGte: String? = null
+        var releaseDateLte: String? = null
+        periodNames.firstOrNull()?.let { type ->
+            when (type) {
+                "Recent" -> releaseDateGte = "2023-01-01"
+                "Classic" -> releaseDateLte = "2000-01-01"
+                "Both" -> {}
+            }
+        }
+
+        return MatchParams(
+            genres = allGenres.ifEmpty { null },
+            runtimeGte = runtimeGte,
+            runtimeLte = runtimeLte,
+            releaseDateGte = releaseDateGte,
+            releaseDateLte = releaseDateLte
+        )
+    }
 }
 
 data class MatchParams(
@@ -76,16 +115,4 @@ data class MatchParams(
     val runtimeLte: Int?,
     val releaseDateGte: String?,
     val releaseDateLte: String?
-)
-
-data class MovieEntity(
-    val id: Int,
-    val title: String,
-    val posterPath: String?,
-    val backdropPath: String?,
-    val voteAverage: Double?,
-    val releaseDate: String?,
-    val overview: String?,
-    val genreIds: List<Int>?,
-    val adult: Boolean = false
 )

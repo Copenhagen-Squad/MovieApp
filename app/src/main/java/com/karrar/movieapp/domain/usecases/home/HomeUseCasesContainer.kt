@@ -26,5 +26,5 @@ class HomeUseCasesContainer @Inject constructor(
     val getWatchHistoryUseCase: GetWatchHistoryUseCase,
     val getMyListUseCase: GetMyListUseCase,
     val getAccountDetailsUseCase: GetAccountDetailsUseCase,
-    val checkIfLoggedInUseCase: CheckIfLoggedInUseCase
+    val checkIfLoggedInUseCase: CheckIfLoggedInUseCase,
 )

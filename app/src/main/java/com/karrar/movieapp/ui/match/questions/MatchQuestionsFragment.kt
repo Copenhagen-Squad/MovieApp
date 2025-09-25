@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.karrar.movieapp.R
+import com.karrar.movieapp.data.MatchMapper
 import com.karrar.movieapp.databinding.FragmentMatchQuestionsBinding
 import com.karrar.movieapp.ui.base.BaseFragment
 import com.karrar.movieapp.ui.match.questions.adapter.QuestionAdapter
@@ -22,6 +24,7 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+        setTitle(false)
         viewModel.getData()
         questionAdapter =
             QuestionAdapter(
@@ -48,6 +51,30 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
                 questionAdapter.emitItems(state)
             }
         }
+
+        // Navigate to results when loading is complete
+        lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                if (state.isLoading && currentQuestionType == QuestionType.TIME_PERIOD) {
+                    // Build params from current selections and navigate
+                    val params = MatchMapper.toMatchParamsFromChoice(
+                        moodNames = state.moodSelected.map { it.name },
+                        genreNames = state.genreSelected.map { it.name },
+                        timeNames = state.mediaRuntimeSelected.map { it.name },
+                        periodNames = state.timePeriodSelected.map { it.name },
+                    )
+                    val action = MatchQuestionsFragmentDirections
+                        .actionMatchQuestionsFragmentToMatchResultsFragment(
+                            genres = params.genres.orEmpty(),
+                            runtimeGte = params.runtimeGte ?: -1,
+                            runtimeLte = params.runtimeLte ?: -1,
+                            releaseDateGte = params.releaseDateGte.orEmpty(),
+                            releaseDateLte = params.releaseDateLte.orEmpty(),
+                        )
+                    findNavController().navigate(action)
+                }
+            }
+        }
     }
 
     private fun render(state: QuestionUiState) {
@@ -55,7 +82,7 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
             currentQuestionType = state.currentQuestionType
             progressIndicator.setProgressCompat(state.progress, true)
             matchQuestionsRv.scrollToPosition(state.currentQuestionType.ordinal)
-            isLoading = state.isLoading
+            binding.isLoading = state.isLoading
             if (state.currentQuestionType == QuestionType.TIME_PERIOD) {
                 buttonContinue.setText(R.string.start_matching)
             }

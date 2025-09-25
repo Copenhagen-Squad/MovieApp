@@ -6,20 +6,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.karrar.movieapp.databinding.ItemMatchPosterBinding
+import com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState
 
 class MatchPostersAdapter
-    : ListAdapter<MatchItemUI, MatchPostersAdapter.VH>(Diff) {
+    : ListAdapter<MovieDetailsUIState, MatchPostersAdapter.VH>(Diff) {
 
-    object Diff : DiffUtil.ItemCallback<MatchItemUI>() {
-        override fun areItemsTheSame(a: MatchItemUI, b: MatchItemUI) = a.id == b.id
-        override fun areContentsTheSame(a: MatchItemUI, b: MatchItemUI) = a == b
+    object Diff : DiffUtil.ItemCallback<MovieDetailsUIState>() {
+        override fun areItemsTheSame(a: MovieDetailsUIState, b: MovieDetailsUIState) = a.id == b.id
+        override fun areContentsTheSame(a: MovieDetailsUIState, b: MovieDetailsUIState) = a == b
     }
 
     inner class VH(val binding: ItemMatchPosterBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val inf = LayoutInflater.from(parent.context)
-        return VH(ItemMatchPosterBinding.inflate(inf, parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        return VH(ItemMatchPosterBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {

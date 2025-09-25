@@ -18,9 +18,19 @@ class CreateCollectionDialog : BaseDialogFragment<FragmentCreateListDialogBindin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.collectionNameField.setOnTextChangedListener { text ->
+            viewModel.onListNameInputChange(text)
+        }
+
+        collectLast(viewModel.createListDialogUIState) { state ->
+            binding.logoutButton.isEnabled = state.mediaListName.isNotBlank()
+            binding.logoutButton.alpha = if (state.mediaListName.isNotBlank()) 1f else 0.5f
+        }
+
         collectLast(viewModel.myListUIEvent) {
-            it.peekContent()?.let {
-                if (it is MyCollectionUIEvent.CLickAddEvent) {
+            it.peekContent()?.let { event ->
+                if (event is MyCollectionUIEvent.CLickAddEvent) {
                     dismissDialog()
                 }
             }
