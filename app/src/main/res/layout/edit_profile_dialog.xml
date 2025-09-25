@@ -6,14 +6,19 @@
 
         <variable
             name="viewModel"
-            type="com.karrar.movieapp.ui.myList.MyCollectionViewModel" />
+            type="com.karrar.movieapp.ui.profile.editProfile.EditProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/create_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_sheet_body"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         >
 
         <View
@@ -27,56 +32,54 @@
             android:layout_marginTop="12dp"
             />
 
+        <FrameLayout
+            android:id="@+id/logout_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/edit_profile_icon_container"
+            android:layout_marginTop="20dp"
+            >
+
+            <ImageView
+                android:contentDescription="@string/oops_no_internet"
+                android:src="@drawable/ic_link_minimalistic_duetone"
+                app:tint="@color/brand_primary"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_margin="18dp"
+                />
+
+        </FrameLayout>
+
         <TextView
-            android:id="@+id/create_title"
+            android:id="@+id/title_text"
             style="@style/Typography.title_sm"
             android:textColor="@color/shade_primary"
+            android:text="@string/edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_new_collection"
-            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
+            app:layout_constraintTop_toBottomOf="@id/logout_image"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="16dp"
-            />
-
-        <ImageView
-            android:id="@+id/close_dialog"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:contentDescription="@string/exit"
-            android:src="@drawable/ic_x"
-            app:tint="@color/shade_secondary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_view"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="@{() -> viewModel.onClickBack()}"
+            android:layout_marginTop="16dp"
             />
 
         <TextView
-            android:id="@+id/text_field_title"
-            style="@style/Typography.body_md_regular"
+            android:id="@+id/description_text"
+            style="@style/Typography.body_sm_medium"
             android:textColor="@color/shade_secondary"
+            android:text="@string/you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/collection_name"
-            app:layout_constraintTop_toBottomOf="@id/create_title"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            />
-
-        <com.karrar.movieapp.ui.components.TextField
-            android:id="@+id/collection_name_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_field_title"
+            app:layout_constraintTop_toBottomOf="@id/title_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            android:paddingHorizontal="16dp"
             />
 
         <LinearLayout
@@ -84,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/collection_name_field"
+            app:layout_constraintTop_toBottomOf="@id/description_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp"
@@ -96,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_bg"
-                android:onClick="@{() -> viewModel.onClickBack()}"
+                android:onClick="@{() -> viewModel.onCloseDialog()}"
                 >
 
                 <TextView
@@ -106,8 +109,8 @@
                     android:text="@string/cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="70dp"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginVertical="14.5dp"
                     />
 
             </FrameLayout>
@@ -118,18 +121,18 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_primary"
                 android:layout_marginStart="12dp"
-                android:onClick="@{() -> viewModel.onClickAddList()}"
+                android:onClick="@{() -> viewModel.onClickGoToWebSite()}"
                 >
 
                 <TextView
                     android:id="@+id/logout_text"
                     style="@style/Typography.body_md_medium"
                     android:textColor="@color/button_onPrimary"
-                    android:text="@string/create"
+                    android:text="@string/go_to_website"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="70dp"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginHorizontal="27dp"
+                    android:layout_marginVertical="14.5dp"
                     />
 
             </FrameLayout>
@@ -137,5 +140,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
 
+</layout>

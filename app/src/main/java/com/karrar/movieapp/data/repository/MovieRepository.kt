@@ -2,7 +2,6 @@ package com.karrar.movieapp.data.repository
 
 import androidx.paging.Pager
 import com.karrar.movieapp.data.MatchParams
-import com.karrar.movieapp.data.MovieEntity
 import com.karrar.movieapp.data.local.database.entity.ActorEntity
 import com.karrar.movieapp.data.local.database.entity.SearchHistoryEntity
 import com.karrar.movieapp.data.local.database.entity.WatchHistoryEntity
@@ -16,6 +15,7 @@ import com.karrar.movieapp.data.remote.response.movie.RatingDto
 import com.karrar.movieapp.data.remote.response.review.ReviewsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.TrailerDto
 import com.karrar.movieapp.domain.models.*
+import com.karrar.movieapp.ui.match.MatchItemUI
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
@@ -69,7 +69,7 @@ interface MovieRepository {
     suspend fun getTrendingActors(): Flow<List<ActorEntity>>
 
     suspend fun getTrendingMoviesPager(): Pager<Int, MovieDto>
-    suspend fun getMatchRecommendations(params: MatchParams): List<MovieEntity>
+    suspend fun getMatchRecommendations(params: MatchParams): List<MatchItemUI>
 
     suspend fun getNowPlayingMoviesPager(): Pager<Int, MovieDto>
 

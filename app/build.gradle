@@ -18,6 +18,19 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def versionPropsFile = rootProject.file("version.properties")
+def versionProps = new Properties()
+if (versionPropsFile.exists()) {
+    versionProps.load(new FileInputStream(versionPropsFile))
+}
+
+def major = versionProps["MAJOR"]?.toInteger() ?: 1
+def minor = versionProps["MINOR"]?.toInteger() ?: 0
+def patch = versionProps["PATCH"]?.toInteger() ?: 0
+
+def versionCodeCalc = major * 10000 + minor * 100 + patch
+def versionNameCalc = "${major}.${minor}.${patch}"
+
 android {
     namespace 'com.karrar.movieapp'
     compileSdk 34
@@ -29,6 +42,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        versionCode versionCodeCalc
+        versionName versionNameCalc
+
         // Build config fields with safe property access
         buildConfigField "String", "API_KEY", "\"${localProperties.getProperty('apiKey', '')}\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
@@ -38,8 +54,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnitPlatformBuilder"
 
-        versionCode project.hasProperty("versionCode") ? project.versionCode.toInteger() : 1
-        versionName project.hasProperty("versionName") ? project.versionName : "1.0.0"
     }
 
     signingConfigs {

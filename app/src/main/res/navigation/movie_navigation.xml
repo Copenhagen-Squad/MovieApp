@@ -140,6 +140,11 @@
             />
 
         <action
+            android:id="@+id/action_profileFragment_to_editProfileDialog"
+            app:destination="@id/editProfileDialog"
+            />
+
+        <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/profileFragment"
@@ -245,6 +250,12 @@
         android:id="@+id/contentPreferencesDialog"
         android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
         tools:layout="@layout/content_preferences_dialog">
+    </dialog>
+
+    <dialog
+        android:id="@+id/editProfileDialog"
+        android:name="com.karrar.movieapp.ui.profile.editProfile.EditProfileDialog"
+        tools:layout="@layout/edit_profile_dialog">
     </dialog>
 
     <dialog
@@ -384,12 +395,48 @@
     <fragment
         android:id="@+id/matchQuestionsFragment"
         android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
-        android:label="MatchQuestionsFragment" />
-  
+        android:label="MatchQuestionsFragment">
+        <action
+            android:id="@+id/action_matchQuestionsFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/matchResultsFragment"
         android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
         tools:layout="@layout/fragment_match_result">
+        <argument
+            android:name="genres"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="runtimeGte"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="runtimeLte"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="releaseDateGte"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="releaseDateLte"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_youtubePlayerActivity"
+            app:destination="@id/youtubePlayerActivity" />
+        <action
+            android:id="@+id/action_matchResultsFragment_to_saveMovieDialog"
+            app:destination="@id/saveMovieDialog" />
     </fragment>
 
     <fragment
