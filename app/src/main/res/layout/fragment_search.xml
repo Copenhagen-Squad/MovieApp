@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/background_screen">
 
         <ImageView
             android:id="@+id/imagw_back_arrow"
@@ -30,39 +30,21 @@
             app:layout_constraintBottom_toBottomOf="@id/input_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/input_search"
-            app:tint="@color/shade_primary_color" />
+            app:tint="@color/shade_primary" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.karrar.movieapp.ui.components.TextField
             android:id="@+id/input_search"
-            style="@style/Regular.Medium"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_height="48dp"
+            app:hintText="@string/search"
+            app:startIcon="@drawable/ic_search"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:layout_marginEnd="@dimen/spacing_medium"
-            android:afterTextChanged="@{(text) -> viewModel.onSearchInputChange(text)}"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="@dimen/spacing_small"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="@string/search_hint"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="@dimen/spacing_small"
-            android:paddingEnd="@dimen/spacing_small"
-            android:text="@{viewModel.uiState.searchInput}"
-            android:textColor="@color/shade_primary_color"
-            android:textColorHint="@color/shade_ternary_color"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:transitionName="search_box"
-            app:drawableTint="@color/brand_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imagw_back_arrow"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <requestFocus />
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintTop_toTopOf="parent"
+            app:afterTextChanged="@{(text) -> viewModel.onSearchInputChange(text)}"
+            app:text="@{viewModel.uiState.searchInput}"
+            />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group_media_type"
@@ -120,28 +102,39 @@
 
         <TextView
             android:id="@+id/text_search_label"
-            style="@style/SemiBold.Medium"
+            style="@style/Typography.title_sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:drawablePadding="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_large"
             android:gravity="center"
             android:text="@string/history_label"
-            android:textColor="@color/shade_primary_color"
-            app:drawableStartCompat="@drawable/ic_history"
+            android:textColor="@color/shade_primary"
             app:hideWhenListIsEmpty="@{viewModel.uiState.searchHistory}"
             app:hideWhenSearch="@{viewModel.uiState.searchInput}"
             app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
             app:layout_constraintTop_toBottomOf="@id/input_search" />
 
+        <TextView
+            android:id="@+id/text_clear_all"
+            style="@style/Typography.body_md_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:gravity="center"
+            android:text="@string/clear_all"
+            android:textColor="@color/brand_primary"
+            app:hideWhenListIsEmpty="@{viewModel.uiState.searchHistory}"
+            app:hideWhenSearch="@{viewModel.uiState.searchInput}"
+            app:layout_constraintTop_toBottomOf="@id/input_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_media"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingVertical="0dp"
-            android:paddingHorizontal="0dp"
             app:errorSearch="@{viewModel.uiState.error}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -152,6 +145,8 @@
             app:searchInput="@{viewModel.uiState.searchInput}"
             tools:listitem="@layout/item_media_search"
             app:spanCount="2"
+            android:layout_marginStart="24dp"
+            android:visibility="gone"
             />
 
         <androidx.recyclerview.widget.RecyclerView
