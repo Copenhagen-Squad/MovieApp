@@ -13,8 +13,10 @@
     <dimen name="spacing_56">56dp</dimen>
     <dimen name="spacing_61">61dp</dimen>
     <dimen name="spacing_48">48dp</dimen>
+    <dimen name="spacing_40">40dp</dimen>
     <dimen name="spacing_20">20dp</dimen>
     <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_14">14dp</dimen>
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>
