@@ -201,5 +201,7 @@
     <string name="collection_name">اسم المجموعة</string>
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">سيتم نقلك إلى موقع الويب لتحديث اسمك أو اسم المستخدم أو صورة ملفك الشخصي.</string>
+    <string name="clear_all">مسح الكل</string>
+    <string name="search">بحث...</string>
 
 </resources>
