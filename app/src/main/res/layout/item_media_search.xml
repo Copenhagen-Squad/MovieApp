@@ -16,7 +16,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="158dp"
         android:layout_height="235.7646942138672dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:onClick="@{() -> listener.onClickMediaResult(item)}">
 
