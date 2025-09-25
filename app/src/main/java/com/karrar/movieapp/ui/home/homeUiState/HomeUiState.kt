@@ -13,6 +13,7 @@ data class HomeUiState (
     val collections: HomeItem = HomeItem.CollectionsList(emptyList()),
     val isLoading:Boolean = false,
     val error : List<String> = emptyList(),
-    val username: String? = null,
+    val name: String? = null,
+    val homeCaption: String? = null,
     val isLoggedIn: Boolean = false
 )

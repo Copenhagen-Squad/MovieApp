@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(
         getOnTheAir()
         getPopularMovies()
         getRecentlyViewed()
-        getUserName()
+        getName()
         getMyCollections()
     }
 
@@ -90,15 +90,17 @@ class HomeViewModel @Inject constructor(
 
         }
     }
-    private fun getUserName() {
+    private fun getName() {
         viewModelScope.launch {
             try {
                 val isLoggedIn = homeUseCasesContainer.checkIfLoggedInUseCase()
                 if (isLoggedIn) {
                     val accountDetails = homeUseCasesContainer.getAccountDetailsUseCase()
+                    val name = accountDetails.name.ifEmpty { accountDetails.username }
                     _homeUiState.update {
                         it.copy(
-                            username = accountDetails.username,
+                            name = name,
+                            homeCaption = "Welcome",
                             isLoggedIn = true,
                             isLoading = false
                         )
@@ -106,7 +108,8 @@ class HomeViewModel @Inject constructor(
                 } else {
                     _homeUiState.update {
                         it.copy(
-                            username = "",
+                            name = "Home",
+                            homeCaption = "",
                             isLoggedIn = false,
                             isLoading = false
                         )
