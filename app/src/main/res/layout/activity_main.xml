@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Home"
+                        android:text="@string/home"
                         android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
@@ -100,7 +100,7 @@
                         android:id="@+id/icon_explore"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:contentDescription="Explore"
+                        android:contentDescription="@string/explore"
                         android:src="@drawable/ic_search"
                         app:tint="@color/shade_tertiary" />
 
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Explore"
+                        android:text="@string/explore"
                         android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
@@ -132,7 +132,7 @@
                         android:id="@+id/icon_match"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:contentDescription="Match"
+                        android:contentDescription="@string/match"
                         android:src="@drawable/ic_magic_stick"
                         app:tint="@color/shade_tertiary" />
 
@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Match"
+                        android:text="@string/match"
                         android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
@@ -164,7 +164,7 @@
                         android:id="@+id/icon_me"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:contentDescription="Me"
+                        android:contentDescription="@string/me"
                         android:src="@drawable/ic_user_square"
                         app:tint="@color/shade_tertiary" />
 
@@ -173,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Me"
+                        android:text="@string/me"
                         android:textColor="@color/shade_tertiary"
                         android:textSize="12sp" />
 
