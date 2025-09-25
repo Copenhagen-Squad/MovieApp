@@ -22,4 +22,9 @@
     <declare-styleable name="StarRatingView">
         <attr name="rating" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="TextField">
+        <attr name="hintText" format="string" />
+        <attr name="startIcon" format="reference" />
+    </declare-styleable>
 </resources>

@@ -16,6 +16,9 @@ interface MovieDao {
     @Delete
     suspend fun delete(item: WatchList)
 
+    @Query("DELETE FROM SEARCH_HISTORY_TABLE")
+    suspend fun clearSearchHistory()
+
     @Query("SELECT * FROM WATCH_LIST_TABLE")
     fun getAllSavedMovies(): Flow<List<WatchList>>
 
