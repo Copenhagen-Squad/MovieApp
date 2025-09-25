@@ -167,7 +167,9 @@
             app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
             app:layout_constraintTop_toBottomOf="@id/text_search_label"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_search_history" />
+            tools:listitem="@layout/item_search_history"
+            android:layout_marginEnd="16dp"
+            />
 
         <include
             android:id="@+id/loading"
