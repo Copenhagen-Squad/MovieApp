@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="listener"
             type="com.karrar.movieapp.ui.adapters.MovieInteractionListener" />
@@ -13,96 +14,106 @@
             type="com.karrar.movieapp.ui.home.homeUiState.PopularUiState" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:onClick="@{()->listener.onClickMovie(item.movieID)}"
-        android:paddingVertical="@dimen/spacing_small">
+        android:onClick="@{()->listener.onClickMovie(item.movieID)}">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="@dimen/radius_xl"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_movie"
-                android:layout_width="@dimen/media_card_popular_movie"
-                android:layout_height="200dp"
-                android:layout_marginHorizontal="@dimen/spacing_small"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:posterImage="@{item.imageUrl}"
-                app:shapeAppearanceOverlay="@style/CardCorners.Medium" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:posterImage="@{item.imageUrl}"
+                    app:shapeAppearanceOverlay="@style/CardCorners.radiusLarge"/>
 
-            <!-- Gradient Overlay -->
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/gradient"
-                app:layout_constraintBottom_toBottomOf="@id/image_movie"
-                app:layout_constraintEnd_toEndOf="@id/image_movie"
-                app:layout_constraintStart_toStartOf="@id/image_movie"
-                app:layout_constraintTop_toTopOf="@id/image_movie"
-                app:shapeAppearanceOverlay="@style/CardCorners.Medium" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/gradient"
+                    app:layout_constraintEnd_toEndOf="@id/image_movie"
+                    app:layout_constraintStart_toStartOf="@id/image_movie"
+                    app:layout_constraintTop_toTopOf="@id/image_movie"
+                    app:layout_constraintBottom_toBottomOf="@id/image_movie"
+                    app:shapeAppearanceOverlay="@style/CardCorners.radiusLarge"/>
 
-            <!-- Rating Badge -->
-            <LinearLayout
-                android:id="@+id/liner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/media_rate_background"
-                android:gravity="center"
-                android:layout_margin="@dimen/spacing_small"
-                android:paddingHorizontal="@dimen/spacing_small"
-                android:paddingVertical="@dimen/spacing_too_small"
-                app:layout_constraintTop_toTopOf="@id/image_movie"
-                app:layout_constraintEnd_toEndOf="@id/image_movie">
+                <!-- Rating Badge -->
+                <LinearLayout
+                    android:id="@+id/liner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_medium_small"
+                    android:background="@drawable/media_rate_background"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/spacing_small"
+                    android:paddingVertical="@dimen/spacing_too_small"
+                    app:layout_constraintEnd_toEndOf="@id/image_movie"
+                    app:layout_constraintTop_toTopOf="@id/image_movie">
 
                 <TextView
+                    style="@style/Typography.label_md_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{String.format(`%.1f`, item.movieRate)}"
-                    tools:text="5.7"
                     android:textColor="@color/shade_primary"
-                    style="@style/Typography.label_md_medium" />
+                    tools:text="5.7" />
 
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginStart="@dimen/spacing_too_small"
+                    android:contentDescription="@string/icon"
                     android:src="@drawable/ic_star_duetone"
-                    app:tint="@color/additional_primary_yellow"
-                    />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:tint="@color/additional_primary_yellow" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/text_movie_title"
             style="@style/Typography.body_md_medium"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
             android:ellipsize="end"
             android:lines="1"
-            android:maxWidth="240dp"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="@dimen/spacing_40"
+            app:layout_constraintTop_toBottomOf="@id/imageCard"
             android:text="@{item.title}"
             android:textColor="@color/shade_primary"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_gravity="center"
             tools:text="Inception" />
 
         <TextView
             android:id="@+id/text_category"
             style="@style/Typography.body_sm_regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_too_small"
+            app:layout_constraintTop_toBottomOf="@id/text_movie_title"
+            app:layout_constraintStart_toStartOf="@id/text_movie_title"
+            app:layout_constraintEnd_toEndOf="@id/text_movie_title"
             android:textColor="@color/shade_secondary"
             app:genre="@{item.genre}"
-            android:layout_marginTop="@dimen/spacing_too_small"
             tools:text="Action, Sci-Fi" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
