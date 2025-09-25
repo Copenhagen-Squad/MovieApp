@@ -99,7 +99,9 @@ class GetMatchRecommendationsUseCase @Inject constructor(
                                 posterUrl = details?.posterPath,
                                 backdropUrl = details?.backdropPath,
                                 voteAverage = details?.voteAverage,
-                                releaseDateShort = details?.releaseDate.toString()
+                                releaseDateShort = details?.releaseDate?.toString(),
+                                genres = details?.genres?.joinToString { it?.name.toString() },
+                                runtimeFormatted = details?.runtime?.let { "${it / 60}h ${it % 60}m" }
                             )
                             Log.d("GetMatchRecommendations", "Successfully enriched ${movie.title}")
                             enrichedMovie

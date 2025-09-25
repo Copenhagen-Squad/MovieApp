@@ -202,7 +202,7 @@ class MatchResultsViewModel @Inject constructor(
     private fun tryGetRuntimeMinutes(movie: Any): Int? {
         return try {
             val clazz = movie::class.java
-            val possibleFields = listOf("runtime", "duration", "runtimeMinutes", "length")
+            val possibleFields = listOf("runtime", "duration", "runtimeMinutes", "length" , "runtimeFormatted")
 
             for (fieldName in possibleFields) {
                 try {
@@ -215,7 +215,15 @@ class MatchResultsViewModel @Inject constructor(
                     if (value != null) {
                         return when (value) {
                             is Int -> if (value > 0) value else null
-                            is String -> value.toIntOrNull()?.takeIf { it > 0 }
+                            is String -> {
+                                if (value.contains("h") || value.contains("m")) {
+                                    val hours = Regex("(\\d+)h").find(value)?.groupValues?.get(1)?.toIntOrNull() ?: 0
+                                    val minutes = Regex("(\\d+)m").find(value)?.groupValues?.get(1)?.toIntOrNull() ?: 0
+                                    hours * 60 + minutes
+                                } else {
+                                    value.toIntOrNull()
+                                }
+                            }
                             else -> value.toString().toIntOrNull()?.takeIf { it > 0 }
                         }
                     }

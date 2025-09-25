@@ -1,5 +1,6 @@
 package com.karrar.movieapp.ui.movieDetails
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.enums.HomeItemsType
@@ -66,6 +67,7 @@ class MovieDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = getMovieDetailsUseCase.getMovieDetails(movieId)
+                Log.d("MovieDetails", "getMovieDetailsViewModel->: $result")
                 _uiState.update {
                     it.copy(
                         movieDetailsResult = movieDetailsUIStateMapper.map(result),
