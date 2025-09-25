@@ -24,6 +24,7 @@ import com.karrar.movieapp.domain.models.Genre
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
+import com.karrar.movieapp.ui.components.TextField
 import com.karrar.movieapp.ui.explore.ExploreInteractionListener
 import com.karrar.movieapp.ui.explore.exploreUIState.ExploreDisplayMode
 import com.karrar.movieapp.ui.components.header.AppBar
@@ -374,4 +375,41 @@ fun AppBar.setOnClickBack(listener: (() -> Unit)?) {
 @BindingAdapter("AppBarTitle")
 fun AppBar.bindAppBarTitle(title: String?) {
     setTitle(title ?: "")
+}
+
+object TextFieldBindingAdapters {
+
+    @JvmStatic
+    @BindingAdapter("afterTextChanged")
+    fun setAfterTextChanged(textField: TextField, listener: ((String) -> Any)?) {
+        if (listener != null) {
+            textField.setOnTextChangedListener { text: CharSequence ->
+                listener(text.toString())
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("text")
+    fun setText(textField: TextField, text: String?) {
+        if (text != null && text != textField.getText()) {
+            textField.setText(text)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("textAttrChanged")
+    fun setTextWatcher(textField: TextField, listener: androidx.databinding.InverseBindingListener?) {
+        if (listener != null) {
+            textField.setOnTextChangedListener {
+                listener.onChange()
+            }
+        }
+    }
+
+    @JvmStatic
+    @androidx.databinding.InverseBindingAdapter(attribute = "text", event = "textAttrChanged")
+    fun getText(textField: TextField): String {
+        return textField.getText()
+    }
 }
