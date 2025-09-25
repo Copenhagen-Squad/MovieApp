@@ -20,11 +20,11 @@ class GetListOfRatedUseCase @Inject constructor(
         return getRatedMovie().margeTowList(getRatedTvShow()).reversed()
     }
 
-    private suspend fun getRatedMovie(): List<Rated> {
+     suspend fun getRatedMovie(): List<Rated> {
         return ListMapper(ratedMoviesMapper).mapList(movieRepository.getRatedMovie())
     }
 
-    private suspend fun getRatedTvShow(): List<Rated> {
+     suspend fun getRatedTvShow(): List<Rated> {
         return ListMapper(ratedTvShowMapper).mapList(tvShowRepository.getRatedTvShow())
     }
 }

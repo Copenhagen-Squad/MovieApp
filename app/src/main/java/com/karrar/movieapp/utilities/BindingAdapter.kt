@@ -33,6 +33,7 @@ import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.Locale
 
 @BindingAdapter("app:showWhenListNotEmpty")
 fun <T> showWhenListNotEmpty(view: View, list: List<T>) {
@@ -284,6 +285,11 @@ fun setAllGenre(textView: TextView, genreList: List<String>?) {
     }
 }
 
+@BindingAdapter("genresText")
+fun TextView.setGenres(genres: List<String>?) {
+    text = genres?.joinToString(", ") ?: ""
+}
+
 @BindingAdapter("app:hideIfNotTypeOfMovie")
 fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
     if (mediaType != MediaType.MOVIE) view.isVisible = false
@@ -308,6 +314,12 @@ fun ImageView.loadHorizontalPoster(url: String?) {
         placeholder(R.drawable.horizonatal_poster_image_placeholder)
         error(R.drawable.horizonatal_poster_image_placeholder)
     }
+}
+
+@BindingAdapter("app:formattedRating")
+fun setRating(textView: TextView, voteAverage: Double) {
+    val formatted = String.format(Locale.US, "%.1f", voteAverage / 2)
+    textView.text = formatted
 }
 
 @BindingAdapter("app:imageRes")
@@ -375,6 +387,11 @@ fun AppBar.setOnClickBack(listener: (() -> Unit)?) {
 @BindingAdapter("AppBarTitle")
 fun AppBar.bindAppBarTitle(title: String?) {
     setTitle(title ?: "")
+}
+
+@BindingAdapter("AppBarCaption")
+fun bindAppBarCaption(appBar: AppBar, caption: String?) {
+    appBar.setCaption(caption)
 }
 
 object TextFieldBindingAdapters {

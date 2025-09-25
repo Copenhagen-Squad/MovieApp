@@ -12,17 +12,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_screen">
+
+        <com.karrar.movieapp.ui.components.header.AppBar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:onClickBack="@{() -> viewModel.onclickBack()}"
+            app:showBottomBorder="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_color"
+            android:background="@color/background_screen"
             android:overScrollMode="never"
             android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:doneLoading="@{viewModel.uiState.loading}"
             app:errorNotEmpty="@{viewModel.uiState.errorUIStates}"
+            app:layout_constraintTop_toBottomOf="@id/app_bar"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:spanCount="1" />
 

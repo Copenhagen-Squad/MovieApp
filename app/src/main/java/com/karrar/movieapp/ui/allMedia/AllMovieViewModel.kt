@@ -61,6 +61,9 @@ class AllMovieViewModel @Inject constructor(
         }
     }
 
+    fun onClickBack(){
+        _mediaUIEvent.update { Event(MediaUIEvent.BackEvent) }
+    }
     fun setErrorUiState(combinedLoadStates: CombinedLoadStates) {
         when (combinedLoadStates.refresh) {
             is LoadState.NotLoading -> {

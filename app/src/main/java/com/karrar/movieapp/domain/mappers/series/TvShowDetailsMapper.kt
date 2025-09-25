@@ -24,7 +24,8 @@ class TvShowDetailsMapper @Inject constructor(
             input.voteAverage.toString().take(3),
             input.overview ?: "",
             input.season?.map { seasonMapper.map(it) } ?: emptyList(),
-            MediaType.TV_SHOW
+            MediaType.TV_SHOW,
+            input.episodeRunTime?.filterNotNull() ?: emptyList()
         )
     }
 }

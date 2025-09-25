@@ -5,13 +5,13 @@
     <data>
         <variable
             name="item"
-            type="com.karrar.movieapp.ui.match.MatchItemUI" />
+            type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState" />
     </data>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:imageUrl='@{item.posterUrl}'
+        app:imageUrl='@{item.image}'
         app:shapeAppearanceOverlay='@style/ShapeAppearanceOverlay.CustomRoundedPager' />
 </layout>

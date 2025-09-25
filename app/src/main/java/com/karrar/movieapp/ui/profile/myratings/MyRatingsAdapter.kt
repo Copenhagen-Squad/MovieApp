@@ -1,7 +1,6 @@
 package com.karrar.movieapp.ui.profile.myratings
 
 import com.karrar.movieapp.R
-import com.karrar.movieapp.domain.models.Rated
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.base.BaseInteractionListener
 
@@ -11,5 +10,6 @@ class RatedMoviesAdapter(items: List<RatedUIState>, listener: RatedMoviesInterac
 }
 
 interface RatedMoviesInteractionListener : BaseInteractionListener {
-    fun onClickMovie(movieId: Int)
+    fun onClickMovie(item: RatedUIState)
+    fun onClickBack()
 }

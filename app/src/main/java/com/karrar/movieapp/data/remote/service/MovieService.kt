@@ -1,7 +1,18 @@
 package com.karrar.movieapp.data.remote.service
 
-import com.karrar.movieapp.data.MovieEntity
-import com.karrar.movieapp.data.remote.response.*
+import com.karrar.movieapp.data.remote.response.AddListResponse
+import com.karrar.movieapp.data.remote.response.AddMovieDto
+import com.karrar.movieapp.data.remote.response.BaseListResponse
+import com.karrar.movieapp.data.remote.response.CreatedListDto
+import com.karrar.movieapp.data.remote.response.CreditsDto
+import com.karrar.movieapp.data.remote.response.DailyTrendingDto
+import com.karrar.movieapp.data.remote.response.LogoutResponse
+import com.karrar.movieapp.data.remote.response.MovieDto
+import com.karrar.movieapp.data.remote.response.MyListsDto
+import com.karrar.movieapp.data.remote.response.RatedMoviesDto
+import com.karrar.movieapp.data.remote.response.RatedTvShowDto
+import com.karrar.movieapp.data.remote.response.SeasonDto
+import com.karrar.movieapp.data.remote.response.TVShowsDTO
 import com.karrar.movieapp.data.remote.response.account.AccountDto
 import com.karrar.movieapp.data.remote.response.actor.ActorDto
 import com.karrar.movieapp.data.remote.response.actor.ActorMoviesDto
@@ -14,8 +25,16 @@ import com.karrar.movieapp.data.remote.response.review.ReviewsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.TrailerDto
 import com.karrar.movieapp.data.remote.response.tvShow.TvShowDetailsDto
 import com.karrar.movieapp.domain.enums.TrendingTimeWindow
+import com.karrar.movieapp.ui.match.MatchItemUI
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.DELETE
+import retrofit2.http.Field
+import retrofit2.http.FieldMap
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieService {
 
@@ -243,14 +262,10 @@ interface MovieService {
 
 
 data class MovieResponse(
-    val results: List<MovieEntity>,
+    val results: List<MatchItemUI>,
     val page: Int,
     val totalResults: Int,
     val totalPages: Int
-)
-
-data class VideoResponse(
-    val results: List<VideoEntity>
 )
 
 data class VideoEntity(

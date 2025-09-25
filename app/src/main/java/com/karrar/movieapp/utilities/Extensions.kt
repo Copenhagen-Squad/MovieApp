@@ -24,8 +24,6 @@ import com.karrar.movieapp.ui.category.CategoryInteractionListener
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import com.karrar.movieapp.ui.explore.ExploreInteractionListener
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -112,4 +110,33 @@ fun <T : Any> GridLayoutManager.setSpanSize(
 fun Date.convertToDayMonthYearFormat(): String {
     val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     return formatter.format(this)
+}
+
+fun Date.formatDate(
+    outputFormat: String = "yyyy, MMM dd",
+    locale: Locale = Locale.getDefault()
+): String {
+    val formatter = SimpleDateFormat(outputFormat, locale)
+    return formatter.format(this)
+}
+
+fun String.convertToDayMonthYearFormat(
+    inputFormat: String = "yyyy-MM-dd",
+    outputFormat: String = "yyyy, MMM dd"
+): String? {
+    val date = SimpleDateFormat(inputFormat, Locale.getDefault()).parse(this) ?: return null
+    val formatter = SimpleDateFormat(outputFormat, Locale.getDefault())
+    return formatter.format(date)
+}
+
+fun Int?.formatRuntime(): String? {
+    return this?.let {
+        val hours = it / 60
+        val minutes = it % 60
+        when {
+            hours > 0 && minutes > 0 -> "${hours}h ${minutes}m"
+            hours > 0 -> "${hours}h"
+            else -> "${minutes}m"
+        }
+    }
 }
