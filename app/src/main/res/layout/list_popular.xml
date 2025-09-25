@@ -19,8 +19,8 @@
         android:clipToPadding="false"
         android:clipChildren="false"
         android:overScrollMode="never"
-        android:paddingStart="40dp"
+        android:paddingStart="24dp"
         app:adapter="@{adapterRecycler}"
-        android:paddingEnd="40dp"/>
+        android:paddingEnd="24dp"/>
 
 </layout>
