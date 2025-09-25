@@ -1,6 +1,7 @@
 package com.karrar.movieapp.data.remote.response
 
 import com.google.gson.annotations.SerializedName
+import java.util.Date
 
 data class RatedTvShowDto(
     @SerializedName("adult")
@@ -28,5 +29,7 @@ data class RatedTvShowDto(
     @SerializedName("vote_average")
     val voteAverage: Double? = null,
     @SerializedName("vote_count")
-    val voteCount: Int? = null
+    val voteCount: Int? = null,
+    @SerializedName("first_air_date")
+    val firstAirDate: Date? = null,
 )

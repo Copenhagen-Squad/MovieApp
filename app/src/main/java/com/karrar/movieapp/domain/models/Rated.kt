@@ -5,6 +5,9 @@ data class Rated(
     val title: String,
     val posterPath: String,
     val rating: Float,
+    val voteAverage : Double,
     val releaseDate: String,
-    var mediaType:String
+    var mediaType:String,
+    val genres: List<Int>,
+    val duration: String,
 )
