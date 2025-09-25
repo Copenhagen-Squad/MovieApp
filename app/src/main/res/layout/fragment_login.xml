@@ -144,7 +144,7 @@
             android:id="@+id/button_login"
             style="@style/Typography.body_md_medium"
             android:layout_width="0dp"
-            android:layout_height="@dimen/spacing_48"
+            android:layout_height="@dimen/spacing_56"
             android:layout_marginTop="@dimen/spacing_20"
             android:backgroundTint="@color/button_primary_selector"
             android:enabled="@{viewModel.loginUIState.validForm}"
@@ -156,20 +156,38 @@
             app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="@id/tv_username"
             app:layout_constraintStart_toStartOf="@id/tv_username"
-            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password"
+            />
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="@dimen/spacing_extra_large"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:indicatorColor="@color/brand_tertiary"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/loadingCard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_20"
+            android:backgroundTint="@color/button_primary"
+            app:cardCornerRadius="@dimen/radius_lg"
+            app:cardElevation="0dp"
             app:isVisible="@{viewModel.loginUIState.loading}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_password"
-            app:trackColor="@color/brand_primary" />
+            app:layout_constraintEnd_toEndOf="@id/tv_username"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forget_password"
+            >
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                android:indeterminateDrawable="@drawable/circular_progress"
+                android:indeterminateDuration="1000"
+                android:rotationX="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.card.MaterialCardView>
 
 
         <com.google.android.material.button.MaterialButton
@@ -177,6 +195,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing_20"
+            app:cornerRadius="@dimen/radius_lg"
             android:backgroundTint="@color/button_secondary"
             android:elevation="0dp"
             android:enabled="@{viewModel.loginUIState.validForm}"
