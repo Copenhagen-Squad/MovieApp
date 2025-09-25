@@ -26,7 +26,7 @@ class MyRatingsFragment : BaseFragment<FragmentMyRatingsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getString(R.string.my_ratings))
+        setTitle(false)
 
         setupAdapter()
         observeViewModel()
