@@ -16,6 +16,7 @@
         <attr name="showIcon" format="boolean" />
         <attr name="showEndIcon" format="boolean" />
         <attr name="showAppIcon" format="boolean" />
+        <attr name="showBottomBorder" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="StarRatingView">

@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             app:AppBarTitle="@{viewModel.listTitle}"
             tools:AppBarTitle="Title"
+            app:showBottomBorder="false"
             app:onClickBack="@{()->viewModel.onClickBack()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

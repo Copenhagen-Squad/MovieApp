@@ -25,7 +25,7 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, getTitle(viewModel.args.type))
+        binding.appBar.setTitle(getTitle(viewModel.args.type))
         setMovieAdapter()
         collectEvent()
     }

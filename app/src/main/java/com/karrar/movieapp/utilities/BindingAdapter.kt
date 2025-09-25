@@ -346,3 +346,8 @@ fun AppBar.setOnClickBack(listener: (() -> Unit)?) {
 fun AppBar.bindAppBarTitle(title: String?) {
     setTitle(title ?: "")
 }
+
+@BindingAdapter("AppBarCaption")
+fun bindAppBarCaption(appBar: AppBar, caption: String?) {
+    appBar.setCaption(caption)
+}
