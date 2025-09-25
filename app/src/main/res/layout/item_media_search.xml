@@ -14,23 +14,20 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{() -> listener.onClickMediaResult(item)}"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        >
+        android:layout_width="158dp"
+        android:layout_height="235.7646942138672dp"
+        android:layout_marginTop="16dp"
+        android:onClick="@{() -> listener.onClickMediaResult(item)}">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="158dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:gravity="center"
-            >
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_movie"
@@ -43,52 +40,48 @@
 
             <TextView
                 android:id="@+id/text_title_movie"
+                style="@style/Typography.body_md_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Typography.body_md_medium"
-                android:text="@{item.mediaName}"
-                android:textColor="@color/shade_secondary"
-                tools:text="Title"
                 android:layout_marginTop="8dp"
-                android:singleLine="true"
                 android:ellipsize="end"
                 android:maxLines="1"
-                />
+                android:singleLine="true"
+                android:text="@{item.mediaName}"
+                android:textColor="@color/shade_secondary"
+                tools:text="Title" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/rating_container"
-            >
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                style="@style/Typography.label_md_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Typography.label_md_medium"
-                android:text="@{String.valueOf(item.mediaVoteAverage)}"
-                tools:text="7.5"
-                android:layout_marginStart="8dp"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginStart="8dp"
+                android:text="@{String.valueOf(item.mediaVoteAverage)}"
+                tools:text="7.5" />
 
             <ImageView
-                android:contentDescription="@string/rated_movies"
-                android:src="@drawable/ic_star_duetone"
-                app:tint="@color/additional_primary_yellow"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginVertical="4dp"
-                android:layout_marginEnd="6dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginVertical="4dp"
                 android:layout_marginStart="4dp"
-                />
+                android:layout_marginEnd="6dp"
+                android:contentDescription="@string/rated_movies"
+                android:src="@drawable/ic_star_duetone"
+                app:tint="@color/additional_primary_yellow" />
 
         </LinearLayout>
 

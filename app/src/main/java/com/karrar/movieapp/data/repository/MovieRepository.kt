@@ -20,6 +20,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
+    suspend fun clearSearchHistory()
+
     suspend fun getMovieGenreList(): List<GenreDto>?
 
     suspend fun getDailyTrending(): BaseListResponse<DailyTrendingDto>

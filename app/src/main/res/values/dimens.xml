@@ -4,6 +4,8 @@
     <dimen name="spacing_extra_large">32dp</dimen>
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_medium_small">12dp</dimen>
+    <dimen name="spacing_extra_small">12dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
@@ -40,6 +42,7 @@
     <dimen name="radius_4xl">28dp</dimen>
     <dimen name="radius_5xl">32dp</dimen>
     <dimen name="radius_full">100dp</dimen>
+    <dimen name="radius_md_s">12dp</dimen>
 
     <!-- old radius -->
     <dimen name="radius_large">24dp</dimen>

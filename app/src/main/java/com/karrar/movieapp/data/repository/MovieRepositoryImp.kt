@@ -56,6 +56,10 @@ class MovieRepositoryImp @Inject constructor(
     private val actorMovieDataSource: ActorMovieDataSource
 ) : BaseRepository(), MovieRepository {
 
+    override suspend fun clearSearchHistory() {
+        movieDao.clearSearchHistory()
+    }
+
     override suspend fun getMovieGenreList(): List<GenreDto>? {
         return movieService.getGenreList().body()?.genres
     }
