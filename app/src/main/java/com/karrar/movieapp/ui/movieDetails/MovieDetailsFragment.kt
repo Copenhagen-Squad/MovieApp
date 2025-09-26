@@ -71,9 +71,9 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>() {
                     )
             }
             is MovieDetailsUIEvent.ShowRatingBottomSheet -> {
-                action =
-                    MovieDetailsFragmentDirections.actionMovieDetailsFragmentToRatingBottomSheet(
-                    )
+                action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToRatingBottomSheetDialog(
+                    args.movieId
+                )
             }
             MovieDetailsUIEvent.ClickReviewsEvent -> {
                 action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToReviewFragment(

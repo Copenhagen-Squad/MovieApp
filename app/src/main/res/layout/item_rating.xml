@@ -168,6 +168,8 @@
                         android:src="@drawable/star" />
                 </LinearLayout>
 
+                <!-- Submit Button -->
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
