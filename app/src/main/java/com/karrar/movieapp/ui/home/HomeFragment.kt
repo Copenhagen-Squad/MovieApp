@@ -46,7 +46,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         uiState.browseEverything,
                         uiState.letUsChooseForYou,
                         uiState.recentlyViewed,
-                        uiState.collections
+                        uiState.collections,
+                        uiState.matchYourVibe,
+                        uiState.featured
                     )
                 )
             }
@@ -106,6 +108,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     event.list.name
                 )
             }
+
+            is HomeUIEvent.ClickFeaturedCollection ->
+                HomeFragmentDirections.actionHomeFragmentToWatchHistoryFragment()
 
             HomeUIEvent.ClickSeeAllCollectionsEvent -> {
                 HomeFragmentDirections.actionHomeFragmentToMatchResultsFragment()
