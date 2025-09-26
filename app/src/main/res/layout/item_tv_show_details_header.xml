@@ -118,78 +118,79 @@
                 app:layout_constraintTop_toBottomOf="@id/movie_name"
                 tools:text="Adventure, Drama, Science Fiction" />
 
-            <TextView
-                android:id="@+id/stars"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@{item.tvShowVoteAverage.toString()}"
-                android:textAppearance="@style/Typography.body_md_regular"
-                android:textColor="@color/shade_secondary"
-                app:layout_constraintBottom_toBottomOf="@id/star"
-                app:layout_constraintStart_toEndOf="@+id/star"
-                app:layout_constraintTop_toTopOf="@id/star"
-                tools:text="8.6" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/star"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:src="@drawable/ic_star_filled"
-                app:layout_constraintEnd_toStartOf="@+id/stars"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genres" />
+                app:layout_constraintTop_toBottomOf="@id/genres"
+                android:layout_marginTop="12dp"
+                >
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/time"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:src="@drawable/ic_clock"
-                app:layout_constraintBottom_toBottomOf="@id/star"
-                app:layout_constraintStart_toEndOf="@+id/stars"
-                app:layout_constraintTop_toTopOf="@id/star" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/star"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_star_filled"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    />
 
-            <TextView
-                android:id="@+id/duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="TODO"
-                android:textAppearance="@style/Typography.label_md_regular"
-                android:textColor="@color/shade_secondary"
-                app:layout_constraintBottom_toBottomOf="@id/time"
-                app:layout_constraintStart_toEndOf="@id/time"
-                app:layout_constraintTop_toTopOf="@+id/time"
-                tools:text="2h 32m" />
+                <TextView
+                    android:id="@+id/stars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.tvShowVoteAverage.toString()}"
+                    android:textAppearance="@style/Typography.body_md_regular"
+                    android:textColor="@color/shade_secondary"
+                    tools:text="8.6"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="12dp"
+                    />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/date"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:src="@drawable/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="@id/star"
-                app:layout_constraintStart_toEndOf="@+id/duration"
-                app:layout_constraintTop_toTopOf="@id/star"
-                />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/time"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_clock"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    />
 
-            <TextView
-                android:id="@+id/release_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@{item.tvShowReleaseDate}"
-                android:textAppearance="@style/Typography.label_md_regular"
-                android:textColor="@color/shade_secondary"
-                app:layout_constraintBottom_toBottomOf="@id/date"
-                app:layout_constraintStart_toEndOf="@id/date"
-                app:layout_constraintTop_toTopOf="@+id/date"
-                tools:text="2014" />
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Typography.label_md_regular"
+                    android:textColor="@color/shade_secondary"
+                    tools:text="TODO"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="12dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/date"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    />
+
+                <TextView
+                    android:id="@+id/release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.tvShowReleaseDate}"
+                    android:textAppearance="@style/Typography.label_md_regular"
+                    android:textColor="@color/shade_secondary"
+                    tools:text="2014"
+                    android:layout_gravity="center_vertical"
+
+                    />
+
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
