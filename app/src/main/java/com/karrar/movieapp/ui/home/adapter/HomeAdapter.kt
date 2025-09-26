@@ -107,6 +107,19 @@ class HomeAdapter(
                         YourCollectionsAdapter(currentItem.items, listener as YourCollectionsInteractionListener)
                     )
                 }
+
+                is HomeItem.MatchYourVibe -> {
+                    bindMovie(holder, currentItem.items, currentItem.type)
+                }
+
+                is HomeItem.FeaturedCollections -> {
+                    holder.binding.run {
+                        setVariable(BR.adapterRecycler,FeaturesCollectionAdapter(currentItem.items,
+                            listener as FeaturedCollectionListener))
+                        setVariable(BR.movieType, currentItem.type)
+                    }
+
+                }
             }
     }
 
@@ -147,6 +160,8 @@ class HomeAdapter(
                 is HomeItem.RecentlyViewed -> R.layout.list_recently_viewed
                 is HomeItem.LetUsChooseForYou -> R.layout.item_let_us_choose_cta
                 is HomeItem.CollectionsList -> R.layout.list_your_collections
+                is HomeItem.MatchYourVibe -> R.layout.list_movie
+                is HomeItem.FeaturedCollections -> R.layout.list_featured_collection
             }
         }
         return -1
