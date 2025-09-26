@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="adapterRecycler"
+            type="com.karrar.movieapp.ui.home.adapter.FeaturesCollectionAdapter" />
+
+        <variable
+            name="movieType"
+            type="com.karrar.movieapp.domain.enums.HomeItemsType" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.karrar.movieapp.ui.components.header.SectionHeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showSeeAll="false"
+        app:sectionTitle="@{movieType.FEATURED_COLLECTIONS.value}"
+        tools:text="Popular"
+        app:isVisible="@{adapterRecycler.itemCount != 0}"
+        style="@style/Typography.title_sm"
+        android:textColor="@color/shade_primary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/featur_collection_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        tools:listitem="@layout/collection_item"
+        android:adapter="@{adapterRecycler}"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
