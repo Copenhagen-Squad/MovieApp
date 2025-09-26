@@ -51,7 +51,8 @@
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:onClick="@{() -> viewModel.showRatingBottomSheet()}">
 
                     <!-- Star Icon Container -->
                     <androidx.cardview.widget.CardView

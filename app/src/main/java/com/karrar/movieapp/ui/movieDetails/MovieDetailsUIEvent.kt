@@ -8,5 +8,6 @@ sealed interface MovieDetailsUIEvent {
     object ClickReviewsEvent : MovieDetailsUIEvent
     data class ClickMovieEvent(val movieID: Int) : MovieDetailsUIEvent
     data class ClickCastEvent(val castID: Int) : MovieDetailsUIEvent
+    data class ShowRatingBottomSheet(val movieId: Int) : MovieDetailsUIEvent
 
 }

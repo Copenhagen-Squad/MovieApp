@@ -91,6 +91,10 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
+
+    fun showRatingBottomSheet() {
+        _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ShowRatingBottomSheet(args.movieId)) }
+    }
     private suspend fun addToWatchHistory(movie: MovieDetails) {
         insertMoviesUseCase(movie)
     }

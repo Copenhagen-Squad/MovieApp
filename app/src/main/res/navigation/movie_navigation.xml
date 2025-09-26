@@ -110,6 +110,10 @@
         <action
             android:id="@+id/action_movieDetailFragment_to_youtubePlayerActivity"
             app:destination="@id/youtubePlayerActivity" />
+
+        <action
+            android:id="@+id/actionMovieDetailsFragmentToRatingBottomSheet"
+            app:destination="@id/rating_card" />
     </fragment>
 
     <fragment
