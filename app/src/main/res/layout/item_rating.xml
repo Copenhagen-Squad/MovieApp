@@ -52,49 +52,66 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
             app:layout_constraintTop_toBottomOf="@id/header_layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:highlightEmojiByRating="@{viewModel.uiState.ratingValue}">
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Very Bad - Rating 1 -->
             <ImageView
                 android:id="@+id/first_emoji"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginEnd="12dp"
+                android:alpha="0.4"
+                android:onClick="@{() -> viewModel.onChangeRating(1f)}"
                 android:src="@drawable/colored_frowning_face"
-                android:contentDescription="Very Bad" />
+                android:background="?attr/selectableItemBackgroundBorderless" />
 
+            <!-- Bad - Rating 2 -->
             <ImageView
                 android:id="@+id/second_emoji"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginEnd="12dp"
+                android:alpha="0.4"
+                android:onClick="@{() -> viewModel.onChangeRating(2f)}"
                 android:src="@drawable/colored_confused_face"
-                android:contentDescription="Bad" />
+                android:background="?attr/selectableItemBackgroundBorderless" />
 
+            <!-- Neutral - Rating 3 (Selected) -->
             <ImageView
                 android:id="@+id/third_emoji"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/colored_neutral_face"
-                android:contentDescription="Neutral" />
+                android:alpha="1.0"
+                android:padding="2dp"
+                android:onClick="@{() -> viewModel.onChangeRating(3f)}"
+                android:src="@drawable/colored_neutral_face" />
 
+            <!-- Good - Rating 4 (Selected) -->
             <ImageView
                 android:id="@+id/fourth_emoji"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/colored_smiling_face_with_smiling_eyes"
-                android:contentDescription="Good" />
+                android:alpha="1.0"
+                android:padding="2dp"
+                android:onClick="@{() -> viewModel.onChangeRating(4f)}"
+                android:src="@drawable/colored_smiling_face_with_smiling_eyes" />
 
+            <!-- Excellent - Rating 5 -->
             <ImageView
                 android:id="@+id/fifth_emoji"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:alpha="0.4"
+                android:onClick="@{() -> viewModel.onChangeRating(5f)}"
                 android:src="@drawable/colored_star_struck"
-                android:contentDescription="Excellent" />
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/rating_excellent" />
+
         </LinearLayout>
 
         <!-- Stars Row -->
@@ -114,10 +131,11 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="@{() -> viewModel.onChangeRating(1f)}"
+                android:onClick="@{() -> viewModel.onChangeRating(2f)}"
                 android:src="@drawable/star_outline"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="1 Star" />
+                android:contentDescription="1 Stars"
+                app:tint="@color/shade_tertiary" />
 
             <ImageView
                 android:id="@+id/second_star"
@@ -126,9 +144,9 @@
                 android:layout_marginEnd="8dp"
                 android:onClick="@{() -> viewModel.onChangeRating(2f)}"
                 android:src="@drawable/star_outline"
-                android:outlineSpotShadowColor="@color/shade_tertiary"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="2 Stars" />
+                android:contentDescription="2 Stars"
+                app:tint="@color/shade_tertiary" />
 
             <ImageView
                 android:id="@+id/third_star"
@@ -138,7 +156,8 @@
                 android:onClick="@{() -> viewModel.onChangeRating(3f)}"
                 android:src="@drawable/star_outline"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="3 Stars" />
+                android:contentDescription="3 Stars"
+                app:tint="@color/shade_tertiary" />
 
             <ImageView
                 android:id="@+id/fourth_star"
@@ -148,7 +167,8 @@
                 android:onClick="@{() -> viewModel.onChangeRating(4f)}"
                 android:src="@drawable/star_outline"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="4 Stars" />
+                android:contentDescription="4 Stars"
+                app:tint="@color/shade_tertiary" />
 
             <ImageView
                 android:id="@+id/fifth_star"
@@ -157,7 +177,8 @@
                 android:onClick="@{() -> viewModel.onChangeRating(5f)}"
                 android:src="@drawable/star_outline"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="5 Stars" />
+                android:contentDescription="5 Stars"
+                app:tint="@color/shade_tertiary" />
         </LinearLayout>
 
         <!-- Add Rating Button -->

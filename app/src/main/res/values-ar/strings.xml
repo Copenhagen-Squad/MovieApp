@@ -217,5 +217,6 @@
     <string name="here_s_your_match_list">إليك قائمة المباريات الخاصة بك</string>
     <string name="let_the_world_know_how_you_felt">Let the world know how you felt.</string>
     <string name="add_rating">submit</string>
+    <string name="rating_excellent">excellent</string>
 
 </resources>
