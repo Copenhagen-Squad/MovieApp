@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -370,8 +371,10 @@ fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
 }
 
 @BindingAdapter("sectionTitle")
-fun SectionHeaderView.setSectionTitle(title: String?) {
-    title?.let { setTitle(it) }
+fun SectionHeaderView.setSectionTitle(@StringRes titleRes: Int) {
+    if (titleRes != 0) {
+        setTitle(context.getString(titleRes))
+    }
 }
 
 @BindingAdapter("onSeeAllClick")
@@ -428,5 +431,15 @@ object TextFieldBindingAdapters {
     @androidx.databinding.InverseBindingAdapter(attribute = "text", event = "textAttrChanged")
     fun getText(textField: TextField): String {
         return textField.getText()
+    }
+
+    @JvmStatic
+    @BindingAdapter("stringRes")
+    fun TextView.setStringResource(@StringRes resId: Int?) {
+        text = if (resId != null && resId != 0) {
+            context.getString(resId)
+        } else {
+            ""
+        }
     }
 }
