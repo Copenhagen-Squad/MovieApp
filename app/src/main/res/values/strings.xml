@@ -215,4 +215,5 @@
     <string name="clear_all">Clear All</string>
     <string name="search">Search...</string>
     <string name="let_the_world_know_how_you_felt">Let the world know how you felt.</string>
+    <string name="add_rating">submit</string>
 </resources>
