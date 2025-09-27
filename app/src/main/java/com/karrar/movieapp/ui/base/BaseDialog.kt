@@ -27,7 +27,13 @@ abstract class BaseDialog<VDB : ViewDataBinding> : BottomSheetDialogFragment(){
         _binding = DataBindingUtil.inflate(inflater, layoutIdFragment, container, false)
         _binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            setVariable(BR.viewModel,viewModel)
+            // Try to set the viewModel variable if it exists
+            try {
+                setVariable(BR.viewModel, viewModel)
+            } catch (e: Exception) {
+                // Handle cases where the variable doesn't exist or types don't match
+                // You could add logging here if needed
+            }
             return root
         }
     }

@@ -23,8 +23,8 @@ class RatingViewModel @Inject constructor(
 
     private val args = RatingBottomSheetDialogArgs.fromSavedStateHandle(state)
 
-    private val _ratingState = MutableStateFlow(0f)
-    val ratingState = _ratingState.asStateFlow()
+    private val _uiState = MutableStateFlow(RatingUiState())
+    val uiState = _uiState.asStateFlow()
 
     private val _ratingEvent = MutableStateFlow<Event<RatingEvent?>>(Event(null))
     val ratingEvent = _ratingEvent.asStateFlow()
@@ -38,7 +38,7 @@ class RatingViewModel @Inject constructor(
             viewModelScope.launch {
                 try {
                     val currentRating = getMovieRateUseCase(args.movieId)
-                    _ratingState.value = currentRating
+                    _uiState.value = _uiState.value.copy(currentRating = currentRating)
                 } catch (e: Exception) {
                     // Handle error
                 }
@@ -47,19 +47,33 @@ class RatingViewModel @Inject constructor(
     }
 
     fun onChangeRating(value: Float) {
+        _uiState.value = _uiState.value.copy(selectedRating = value)
+    }
+
+    fun onSubmitRating() {
         viewModelScope.launch {
             try {
-                setRatingUseCase(args.movieId, value)
-                _ratingState.value = value
+                setRatingUseCase(args.movieId, _uiState.value.selectedRating)
                 _ratingEvent.value = Event(RatingEvent.RatingSuccess)
             } catch (e: Exception) {
                 _ratingEvent.value = Event(RatingEvent.RatingError(e.message))
             }
         }
     }
+
+    fun onCloseDialog() {
+        _ratingEvent.value = Event(RatingEvent.CloseDialog)
+    }
 }
+
+data class RatingUiState(
+    val currentRating: Float = 0f,
+    val selectedRating: Float = 0f,
+    val isLoading: Boolean = false
+)
 
 sealed class RatingEvent {
     object RatingSuccess : RatingEvent()
+    object CloseDialog : RatingEvent()
     data class RatingError(val message: String?) : RatingEvent()
 }

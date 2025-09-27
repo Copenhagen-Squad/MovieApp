@@ -136,6 +136,12 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
+    fun onSubmitRating() {
+        // The rating is already set when user clicks stars
+        // Just trigger the message event to close the dialog
+        _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.MessageAppear) }
+    }
+
     private fun getLoginStatus() {
         if (!sessionIDUseCase().isNullOrEmpty()) {
             _uiState.update { it.copy(isLogin = true) }
