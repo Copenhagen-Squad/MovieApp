@@ -28,7 +28,7 @@
             style="@style/SemiBold.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="24dp"
             android:text="@string/rate_the_movie"
             android:textColor="@color/shade_primary"
@@ -49,8 +49,8 @@
             <!-- Very Bad - Rating 1 -->
             <ImageView
                 android:id="@+id/first_emoji"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="16dp"
                 android:alpha="@{viewModel.uiState.ratingValue >= 1f ? 1.0f : 0.4f}"
                 android:onClick="@{() -> viewModel.onChangeRating(1f)}"
@@ -62,8 +62,8 @@
             <!-- Bad - Rating 2 -->
             <ImageView
                 android:id="@+id/second_emoji"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="16dp"
                 android:alpha="@{viewModel.uiState.ratingValue >= 2f ? 1.0f : 0.4f}"
                 android:onClick="@{() -> viewModel.onChangeRating(2f)}"
@@ -75,8 +75,8 @@
             <!-- Neutral - Rating 3 -->
             <ImageView
                 android:id="@+id/third_emoji"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="16dp"
                 android:alpha="@{viewModel.uiState.ratingValue >= 3f ? 1.0f : 0.4f}"
                 android:onClick="@{() -> viewModel.onChangeRating(3f)}"
@@ -88,8 +88,8 @@
             <!-- Good - Rating 4 -->
             <ImageView
                 android:id="@+id/fourth_emoji"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="16dp"
                 android:alpha="@{viewModel.uiState.ratingValue >= 4f ? 1.0f : 0.4f}"
                 android:onClick="@{() -> viewModel.onChangeRating(4f)}"
@@ -101,8 +101,8 @@
             <!-- Excellent - Rating 5 -->
             <ImageView
                 android:id="@+id/fifth_emoji"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:alpha="@{viewModel.uiState.ratingValue >= 5f ? 1.0f : 0.4f}"
                 android:onClick="@{() -> viewModel.onChangeRating(5f)}"
                 android:src="@drawable/colored_star_struck"
@@ -181,7 +181,8 @@
         <Button
             android:id="@+id/add_rating_button"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="16dp"
             android:background="@{viewModel.uiState.ratingValue > 0f ? @drawable/button_primary_background : @drawable/button_secondary_background}"
             android:text="@string/add_rating"
             android:textColor="@{viewModel.uiState.ratingValue > 0f ? @color/button_onPrimary : @color/button_onSecondary}"
