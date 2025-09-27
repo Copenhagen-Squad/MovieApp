@@ -99,8 +99,9 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
             AllMediaType.ADVENTURE -> resources.getString(R.string.title_adventure)
             AllMediaType.ACTOR_MOVIES -> ""
             AllMediaType.MATCH_YOUR_VIBE -> resources.getString(R.string.title_matches_your_vibe)
-            AllMediaType.YOUR_COLLECTION -> resources.getResourceName(R.string.title_your_collections)
-            AllMediaType.COLLECTION_FEATURE -> resources.getResourceName(R.string.title_featured_collection)
+            AllMediaType.YOUR_COLLECTIONS -> resources.getString(R.string.title_your_collections)
+            AllMediaType.COLLECTION_FEATURE -> resources.getString(R.string.title_featured_collection)
+            AllMediaType.RECENTLY_VIEWED -> resources.getString(R.string.recently_viewed)
         }
     }
 
