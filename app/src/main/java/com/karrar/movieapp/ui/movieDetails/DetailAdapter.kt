@@ -90,7 +90,7 @@ class DetailAdapter(
             is DetailItemUIState.Header -> R.layout.item_movie_detail_header
             is DetailItemUIState.Cast -> R.layout.list_cast
             is DetailItemUIState.SimilarMovies -> R.layout.list_similar_movie
-            is DetailItemUIState.Rating -> R.layout.item_rating
+            is DetailItemUIState.Rating -> R.layout.give_it_stars_card
             is DetailItemUIState.Comment -> R.layout.item_movie_review
             is DetailItemUIState.ReviewText -> R.layout.item_review_text
             DetailItemUIState.SeeAllReviewsButton -> R.layout.item_see_all_reviews

@@ -24,35 +24,27 @@
         <action
             android:id="@+id/action_homeFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
-
         <action
             android:id="@+id/action_homeFragment_to_exploringFragment"
             app:destination="@id/exploringFragment" />
-
         <action
             android:id="@+id/action_homeFragment_to_watchHistoryFragment"
             app:destination="@id/watchHistoryFragment" />
-
         <action
             android:id="@+id/action_homeFragment_to_matchResultsFragment"
             app:destination="@+id/matchResultsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_listDetailsFragment"
             app:destination="@+id/listDetailsFragment" />
-
-
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.karrar.movieapp.ui.login.LoginFragment"
         tools:layout="@layout/fragment_login">
-
         <argument
             android:name="from"
             app:argType="integer" />
-
-
         <action
             android:id="@+id/action_loginFragment_to_matchResultsFragment"
             app:destination="@id/matchResultsFragment" />
@@ -110,6 +102,9 @@
         <action
             android:id="@+id/action_movieDetailFragment_to_youtubePlayerActivity"
             app:destination="@id/youtubePlayerActivity" />
+        <action
+            android:id="@+id/actionMovieDetailsFragmentToRatingBottomSheetDialog"
+            app:destination="@id/ratingBottomSheetDialog" />
     </fragment>
 
     <fragment
@@ -128,29 +123,20 @@
         <action
             android:id="@+id/action_profileFragment_to_MyCollectionFragment"
             app:destination="@id/myListFragment" />
-
         <action
             android:id="@+id/action_profileFragment_to_languageDialog"
-            app:destination="@id/languageDialog"
-            />
-
+            app:destination="@id/languageDialog" />
         <action
             android:id="@+id/action_profileFragment_to_contentPreferencesDialog"
-            app:destination="@id/contentPreferencesDialog"
-            />
-
+            app:destination="@id/contentPreferencesDialog" />
         <action
             android:id="@+id/action_profileFragment_to_editProfileDialog"
-            app:destination="@id/editProfileDialog"
-            />
-
+            app:destination="@id/editProfileDialog" />
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/profileFragment"
             app:popUpToInclusive="true" />
-
-
     </fragment>
 
     <fragment
@@ -246,50 +232,6 @@
             app:argType="com.karrar.movieapp.domain.enums.MediaType" />
     </fragment>
 
-    <dialog
-        android:id="@+id/contentPreferencesDialog"
-        android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
-        tools:layout="@layout/content_preferences_dialog">
-    </dialog>
-
-    <dialog
-        android:id="@+id/editProfileDialog"
-        android:name="com.karrar.movieapp.ui.profile.editProfile.EditProfileDialog"
-        tools:layout="@layout/edit_profile_dialog">
-    </dialog>
-
-    <dialog
-        android:id="@+id/languageDialog"
-        android:name="com.karrar.movieapp.ui.profile.language.LanguageDialog"
-        tools:layout="@layout/dialog_change_language">
-    </dialog>
-
-    <dialog
-        android:id="@+id/saveMovieDialog"
-        android:name="com.karrar.movieapp.ui.movieDetails.saveMovie.SaveMovieDialog"
-        tools:layout="@layout/dialog_save_movie">
-        <argument
-            android:name="movie_id"
-            app:argType="integer" />
-    </dialog>
-
-    <dialog
-        android:id="@+id/logoutDialog"
-        android:name="com.karrar.movieapp.ui.profile.logout.LogoutDialog"
-        tools:layout="@layout/dialog_logout">
-        <action
-            android:id="@+id/action_logoutDialog_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </dialog>
-    <dialog
-        android:id="@+id/createSavedList"
-        android:name="com.karrar.movieapp.ui.myList.CreateCollectionDialog"
-        tools:layout="@layout/fragment_create_list_dialog">
-
-    </dialog>
-
     <fragment
         android:id="@+id/ratedMoviesFragment"
         android:name="com.karrar.movieapp.ui.profile.myratings.MyRatingsFragment"
@@ -314,17 +256,6 @@
             app:destination="@id/tvShowDetailsFragment" />
     </fragment>
 
-    <activity
-        android:id="@+id/youtubePlayerActivity"
-        android:name="com.karrar.movieapp.ui.youtubePlayer.YoutubePlayerActivity"
-        tools:layout="@layout/activity_youtube_player">
-        <argument
-            android:name="movie_id"
-            app:argType="integer" />
-        <argument
-            android:name="type"
-            app:argType="com.karrar.movieapp.domain.enums.MediaType" />
-    </activity>
     <fragment
         android:id="@+id/listDetailsFragment"
         android:name="com.karrar.movieapp.ui.myList.collectionDetails.CollectionDetailsFragment"
@@ -332,13 +263,13 @@
         <argument
             android:name="id"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_savedListFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
         <argument
             android:name="listName"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_savedListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
         <action
             android:id="@+id/action_listDetailsFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
@@ -392,6 +323,7 @@
             android:name="tvShowId"
             app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/matchQuestionsFragment"
         android:name="com.karrar.movieapp.ui.match.questions.MatchQuestionsFragment"
@@ -448,5 +380,67 @@
             android:id="@+id/action_matchFragment_to_matchQuestionFragment"
             app:destination="@id/matchQuestionsFragment" />
     </fragment>
+
+    <!-- Dialogs -->
+    <dialog
+        android:id="@+id/contentPreferencesDialog"
+        android:name="com.karrar.movieapp.ui.profile.contentPreferences.ContentPreferencesDialog"
+        tools:layout="@layout/content_preferences_dialog" />
+
+    <dialog
+        android:id="@+id/editProfileDialog"
+        android:name="com.karrar.movieapp.ui.profile.editProfile.EditProfileDialog"
+        tools:layout="@layout/edit_profile_dialog" />
+
+    <dialog
+        android:id="@+id/languageDialog"
+        android:name="com.karrar.movieapp.ui.profile.language.LanguageDialog"
+        tools:layout="@layout/dialog_change_language" />
+
+    <dialog
+        android:id="@+id/saveMovieDialog"
+        android:name="com.karrar.movieapp.ui.movieDetails.saveMovie.SaveMovieDialog"
+        tools:layout="@layout/dialog_save_movie">
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/logoutDialog"
+        android:name="com.karrar.movieapp.ui.profile.logout.LogoutDialog"
+        tools:layout="@layout/dialog_logout">
+        <action
+            android:id="@+id/action_logoutDialog_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/createSavedList"
+        android:name="com.karrar.movieapp.ui.myList.CreateCollectionDialog"
+        tools:layout="@layout/fragment_create_list_dialog" />
+
+    <dialog
+        android:id="@+id/ratingBottomSheetDialog"
+        android:name="com.karrar.movieapp.ui.movieDetails.rating.RatingBottomSheetDialog"
+        tools:layout="@layout/item_rating">
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+    </dialog>
+
+    <!-- Activity -->
+    <activity
+        android:id="@+id/youtubePlayerActivity"
+        android:name="com.karrar.movieapp.ui.youtubePlayer.YoutubePlayerActivity"
+        tools:layout="@layout/activity_youtube_player">
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+        <argument
+            android:name="type"
+            app:argType="com.karrar.movieapp.domain.enums.MediaType" />
+    </activity>
 
 </navigation>

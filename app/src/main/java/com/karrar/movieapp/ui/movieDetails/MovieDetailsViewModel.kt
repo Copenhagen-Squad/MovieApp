@@ -91,6 +91,10 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
+
+    fun showRatingBottomSheet() {
+        _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.ShowRatingBottomSheet(args.movieId)) }
+    }
     private suspend fun addToWatchHistory(movie: MovieDetails) {
         insertMoviesUseCase(movie)
     }
@@ -130,6 +134,12 @@ class MovieDetailsViewModel @Inject constructor(
             } catch (e: Throwable) {
             }
         }
+    }
+
+    fun onSubmitRating() {
+        // The rating is already set when user clicks stars
+        // Just trigger the message event to close the dialog
+        _movieDetailsUIEvent.update { Event(MovieDetailsUIEvent.MessageAppear) }
     }
 
     private fun getLoginStatus() {

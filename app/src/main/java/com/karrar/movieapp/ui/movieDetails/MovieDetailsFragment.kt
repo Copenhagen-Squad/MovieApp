@@ -70,6 +70,11 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>() {
                         args.movieId, MediaType.MOVIE
                     )
             }
+            is MovieDetailsUIEvent.ShowRatingBottomSheet -> {
+                action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToRatingBottomSheetDialog(
+                    args.movieId
+                )
+            }
             MovieDetailsUIEvent.ClickReviewsEvent -> {
                 action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToReviewFragment(
                     args.movieId, MediaType.MOVIE
