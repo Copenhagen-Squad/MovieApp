@@ -261,4 +261,6 @@
     <string name="question_genre">ما نوع الأفلام التي تهتم بها؟</string>
     <string name="question_length">ما طول الفيلم المفضل لديك؟</string>
     <string name="question_release">هل تفضل الأفلام الحديثة أم الكلاسيكية؟</string>
+    <string name="nothing_found">لم يتم العثور على شيء!</string>
+    <string name="we_searched_the_entire_universe_but_nfound_nothing_matching_your_query_try_something_else">بحثنا في الكون بأكمله... \nولكن لم نجد شيئًا يُطابق استفسارك. هل تُجرِّب شيئًا آخر؟</string>
 </resources>

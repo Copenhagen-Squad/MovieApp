@@ -121,9 +121,9 @@ fun showWhenIsLoggedInWithoutFail(view: View, isLoggedIn: Boolean, isFail: Boole
 }
 
 //Search
-@BindingAdapter(value = ["app:showWhenSearch"])
-fun showWhenSearch(view: View, text: String) {
-    view.isVisible = text.isNotBlank()
+@BindingAdapter("showWhenSearch")
+fun showWhenSearch(view: View, text: String?) {
+    view.isVisible = !text.isNullOrBlank()
 }
 
 @BindingAdapter(value = ["app:hideWhenSearch"])
