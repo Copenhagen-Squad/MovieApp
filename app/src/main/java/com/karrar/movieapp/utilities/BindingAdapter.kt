@@ -393,8 +393,13 @@ fun AppBar.bindAppBarTitle(title: String?) {
 }
 
 @BindingAdapter("AppBarCaption")
-fun bindAppBarCaption(appBar: AppBar, caption: String?) {
-    appBar.setCaption(caption)
+fun AppBar.bindAppBarCaption(@StringRes captionRes: Int?) {
+    val caption = if (captionRes != null && captionRes != 0) {
+        context.getString(captionRes)
+    } else {
+        ""
+    }
+    setCaption(caption)
 }
 
 object TextFieldBindingAdapters {
