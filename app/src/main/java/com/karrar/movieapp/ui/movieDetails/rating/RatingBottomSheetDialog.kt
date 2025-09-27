@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.karrar.movieapp.R
@@ -19,23 +19,22 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RatingBottomSheetDialog : BaseDialog<ItemRatingBinding>() {
     override val layoutIdFragment: Int = R.layout.item_rating
-    override val viewModel: MovieDetailsViewModel by activityViewModels()
+    override val viewModel: MovieDetailsViewModel by viewModels()
+    private val args: RatingBottomSheetDialogArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setWidthPercent(90)
 
-        // Observe UI events from the shared ViewModel
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.movieDetailsUIEvent.collect { event ->
                 event.getContentIfNotHandled()?.let { uiEvent ->
                     when (uiEvent) {
                         is MovieDetailsUIEvent.MessageAppear -> {
-                            // Rating was successful, dismiss dialog
                             dismiss()
                         }
-                        else -> { /* Handle other events if needed */ }
+                        else -> { }
                     }
                 }
             }
