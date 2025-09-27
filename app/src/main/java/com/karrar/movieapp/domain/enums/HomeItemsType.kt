@@ -1,12 +1,15 @@
 package com.karrar.movieapp.domain.enums
 
-enum class HomeItemsType(val value :String) {
-    TOP_RATED_TV_SHOWS("Top Rated Tv Shows"),
-    RECENTLY_RELEASED("Recently Released"),
-    UPCOMING("Upcoming Movies"),
-    RECENTLY_VIEWED("You Recently Viewed"),
-    YOUR_COLLECTIONS("Your Collections"),
-    MATCH_YOUR_VIBE("Match Your Vibe"),
-    FEATURED_COLLECTIONS("Collection Feature"),
-    NON("")
+import androidx.annotation.StringRes
+import com.karrar.movieapp.R
+
+enum class HomeItemsType(@StringRes val titleRes: Int) {
+    TOP_RATED_TV_SHOWS(R.string.top_rated_tv_shows),
+    RECENTLY_RELEASED(R.string.recently_released),
+    UPCOMING(R.string.upcoming_movies),
+    RECENTLY_VIEWED(R.string.recently_viewed),
+    YOUR_COLLECTIONS(R.string.your_collections),
+    MATCH_YOUR_VIBE(R.string.match_your_vibe),
+    FEATURED_COLLECTIONS(R.string.featured_collections),
+    NON(R.string.empty_string)
 }

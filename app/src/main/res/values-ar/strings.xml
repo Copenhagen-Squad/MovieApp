@@ -215,6 +215,52 @@
     <string name="clear_all">مسح الكل</string>
     <string name="search">بحث...</string>
     <string name="here_s_your_match_list">إليك قائمة المباريات الخاصة بك</string>
+    <string name="top_rated_tv_shows">أعلى المسلسلات تقييماً</string>
+    <string name="recently_released">صدر مؤخراً</string>
+    <string name="upcoming_movies">الأفلام القادمة</string>
+    <string name="recently_viewed">شاهدت مؤخراً</string>
+    <string name="your_collections">مجموعاتك</string>
+    <string name="match_your_vibe">يناسب ذوقك</string>
+    <string name="featured_collections">المجموعات المميزة</string>
+    <string name="empty_string"> </string>
+    <string name="browse_everything">تصفح كل شيء</string>
+    <string name="explore_all_movies_and_series_by_genre_or_search_for_anything_you_like">استكشف جميع الأفلام والمسلسلات حسب النوع أو ابحث عما يُناسب ذوقك.</string>
+    <string name="need_more_to_watch">هل تبحث عن المزيد لمشاهدتها؟</string>
+
+    <!-- Mood choices -->
+    <string name="choice_chill">مسترخٍ</string>
+    <string name="choice_excited">متحمس</string>
+    <string name="choice_emotional">عاطفي</string>
+    <string name="choice_curious">فضولي</string>
+
+    <!-- Genre choices -->
+    <string name="choice_action">أكشن</string>
+    <string name="choice_comedy">كوميديا</string>
+    <string name="choice_drama">دراما</string>
+    <string name="choice_romance">رومانسية</string>
+    <string name="choice_scifi">خيال علمي</string>
+    <string name="choice_thriller">إثارة</string>
+    <string name="choice_animation">رسوم متحركة</string>
+    <string name="choice_mystery">غموض</string>
+
+    <!-- Time choices -->
+    <string name="choice_time_short">قصير</string>
+    <string name="choice_time_short_desc">(أقل من 90 دقيقة)</string>
+    <string name="choice_time_medium">متوسط</string>
+    <string name="choice_time_medium_desc">(بين 90 و 120 دقيقة)</string>
+    <string name="choice_time_long">طويل</string>
+    <string name="choice_time_long_desc">(أكثر من 120 دقيقة)</string>
+
+    <!-- Release choices -->
+    <string name="choice_release_recent">حديث</string>
+    <string name="choice_release_classic">كلاسيكي</string>
+    <string name="choice_release_both">كلاهما</string>
+
+    <!-- Questions -->
+    <string name="question_mood">ما هو مزاجك الآن؟</string>
+    <string name="question_genre">ما نوع الأفلام التي تهتم بها؟</string>
+    <string name="question_length">ما طول الفيلم المفضل لديك؟</string>
+    <string name="question_release">هل تفضل الأفلام الحديثة أم الكلاسيكية؟</string>
     <string name="nothing_found">لم يتم العثور على شيء!</string>
     <string name="we_searched_the_entire_universe_but_nfound_nothing_matching_your_query_try_something_else">بحثنا في الكون بأكمله... \nولكن لم نجد شيئًا يُطابق استفسارك. هل تُجرِّب شيئًا آخر؟</string>
     <string name="let_the_world_know_how_you_felt">Let the world know how you felt.</string>

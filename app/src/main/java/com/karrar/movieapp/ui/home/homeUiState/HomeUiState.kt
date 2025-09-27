@@ -17,6 +17,6 @@ data class HomeUiState (
     val isLoading:Boolean = false,
     val error : List<String> = emptyList(),
     val name: String? = null,
-    val homeCaption: String? = null,
+    val homeCaption: Int? = null,
     val isLoggedIn: Boolean = false
 )
