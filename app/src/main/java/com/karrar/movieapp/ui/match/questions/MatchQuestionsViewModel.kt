@@ -65,7 +65,7 @@ class MatchQuestionsViewModel @Inject constructor() :
                 if (q.type == type) {
                     val selectedChoices = getSelectedChoices(type)
                     val updatedChoices = q.choices.map { choice ->
-                        choice.copy(isSelected = selectedChoices.any { it.name == choice.name })
+                        choice.copy(isSelected = selectedChoices.any { it.nameRes == choice.nameRes })
                     }
                     q.copy(
                         choices = updatedChoices,
@@ -88,69 +88,69 @@ class MatchQuestionsViewModel @Inject constructor() :
         items.clear()
 
         val mood = listOf(
-            Choice(name = "Chill", icon = R.drawable.ic_headphone_duetone),
-            Choice(name = "Excited", icon = R.drawable.ic_flame_duetone),
-            Choice(name = "Emotional", icon = R.drawable.ic_heart_duetone),
-            Choice(name = "Curious", icon = R.drawable.ic_search_duetone),
+            Choice(nameRes = R.string.choice_chill, icon = R.drawable.ic_headphone_duetone),
+            Choice(nameRes = R.string.choice_excited, icon = R.drawable.ic_flame_duetone),
+            Choice(nameRes = R.string.choice_emotional, icon = R.drawable.ic_heart_duetone),
+            Choice(nameRes = R.string.choice_curious, icon = R.drawable.ic_search_duetone),
         )
 
         val genre = listOf(
-            Choice(name = "Action"),
-            Choice(name = "Comedy"),
-            Choice(name = "Drama"),
-            Choice(name = "Romance"),
-            Choice(name = "Sci-Fi"),
-            Choice(name = "Thriller"),
-            Choice(name = "Animation"),
-            Choice(name = "Mystery"),
+            Choice(nameRes = R.string.choice_action),
+            Choice(nameRes = R.string.choice_comedy),
+            Choice(nameRes = R.string.choice_drama),
+            Choice(nameRes = R.string.choice_romance),
+            Choice(nameRes = R.string.choice_scifi),
+            Choice(nameRes = R.string.choice_thriller),
+            Choice(nameRes = R.string.choice_animation),
+            Choice(nameRes = R.string.choice_mystery),
         )
 
         val time = listOf(
             Choice(
-                name = "Short",
-                description = "(Under 90 min)",
+                nameRes = R.string.choice_time_short,
+                descriptionRes = R.string.choice_time_short_desc,
                 icon = R.drawable.ic_time_short_duetone,
             ),
             Choice(
-                name = "Medium",
-                description = "(between 90 & 120 min)",
+                nameRes = R.string.choice_time_medium,
+                descriptionRes = R.string.choice_time_medium_desc,
                 icon = R.drawable.ic_time_medium_duetone,
             ),
             Choice(
-                name = "Long",
-                description = "(Over 120 min)",
+                nameRes = R.string.choice_time_long,
+                descriptionRes = R.string.choice_time_long_desc,
                 icon = R.drawable.ic_time_long_duetone,
             ),
         )
 
         val release = listOf(
-            Choice(name = "Recent"),
-            Choice(name = "Classic"),
-            Choice(name = "Both"),
+            Choice(nameRes = R.string.choice_release_recent),
+            Choice(nameRes = R.string.choice_release_classic),
+            Choice(nameRes = R.string.choice_release_both),
         )
 
         items.addAll(
             listOf(
                 Question(
-                    question = "What mood are you in?",
+                    question = R.string.question_mood,
                     type = QuestionType.MOOD,
                     choices = mood,
                     isAnswered = false,
                 ),
                 Question(
-                    question = "What genre are you interested in?",
+                    question = R.string.question_genre,
                     type = QuestionType.GENRE,
                     choices = genre,
                     isAnswered = false,
                 ),
                 Question(
-                    question = "Preferred movie length?",
+                    question = R.string.question_length,
                     type = QuestionType.MEDIA_RUNTIME,
                     choices = time,
                     isAnswered = false,
                 ),
                 Question(
-                    question = "Do you prefer recent or classic movies?",
+                    question = R.string.question_release,
                     type = QuestionType.TIME_PERIOD,
                     choices = release,
                     isAnswered = false,
