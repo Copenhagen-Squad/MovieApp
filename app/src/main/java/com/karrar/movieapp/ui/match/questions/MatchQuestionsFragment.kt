@@ -58,10 +58,10 @@ class MatchQuestionsFragment : BaseFragment<FragmentMatchQuestionsBinding>() {
                 if (state.isLoading && currentQuestionType == QuestionType.TIME_PERIOD) {
                     // Build params from current selections and navigate
                     val params = MatchMapper.toMatchParamsFromChoice(
-                        moodNames = state.moodSelected.map { it.name },
-                        genreNames = state.genreSelected.map { it.name },
-                        timeNames = state.mediaRuntimeSelected.map { it.name },
-                        periodNames = state.timePeriodSelected.map { it.name },
+                        moodNames = state.moodSelected.map { getString(it.nameRes) },
+                        genreNames = state.genreSelected.map { getString(it.nameRes) },
+                        timeNames = state.mediaRuntimeSelected.map { getString(it.nameRes) },
+                        periodNames = state.timePeriodSelected.map { getString(it.nameRes) },
                     )
                     val action = MatchQuestionsFragmentDirections
                         .actionMatchQuestionsFragmentToMatchResultsFragment(

@@ -106,7 +106,7 @@ class HomeViewModel @Inject constructor(
                     _homeUiState.update {
                         it.copy(
                             name = name,
-                            homeCaption = "Welcome",
+                            homeCaption = R.string.welcome,
                             isLoggedIn = true,
                             isLoading = false
                         )
@@ -115,7 +115,7 @@ class HomeViewModel @Inject constructor(
                     _homeUiState.update {
                         it.copy(
                             name = "Home",
-                            homeCaption = "",
+                            homeCaption = 0,
                             isLoggedIn = false,
                             isLoading = false
                         )
@@ -242,8 +242,8 @@ class HomeViewModel @Inject constructor(
             HomeItemsType.RECENTLY_RELEASED -> AllMediaType.RECENTLY_RELEASED
             HomeItemsType.UPCOMING -> AllMediaType.UPCOMING
             HomeItemsType.NON -> AllMediaType.ACTOR_MOVIES
-            HomeItemsType.RECENTLY_VIEWED -> TODO("There is no need to add new attribute to AllMediaType")
-            HomeItemsType.YOUR_COLLECTIONS -> AllMediaType.YOUR_COLLECTION
+            HomeItemsType.RECENTLY_VIEWED -> AllMediaType.RECENTLY_VIEWED
+            HomeItemsType.YOUR_COLLECTIONS -> AllMediaType.YOUR_COLLECTIONS
             HomeItemsType.MATCH_YOUR_VIBE -> AllMediaType.MATCH_YOUR_VIBE
             HomeItemsType.FEATURED_COLLECTIONS -> AllMediaType.COLLECTION_FEATURE
         }

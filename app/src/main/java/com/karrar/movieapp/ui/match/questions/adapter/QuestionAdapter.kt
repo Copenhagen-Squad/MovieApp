@@ -32,7 +32,7 @@ class QuestionAdapter(
         val layoutManager = getLayoutManager(holder.itemView.context, item)
 
         holder.binding.apply {
-            setVariable(BR.question, item.question)
+            setVariable(BR.item, item)
             setVariable(BR.layoutManager, layoutManager)
             setVariable(BR.adapterRecycler, choicesAdapter)
             setVariable(BR.isCurrent, !item.isAnswered)

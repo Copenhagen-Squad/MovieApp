@@ -214,6 +214,52 @@
     <string name="here_s_your_match_list">Here’s Your Match List</string>
     <string name="clear_all">Clear All</string>
     <string name="search">Search...</string>
+    <string name="top_rated_tv_shows">Top Rated TV Shows</string>
+    <string name="recently_released">Recently Released</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="recently_viewed">You Recently Viewed</string>
+    <string name="your_collections">Your Collections</string>
+    <string name="match_your_vibe">Match Your Vibe</string>
+    <string name="featured_collections">Featured Collections</string>
+    <string name="empty_string"> </string>
+    <string name="browse_everything">Browse Everything</string>
+    <string name="explore_all_movies_and_series_by_genre_or_search_for_anything_you_like">Explore all movies and series by genre or search for anything you like.</string>
+    <string name="need_more_to_watch">Need More to Watch?</string>
+
+    <!-- Mood choices -->
+    <string name="choice_chill">Chill</string>
+    <string name="choice_excited">Excited</string>
+    <string name="choice_emotional">Emotional</string>
+    <string name="choice_curious">Curious</string>
+
+    <!-- Genre choices -->
+    <string name="choice_action">Action</string>
+    <string name="choice_comedy">Comedy</string>
+    <string name="choice_drama">Drama</string>
+    <string name="choice_romance">Romance</string>
+    <string name="choice_scifi">Sci-Fi</string>
+    <string name="choice_thriller">Thriller</string>
+    <string name="choice_animation">Animation</string>
+    <string name="choice_mystery">Mystery</string>
+
+    <!-- Time choices -->
+    <string name="choice_time_short">Short</string>
+    <string name="choice_time_short_desc">(Under 90 min)</string>
+    <string name="choice_time_medium">Medium</string>
+    <string name="choice_time_medium_desc">(Between 90 &amp; 120 min)</string>
+    <string name="choice_time_long">Long</string>
+    <string name="choice_time_long_desc">(Over 120 min)</string>
+
+    <!-- Release choices -->
+    <string name="choice_release_recent">Recent</string>
+    <string name="choice_release_classic">Classic</string>
+    <string name="choice_release_both">Both</string>
+
+    <!-- Questions -->
+    <string name="question_mood">What mood are you in?</string>
+    <string name="question_genre">What genre are you interested in?</string>
+    <string name="question_length">Preferred movie length?</string>
+    <string name="question_release">Do you prefer recent or classic movies?</string>
     <string name="nothing_found">Nothing Found!</string>
     <string name="we_searched_the_entire_universe_but_nfound_nothing_matching_your_query_try_something_else">We searched the entire universe… but\nfound nothing matching your query. Try something else?</string>
 </resources>

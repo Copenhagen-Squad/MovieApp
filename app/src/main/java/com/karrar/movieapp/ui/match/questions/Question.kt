@@ -1,7 +1,9 @@
 package com.karrar.movieapp.ui.match.questions
 
+import androidx.annotation.StringRes
+
 data class Question(
-    val question: String,
+    @StringRes val question: Int,
     val type: QuestionType,
     val choices: List<Choice>,
     val isAnswered: Boolean,

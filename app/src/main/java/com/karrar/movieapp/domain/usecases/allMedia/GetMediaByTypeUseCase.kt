@@ -63,9 +63,11 @@ class GetMediaByTypeUseCase @Inject constructor(
                 wrapper(movieRepository::getUpcomingMoviesPager, movieMapper::map)
             }
 
-            AllMediaType.YOUR_COLLECTION -> TODO()
+            AllMediaType.YOUR_COLLECTIONS -> TODO()
 
             AllMediaType.COLLECTION_FEATURE -> TODO()
+
+            AllMediaType.RECENTLY_VIEWED -> TODO()
         }
     }
 

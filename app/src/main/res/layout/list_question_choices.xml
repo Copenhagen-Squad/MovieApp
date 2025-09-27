@@ -9,8 +9,8 @@
             type="com.karrar.movieapp.ui.match.questions.adapter.ChoicesAdapter" />
 
         <variable
-            name="question"
-            type="String" />
+            name="item"
+            type="com.karrar.movieapp.ui.match.questions.Question" />
 
         <variable
             name="layoutManager"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{question}"
+            app:stringRes="@{item.question}"
             tools:text="@string/what_mood_are_you_in"
             android:alpha="@{isCurrent ? 1f : 0.2f}"
             style="@style/Typography.title_sm"

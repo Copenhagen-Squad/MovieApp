@@ -29,7 +29,7 @@
             android:layout_marginStart="@dimen/spacing_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{movieType.value}"
+            android:text="@{movieType.TOP_RATED_TV_SHOWS.titleRes}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

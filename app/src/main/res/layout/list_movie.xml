@@ -17,31 +17,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_medium"
-        >
+        android:layout_marginBottom="@dimen/spacing_medium">
 
-        <TextView
-            android:id="@+id/text_title"
+        <com.karrar.movieapp.ui.components.header.SectionHeaderView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:showSeeAll="true"
+            app:sectionTitle= "@{movieType.titleRes}"
+            app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllMovie(movieType)}"
+            tools:text="Popular"
+            app:isVisible="@{adapterRecycler.itemCount != 0}"
             style="@style/Typography.title_sm"
             android:textColor="@color/shade_primary"
-            tools:text="Title"
-            android:layout_marginStart="@dimen/spacing_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{movieType.value}"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            style="@style/Typography.body_md_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spacing_medium"
-            android:onClick="@{() -> adapterRecycler.listener.onClickSeeAllMovie(movieType)}"
-            android:text="@string/show_more"
-            android:textColor="@color/brand_primary"
-            app:layout_constraintBaseline_toBaselineOf="@+id/text_title"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie"
@@ -58,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_title"
+            app:layout_constraintTop_toBottomOf="@+id/header"
             tools:listitem="@layout/item_movie" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,7 +66,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="@{TextUtils.isEmpty(choice.description) ? Gravity.CENTER : Gravity.CENTER_VERTICAL}"
+                    android:gravity="@{choice.descriptionRes ==0 ? Gravity.CENTER : Gravity.CENTER_VERTICAL}"
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <TextView
@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="2dp"
-                        android:text="@{choice.name}"
+                        app:stringRes="@{choice.nameRes}"
                         android:textColor="@{isSelected || choice.isSelected  ? @color/brand_primary : @color/shade_primary}"
                         tools:text="Short" />
 
@@ -84,14 +84,11 @@
                         style="@style/Typography.body_md_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{choice.description}"
+                        app:stringRes="@{choice.descriptionRes}"
                         android:textColor="@color/shade_secondary"
                         tools:text="(Under 90 min)" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>
