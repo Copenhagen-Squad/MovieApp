@@ -1,6 +1,7 @@
 package com.karrar.movieapp.ui.home
 
 import com.karrar.movieapp.domain.enums.HomeItemsType
+import com.karrar.movieapp.ui.home.homeUiState.FeaturedCollectionUiState
 import com.karrar.movieapp.ui.home.homeUiState.PopularUiState
 import com.karrar.movieapp.ui.models.MediaUiState
 import com.karrar.movieapp.ui.myList.myCollectionUIState.CreatedCollectionUIState
@@ -21,6 +22,16 @@ sealed class HomeItem(val priority: Int) {
         val items: List<MediaUiState>,
         val type: HomeItemsType = HomeItemsType.UPCOMING
     ) : HomeItem(3)
+
+    data class MatchYourVibe(
+        val items: List<MediaUiState>,
+        val type: HomeItemsType = HomeItemsType.MATCH_YOUR_VIBE
+    ) : HomeItem(4)
+
+    data class FeaturedCollections(
+        val items: List<FeaturedCollectionUiState>,
+        val type: HomeItemsType = HomeItemsType.FEATURED_COLLECTIONS
+    ) : HomeItem(5)
 
     data class OnTheAiring(
         val items: List<MediaUiState>,

@@ -1,6 +1,7 @@
 package com.karrar.movieapp.ui.home
 
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.AllMediaType
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.domain.mappers.WatchHistoryMapper
@@ -8,9 +9,12 @@ import com.karrar.movieapp.domain.usecase.home.HomeUseCasesContainer
 import com.karrar.movieapp.ui.adapters.MediaInteractionListener
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.ui.home.adapter.FeaturedCollectionListener
 import com.karrar.movieapp.ui.home.adapter.RecentlyViewedInteractionListener
 import com.karrar.movieapp.ui.home.adapter.TVShowInteractionListener
 import com.karrar.movieapp.ui.home.adapter.YourCollectionsInteractionListener
+import com.karrar.movieapp.ui.home.homeUiState.FeaturedCollectionUiState
+import com.karrar.movieapp.ui.home.homeUiState.FeaturedCollectionsTarget
 import com.karrar.movieapp.ui.home.homeUiState.HomeUIEvent
 import com.karrar.movieapp.ui.home.homeUiState.HomeUiState
 import com.karrar.movieapp.ui.mappers.MediaUiMapper
@@ -35,7 +39,7 @@ class HomeViewModel @Inject constructor(
     private val createdCollectionUIMapper: CreatedCollectionUIMapper,
 ) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener,
     MediaInteractionListener, TVShowInteractionListener, RecentlyViewedInteractionListener,
-    YourCollectionsInteractionListener {
+    YourCollectionsInteractionListener,FeaturedCollectionListener {
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
@@ -56,6 +60,8 @@ class HomeViewModel @Inject constructor(
         getRecentlyViewed()
         getName()
         getMyCollections()
+        getMatchYourVibe()
+        getFeaturedCollections()
     }
 
     private fun getMyCollections() {
@@ -171,6 +177,24 @@ class HomeViewModel @Inject constructor(
 
     }
 
+    private fun getMatchYourVibe() {
+        viewModelScope.launch {
+            try {
+                homeUseCasesContainer.getUpcomingMoviesUseCase().collect { list ->
+                    if (list.isNotEmpty()) {
+                        val items = list.map(mediaUiMapper::map)
+                        _homeUiState.update {
+                            it.copy(matchYourVibe = HomeItem.MatchYourVibe(items),
+                                isLoading = false)
+                        }
+                    }
+                }
+            } catch (th: Throwable) {
+                onError(th.message.toString())
+            }
+        }
+    }
+
     private fun getRecentlyReleased() {
         viewModelScope.launch {
             try {
@@ -219,7 +243,9 @@ class HomeViewModel @Inject constructor(
             HomeItemsType.UPCOMING -> AllMediaType.UPCOMING
             HomeItemsType.NON -> AllMediaType.ACTOR_MOVIES
             HomeItemsType.RECENTLY_VIEWED -> TODO("There is no need to add new attribute to AllMediaType")
-            HomeItemsType.YOUR_COLLECTIONS -> TODO("There is no need to add new attribute to AllMediaType")
+            HomeItemsType.YOUR_COLLECTIONS -> AllMediaType.YOUR_COLLECTION
+            HomeItemsType.MATCH_YOUR_VIBE -> AllMediaType.MATCH_YOUR_VIBE
+            HomeItemsType.FEATURED_COLLECTIONS -> AllMediaType.COLLECTION_FEATURE
         }
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllMovieEvent(type)) }
     }
@@ -262,5 +288,48 @@ class HomeViewModel @Inject constructor(
 
     override fun onClickSeeAllCollections() {
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllCollectionsEvent) }
+    }
+
+    override fun onClickFeaturedCollections(target: FeaturedCollectionsTarget) {
+        _homeUIEvent.update { Event(HomeUIEvent.ClickFeaturedCollection(target)) }
+    }
+
+    private fun getFeaturedCollections() {
+        val featured = listOf(
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.LATE_NIGHT_THRILLS.title,
+                R.drawable.late_night_thrills,
+                FeaturedCollectionsTarget.LATE_NIGHT_THRILLS
+            ),
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.MIND_BENDING_STORIES.title,
+                R.drawable.mind_bending_stories,
+                FeaturedCollectionsTarget.MIND_BENDING_STORIES
+            ),
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.CINEMATIC_MASTERPIECES.title,
+                R.drawable.cinematic_master_pieces,
+                FeaturedCollectionsTarget.CINEMATIC_MASTERPIECES
+            ),
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.FAMILY_NIGHT_PICKS.title,
+                R.drawable.family_night_picks,
+                FeaturedCollectionsTarget.FAMILY_NIGHT_PICKS
+            ),
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.BASED_ON_TRUE_EVENTS.title,
+                R.drawable.based_in_true_events,
+                FeaturedCollectionsTarget.BASED_ON_TRUE_EVENTS
+            ),
+            FeaturedCollectionUiState(
+                FeaturedCollectionsTarget.FEEL_GOOD_FAVORITES.title,
+                R.drawable.feel_good_favorites,
+                FeaturedCollectionsTarget.FEEL_GOOD_FAVORITES
+            )
+        )
+
+        _homeUiState.update {
+            it.copy(featured = HomeItem.FeaturedCollections(featured))
+        }
     }
 }

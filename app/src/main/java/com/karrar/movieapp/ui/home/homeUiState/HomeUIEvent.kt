@@ -13,4 +13,5 @@ sealed interface HomeUIEvent {
     object ClickLetUsChooseForYouEvent : HomeUIEvent
     data class ClickCollectionList(val list: CreatedCollectionUIState): HomeUIEvent
     object ClickSeeAllCollectionsEvent: HomeUIEvent
+    data class ClickFeaturedCollection(val target: FeaturedCollectionsTarget) : HomeUIEvent
 }
