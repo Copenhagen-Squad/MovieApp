@@ -20,7 +20,6 @@
 
         <com.karrar.movieapp.ui.components.header.SectionHeaderView
             android:id="@+id/header"
-            app:isVisible="@{adapterRecycler.itemCount != 0}"
             style="@style/Typography.title_sm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +27,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:showSeeAll="true"
             tools:text="Your Collections"
-            app:sectionTitle="@{movieType.YOUR_COLLECTIONS.value}"
+            app:sectionTitle="@{movieType.YOUR_COLLECTIONS.titleRes}"
+            app:isVisible="@{adapterRecycler.itemCount != 0}"
             app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllCollections()}"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -47,7 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header"
-
             tools:listitem="@layout/item_saved_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

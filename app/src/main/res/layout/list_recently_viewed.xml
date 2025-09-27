@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:showSeeAll="true"
-            app:sectionTitle="@{movieType.RECENTLY_VIEWED.value}"
+            app:sectionTitle= "@{movieType.RECENTLY_VIEWED.titleRes}"
             app:onSeeAllClick="@{() -> adapterRecycler.listener.onClickSeeAllRecentlyViewed()}"
             tools:text="Popular"
             app:isVisible="@{adapterRecycler.itemCount != 0}"

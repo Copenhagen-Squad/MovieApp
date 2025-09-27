@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Need More to Watch?"
+            android:text="@string/need_more_to_watch"
             android:textColor="@color/shade_primary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,7 +86,7 @@
                     android:layout_marginBottom="@dimen/spacing_too_small"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Browse Everything"
+                    android:text="@string/browse_everything"
                     app:layout_constraintBottom_toTopOf="@+id/description_text"
                     app:layout_constraintStart_toEndOf="@+id/icon_container"
                     app:layout_constraintTop_toTopOf="@+id/icon_container" />
@@ -97,7 +97,7 @@
                     android:textColor="@color/shade_secondary"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Explore all movies and series by genre or search for anything you like."
+                    android:text="@string/explore_all_movies_and_series_by_genre_or_search_for_anything_you_like"
                     app:layout_constraintBottom_toBottomOf="@+id/icon_container"
                     app:layout_constraintStart_toStartOf="@+id/title_text"
                     app:layout_constraintTop_toBottomOf="@+id/title_text" />

@@ -20,15 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:showSeeAll="false"
-        app:sectionTitle="@{movieType.FEATURED_COLLECTIONS.value}"
+        app:sectionTitle="@{movieType.titleRes}"
         tools:text="Popular"
         app:isVisible="@{adapterRecycler.itemCount != 0}"
         style="@style/Typography.title_sm"
         android:textColor="@color/shade_primary"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/featur_collection_list"
+        android:id="@+id/featured_collection_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_12"

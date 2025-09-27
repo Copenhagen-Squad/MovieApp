@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{choice.name}"
+            app:stringRes="@{choice.nameRes}"
             android:textColor="@{isSelected || choice.isSelected ? @color/brand_primary : @color/shade_primary}"
             tools:text="Short" />
 
