@@ -215,6 +215,8 @@
     <string name="clear_all">مسح الكل</string>
     <string name="search">بحث...</string>
     <string name="here_s_your_match_list">إليك قائمة المباريات الخاصة بك</string>
+    <string name="nothing_found">لم يتم العثور على شيء!</string>
+    <string name="we_searched_the_entire_universe_but_nfound_nothing_matching_your_query_try_something_else">بحثنا في الكون بأكمله... \nولكن لم نجد شيئًا يُطابق استفسارك. هل تُجرِّب شيئًا آخر؟</string>
     <string name="let_the_world_know_how_you_felt">Let the world know how you felt.</string>
     <string name="add_rating">submit</string>
     <string name="rating_excellent">excellent</string>

@@ -40,8 +40,8 @@ class MyRatingsFragment : BaseFragment<FragmentMyRatingsBinding>() {
     }
 
     private fun setupTabLayout() {
-        binding.tabLayout.layout.addTab(binding.tabLayout.layout.newTab().setText("Movies"))
-        binding.tabLayout.layout.addTab(binding.tabLayout.layout.newTab().setText("Series"))
+        binding.tabLayout.layout.addTab(binding.tabLayout.layout.newTab().setText(R.string.movie))
+        binding.tabLayout.layout.addTab(binding.tabLayout.layout.newTab().setText(R.string.series))
         binding.tabLayout.layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {

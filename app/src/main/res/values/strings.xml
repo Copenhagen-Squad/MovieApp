@@ -217,4 +217,6 @@
     <string name="let_the_world_know_how_you_felt">Let the world know how you felt.</string>
     <string name="add_rating">submit</string>
     <string name="rating_excellent">excellent</string>
+    <string name="nothing_found">Nothing Found!</string>
+    <string name="we_searched_the_entire_universe_but_nfound_nothing_matching_your_query_try_something_else">We searched the entire universe… but\nfound nothing matching your query. Try something else?</string>
 </resources>
